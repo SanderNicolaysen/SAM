@@ -1,9 +1,12 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Display extends JFrame
 {
+    private JPanel panel;
+
     private String title;
     private int width, height;
 
@@ -33,5 +36,13 @@ public class Display extends JFrame
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        panel = new JPanel();
+        panel.setPreferredSize(new Dimension(width, height));
+        panel.setMaximumSize(new Dimension(width, height));
+        panel.setMinimumSize(new Dimension(width, height));
+
+        this.add(panel);
+        this.pack();
     }
 }
