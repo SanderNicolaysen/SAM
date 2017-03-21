@@ -3,6 +3,10 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class will create a window.
+ */
+
 public class Display extends JFrame
 {
     private JPanel panel;
