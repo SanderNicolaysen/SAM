@@ -1,8 +1,11 @@
 package game;
 
-/**
- * Created by Sande on 20.03.2017.
- */
+import gui.Display;
+
 public class Runner
 {
+    public static void main(String[] args)
+    {
+        new Display("Super Mario", 300, 300);
+    }
 }
