@@ -37,6 +37,9 @@ public class Game implements Runnable
         display = new Display(title, width, height);
     }
 
+    /**
+     * This method will make things move.
+     */
     private void tick()
     {
 
@@ -86,7 +89,7 @@ public class Game implements Runnable
     }
 
     /**
-     * Stop the thread
+     * Stop the thread.
      * This method will only run if running = true.
      */
     public synchronized void stop()
@@ -94,6 +97,7 @@ public class Game implements Runnable
         // If running is false do nothing (jump out of method).
         if (!running)
             return;
+
         running = false;
 
         try
