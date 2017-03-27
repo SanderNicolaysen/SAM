@@ -29,11 +29,11 @@ public class Display extends JFrame
     }
 
     /**
-     * Function that creates the frame.
+     * Method that creates the frame.
      */
     private void createDisplay()
     {
-        this.setTitle("Super Mario");
+        this.setTitle(title);
         this.setSize(width, height);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -47,5 +47,10 @@ public class Display extends JFrame
 
         this.add(panel);
         this.pack();
+    }
+
+    public JPanel getPanel()
+    {
+        return panel;
     }
 }

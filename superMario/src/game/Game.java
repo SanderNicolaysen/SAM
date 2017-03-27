@@ -2,6 +2,9 @@ package game;
 
 import gui.Display;
 
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
 /**
  * The main class for the game. Holds all the base code.
  */
@@ -14,6 +17,9 @@ public class Game implements Runnable
 
     private boolean running = false;
     private Thread thread;
+
+    private BufferStrategy bs;
+    private Graphics g;
 
     /**
      * Constructor that sets width, height and title of game.
