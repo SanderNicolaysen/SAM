@@ -1,5 +1,6 @@
 package game;
 
+import graphics.Assets;
 import graphics.ImageLoader;
 import graphics.SpriteSheet;
 import gui.Display;
@@ -24,8 +25,6 @@ public class Game implements Runnable
     private BufferStrategy bs;
     private Graphics g;
 
-    private BufferedImage test; // Holds the sprite sheet image
-    private SpriteSheet sheet;
 
     /**
      * Constructor that sets width, height and title of game.
@@ -47,16 +46,17 @@ public class Game implements Runnable
     private void init()
     {
         display = new Display(title, width, height);
-        test = ImageLoader.loadeImage("res/sprites/smb1_misc_sprites.gif");
-        sheet = new SpriteSheet(test); // Our sprite sheet image
+        Assets.init();
     }
 
+
+    int x = 0;
     /**
      * This method will make things move.
      */
     private void tick()
     {
-
+        x++;
     }
 
     /**
@@ -76,7 +76,7 @@ public class Game implements Runnable
         g.clearRect(0, 0, width, height);
         // Draw here
 
-        g.drawImage(sheet.crop(274, 331, 306, 360), 5, 5, null);
+        g.drawImage(Assets.ground, x, 10, null);
 
 
         // End drawing
@@ -94,10 +94,49 @@ public class Game implements Runnable
     {
         init();
 
+        // How many times we want the tick and render method to run per second
+        int fps = 60;
+        // Nano: 10^(-9), Billion: 10^(9)
+        // There is 1 billion (10^9) nanoseconds in 1 second.
+        // More accurate to measure time in nanoseconds than seconds.
+        // timePerTick = Max amount of time we can run tick and render methods.
+        double timePerTick = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        // Current time of computer in nanoseconds
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
+
+
         while(running)
         {
-            tick();
-            render();
+            // Current time of our computer
+            now = System.nanoTime();
+            //delta = how much time before we have to run tick and render methods
+            // If change in nanoseconds is less than timePerTick the value will be less than 1.
+            // If change in nanoseconds is greater than timePerTick the value is larger than 1
+            // which means the computer has waited long enough and can run tick and render method.
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if (delta >= 1)
+            {
+                tick();
+                render();
+                ticks++;
+                delta--;
+            }
+
+            // Total change in time after 1 second is >= 1 billion nanoseconds
+            // This will therefor run each time 1 second has passed
+            if (timer >= 1000000000)
+            {
+                System.out.println("Ticks and Frames: " + ticks);
+                ticks = 0;
+                timer = 0;
+            }
         }
 
         stop();
