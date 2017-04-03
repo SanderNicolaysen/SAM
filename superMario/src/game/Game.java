@@ -1,6 +1,7 @@
 package game;
 
 import graphics.ImageLoader;
+import graphics.SpriteSheet;
 import gui.Display;
 
 import java.awt.*;
@@ -23,6 +24,9 @@ public class Game implements Runnable
     private BufferStrategy bs;
     private Graphics g;
 
+    private BufferedImage test; // Holds the sprite sheet image
+    private SpriteSheet sheet;
+
     /**
      * Constructor that sets width, height and title of game.
      * @param title the title of the frame
@@ -43,6 +47,8 @@ public class Game implements Runnable
     private void init()
     {
         display = new Display(title, width, height);
+        test = ImageLoader.loadeImage("res/sprites/smb1_misc_sprites.gif");
+        sheet = new SpriteSheet(test); // Our sprite sheet image
     }
 
     /**
@@ -69,6 +75,8 @@ public class Game implements Runnable
         // Clear screen
         g.clearRect(0, 0, width, height);
         // Draw here
+
+        g.drawImage(sheet.crop(274, 331, 306, 360), 5, 5, null);
 
 
         // End drawing

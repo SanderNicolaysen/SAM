@@ -14,15 +14,20 @@ import java.io.IOException;
 
 public class ImageLoader
 {
-    public static Image imageLoader(String path)
+    /**
+     * Method that will load an image.
+     * @param path the path the image is located
+     * @return A BufferedImage
+     */
+    public static BufferedImage loadeImage(String path)
     {
         try
         {
             FileInputStream f = new FileInputStream(path);
             BufferedInputStream bf = new BufferedInputStream(f);
-            Image img = ImageIO.read(bf);
+            BufferedImage bimg = ImageIO.read(bf);
 
-            return img;
+            return bimg;
         }
         catch (FileNotFoundException e)
         {
@@ -37,20 +42,4 @@ public class ImageLoader
 
         return null;
     }
-
-    // Funket ikke med g.drawImage()
-    /* public static BufferedImage loadImage(String path)
-    {
-        try
-        {
-            return ImageIO.read(ImageLoader.class.getResource(path));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-            System.exit(1);
-        }
-        return null;
-    }
-    */
 }
