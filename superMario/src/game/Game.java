@@ -56,7 +56,23 @@ public class Game implements Runnable
      */
     private void render()
     {
+        bs = display.getcanvas().getBufferStrategy();
+        if (bs == null)
+        {
+            display.getcanvas().createBufferStrategy(3);
+            return;
+        }
 
+        g = bs.getDrawGraphics();
+        // Clear screen
+        g.clearRect(0, 0, width, height);
+
+        // Draw here
+        
+
+        // End drawing
+        bs.show();
+        g.dispose();
     }
 
     /**

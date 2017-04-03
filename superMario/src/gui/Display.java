@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Display extends JFrame
 {
-    private JPanel panel;
+    private Canvas canvas;
 
     private String title;
     private int width, height;
@@ -40,17 +40,17 @@ public class Display extends JFrame
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
-        panel = new JPanel();
-        panel.setPreferredSize(new Dimension(width, height));
-        panel.setMaximumSize(new Dimension(width, height));
-        panel.setMinimumSize(new Dimension(width, height));
+        canvas = new Canvas();
+        canvas.setPreferredSize(new Dimension(width, height));
+        canvas.setMaximumSize(new Dimension(width, height));
+        canvas.setMinimumSize(new Dimension(width, height));
 
-        this.add(panel);
+        this.add(canvas);
         this.pack();
     }
 
-    public JPanel getPanel()
+    public Canvas getcanvas()
     {
-        return panel;
+        return canvas;
     }
 }
