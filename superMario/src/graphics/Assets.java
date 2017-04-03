@@ -19,10 +19,10 @@ public class Assets
      */
     public static void init()
     {
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadeImage("res/textures/smb1_misc_sprites.gif"));
+        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
 
         player = sheet.crop(0, 0, width, height);
-        ground = sheet.crop(0, 0, width * 2, height * 2);
+        ground = sheet.crop(0, 0, 200, 200);
 
 
     }

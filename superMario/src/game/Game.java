@@ -4,6 +4,10 @@ import graphics.Assets;
 import graphics.ImageLoader;
 import graphics.SpriteSheet;
 import gui.Display;
+import states.GameState;
+import states.MenuState;
+import states.SettingsState;
+import states.State;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -22,9 +26,14 @@ public class Game implements Runnable
     private boolean running = false;
     private Thread thread;
 
+    // Graphics
     private BufferStrategy bs;
     private Graphics g;
 
+    // States
+    private State gameState;
+    private State menuState;
+    private State settingsState;
 
     /**
      * Constructor that sets width, height and title of game.
@@ -47,16 +56,29 @@ public class Game implements Runnable
     {
         display = new Display(title, width, height);
         Assets.init();
+
+        // Initialization of states
+        gameState = new GameState();
+        menuState = new MenuState();
+        settingsState = new SettingsState();
+
+        // Set the current state of the game to gameState.
+        State.setState(gameState);
+
     }
 
 
-    int x = 0;
     /**
      * This method will make things move.
      */
     private void tick()
     {
-        x++;
+        // If currentState != null, which means we have a state,
+        // call the tick method of the current state
+        if (State.getState() != null)
+        {
+            State.getState().tick();
+        }
     }
 
     /**
@@ -64,6 +86,7 @@ public class Game implements Runnable
      */
     private void render()
     {
+        // BufferStrategy
         bs = display.getcanvas().getBufferStrategy();
         if (bs == null)
         {
@@ -76,8 +99,12 @@ public class Game implements Runnable
         g.clearRect(0, 0, width, height);
         // Draw here
 
-        g.drawImage(Assets.ground, x, 10, null);
-
+        // If currentState != null, which means we have a state,
+        // call the render method of the current state
+        if (State.getState() != null)
+        {
+            State.getState().render(g);
+        }
 
         // End drawing
         bs.show(); // Make the BufferStrategy visible

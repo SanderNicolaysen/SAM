@@ -19,7 +19,7 @@ public class ImageLoader
      * @param path the path the image is located
      * @return A BufferedImage
      */
-    public static BufferedImage loadeImage(String path)
+    public static BufferedImage loadImage(String path)
     {
         try
         {
