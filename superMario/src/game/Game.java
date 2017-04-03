@@ -1,9 +1,11 @@
 package game;
 
+import graphics.ImageLoader;
 import gui.Display;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 /**
  * The main class for the game. Holds all the base code.
@@ -63,16 +65,15 @@ public class Game implements Runnable
             return;
         }
 
-        g = bs.getDrawGraphics();
+        g = bs.getDrawGraphics(); // Initialize graphics object for the buffer
         // Clear screen
         g.clearRect(0, 0, width, height);
-
         // Draw here
-        
+
 
         // End drawing
-        bs.show();
-        g.dispose();
+        bs.show(); // Make the BufferStrategy visible
+        g.dispose(); // Remove the graphics after added to prevent duplication
     }
 
     /**
