@@ -1,4 +1,4 @@
-package enteties;
+package entities.creatures;
 
 import enteties.Creature;
 import game.Game;
