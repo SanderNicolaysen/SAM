@@ -1,5 +1,4 @@
 package enteties;
 
-public class Enemy
-{
+public class Item {
 }

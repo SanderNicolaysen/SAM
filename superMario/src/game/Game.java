@@ -4,26 +4,40 @@ import graphics.Assets;
 import graphics.ImageLoader;
 import graphics.SpriteSheet;
 import gui.Display;
+import input.KeyManager;
+import states.GameState;
+import states.MenuState;
+import states.State;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+
 
 /**
  * The main class for the game. Holds all the base code.
  */
 public class Game implements Runnable
 {
+    //GUI
     private Display display;
 
+    //Game
     public int width, height;
     public String title;
-
     private boolean running = false;
     private Thread thread;
 
+    //Graphics
     private BufferStrategy bs;
     private Graphics g;
+
+    //States
+    private State gameState;
+    private State menuState;
+
+    //Input
+    private KeyManager keyManager;
 
 
     /**
@@ -37,6 +51,7 @@ public class Game implements Runnable
         this.width = width;
         this.height = height;
         this.title = title;
+        keyManager = new KeyManager();
     }
 
     /**
@@ -46,8 +61,14 @@ public class Game implements Runnable
     private void init()
     {
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
+
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        State.setState(gameState);
     }
+
 
 
     int x = 0;
@@ -56,7 +77,12 @@ public class Game implements Runnable
      */
     private void tick()
     {
-        x++;
+        //Makes the key inputs work
+        keyManager.tick();
+
+        //Checks if the state exist. If it does exist, then tick
+        if(State.getState() != null)
+            State.getState().tick();
     }
 
     /**
@@ -74,9 +100,14 @@ public class Game implements Runnable
         g = bs.getDrawGraphics(); // Initialize graphics object for the buffer
         // Clear screen
         g.clearRect(0, 0, width, height);
+
+        //Checks if the state exist. If it does exist, then it renders every frame
+        if(State.getState() != null){
+            State.getState().render(g);
+        }
         // Draw here
 
-        g.drawImage(Assets.ground, x, 10, null);
+
 
 
         // End drawing
@@ -140,6 +171,10 @@ public class Game implements Runnable
         }
 
         stop();
+    }
+
+    public KeyManager getKeyManager(){
+        return keyManager;
     }
 
     /**

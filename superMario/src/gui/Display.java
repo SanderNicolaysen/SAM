@@ -8,6 +8,7 @@ import java.awt.*;
  */
 public class Display extends JFrame
 {
+    private JFrame frame;
     private Canvas canvas;
 
     private String title;
@@ -52,5 +53,9 @@ public class Display extends JFrame
     public Canvas getcanvas()
     {
         return canvas;
+    }
+
+    public JFrame getFrame(){
+        return frame;
     }
 }
