@@ -56,6 +56,8 @@ public class Game implements Runnable
     /**
      * Initialize the game.
      * Run the constructor of display class so that the window will appear.
+     * Initialize Assets.
+     *
      */
     private void init()
     {
@@ -177,6 +179,7 @@ public class Game implements Runnable
         stop();
     }
 
+    // Return keyManager object so other classes can access it.
     public KeyManager getKeyManager(){
         return keyManager;
     }

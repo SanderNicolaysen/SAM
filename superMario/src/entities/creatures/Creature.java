@@ -1,10 +1,9 @@
-package enteties;
+package entities.creatures;
 
-import game.Game;
+import entities.Entity;
 
-import javax.swing.text.html.parser.*;
-
-public abstract class Creature extends Entity{
+public abstract class Creature extends Entity
+{
 
     public static final int DEFAULT_HEALTH = 1;
     public static final float DEFAULT_SPEED = 3.0f;
@@ -27,7 +26,9 @@ public abstract class Creature extends Entity{
         y += yMove;
     }
 
-    //Getters and Setters
+
+    //GETTERS AND SETTERS
+
     public int getHealth() {
         return health;
     }

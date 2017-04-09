@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * This class will create a window.
  */
-public class Display extends JFrame
+public class Display
 {
     private Canvas canvas;
     private JFrame frame;
@@ -33,12 +33,13 @@ public class Display extends JFrame
      */
     private void createDisplay()
     {
-        this.setTitle(title);
-        this.setSize(width, height);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        frame = new JFrame();
+        frame.setTitle(title);
+        frame.setSize(width, height);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width, height));
@@ -46,8 +47,8 @@ public class Display extends JFrame
         canvas.setMinimumSize(new Dimension(width, height));
         canvas.setFocusable(false);
 
-        this.add(canvas);
-        this.pack();
+        frame.add(canvas);
+        frame.pack();
     }
 
     public Canvas getCanvas()

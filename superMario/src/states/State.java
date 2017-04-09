@@ -10,7 +10,7 @@ import java.awt.*;
      */
 public abstract class State {
 
-    //Here is the gameState manager and are storing the states we want to use
+    //Here is the gameState manager and are storing the state we want to use
     /**
      * currentState will hold the state we want to
      * tick and render.
@@ -32,6 +32,7 @@ public abstract class State {
     public static State getState(){
         return currentState;
     }
+
 
     //Class
     protected Game game;

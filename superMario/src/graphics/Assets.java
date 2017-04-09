@@ -2,13 +2,13 @@ package graphics;
 
 import java.awt.image.BufferedImage;
 
-/**'
+/**
  *
  * This class will load inn all of our assets (Textures, images, sounds etc).
  */
 public class Assets
 {
-    private static final int width = 32, height = 16;
+    private static final int width = 13, height = 16;
 
     // Different tiles/images that will be equal to cropped out pictures of our sprite sheet.
 
@@ -23,10 +23,10 @@ public class Assets
      */
     public static void init()
     {
-        SpriteSheet superMarioSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Mario.png"));
+        SpriteSheet superMarioSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mario.png"));
 
         //Mario's right movements
-        marioRightNormal = superMarioSheet.crop(0, 0, width, height);
+        marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
         marioRightMove1 = superMarioSheet.crop(0, 0, width, height);
         marioRightMove2 = superMarioSheet.crop(0, 0, width, height);
         marioRightMove3 = superMarioSheet.crop(0, 0, width, height);

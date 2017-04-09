@@ -14,7 +14,7 @@ public class KeyManager implements KeyListener {
 
     public void tick(){
         jump = keys[KeyEvent.VK_SPACE];
-        run = keys[KeyEvent.VK_ALT];
+        run = keys[KeyEvent.VK_SHIFT];
         right = keys[KeyEvent.VK_RIGHT];
         left = keys[KeyEvent.VK_LEFT];
         crouch = keys[KeyEvent.VK_DOWN];
@@ -32,4 +32,5 @@ public class KeyManager implements KeyListener {
     public void keyTyped(KeyEvent e){
 
     }
+
 }

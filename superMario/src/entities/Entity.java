@@ -1,9 +1,10 @@
-package enteties;
+package entities;
 
 import java.awt.*;
 
 public abstract class Entity {
 
+    // x and y is the position on the screen
     protected float x, y;
     protected int width, height;
 
@@ -19,6 +20,7 @@ public abstract class Entity {
     public abstract void render(Graphics g);
 
 
+    // Getters and Setters
     public float getX() {
         return x;
     }

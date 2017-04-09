@@ -1,8 +1,7 @@
 package states;
 
-import enteties.SuperMario;
+import entities.creatures.SuperMario;
 import game.Game;
-import graphics.Assets;
 import java.awt.*;
 
 /**
@@ -16,10 +15,10 @@ public class GameState extends State {
     public GameState(Game game)
     {
         super(game);
+        // (x, y): start position of SuperMario
         supermario = new SuperMario(game, 100, 100);
     }
 
-    int x = 0;
     @Override
     public void tick()
     {
@@ -29,12 +28,12 @@ public class GameState extends State {
     @Override
     public void render(Graphics g)
     {
-        supermario.render(g);
-
         g.setColor(Color.CYAN.darker());
         g.fillRect(0, 0, 900, 700);
 
         g.setColor(Color.GREEN.darker());
         g.fillRect(0, 600, 900, 100);
+
+        supermario.render(g);
     }
 }
