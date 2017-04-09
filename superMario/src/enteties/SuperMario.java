@@ -1,43 +1,54 @@
 package enteties;
 
+import enteties.Creature;
 import game.Game;
 import graphics.Assets;
-
 import java.awt.*;
 
-public class SuperMario extends Entity{
+public class SuperMario extends Creature{
 
-    protected int health;
     private Game game;
 
-    public SuperMario(Game game, float x, float y){
-        super(x, y);
+    public SuperMario(Game game, float x, float y) {
+        super(x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
         this.game = game;
-        health = 1;
-    }
-    @Override
-    public void tick(){
-        //Inserts if-statements for the different key inputs
-        if(game.getKeyManager().right)
-            x += 3;
-        if(game.getKeyManager().left)
-            x -= 3;
-        if(game.getKeyManager().jump)
-
-        //Pål, do your thing -->
-
-        if(game.getKeyManager().run && game.getKeyManager().right)
-            x += 6;
-        if(game.getKeyManager().run && game.getKeyManager().left)
-            x -= 6;
-        if(game.getKeyManager().crouch);
-
 
     }
 
     @Override
-    public void render(Graphics g){
-        g.drawImage(Assets.marioRightNormal, (int) x, (int) y, null);
+    public void tick() {
+        getInput();
+        move();
+    }
+
+    private void getInput(){
+        xMove = 0;
+        yMove = 0;
+
+        if(game.getKeyManager().jump) {
+            yMove = -speed;
+            //Pål, do your thing...
+        }
+        if(game.getKeyManager().run && game.getKeyManager().right){
+            xMove = speed*2;
+        }
+        if(game.getKeyManager().run && game.getKeyManager().left){
+            xMove = -speed*2;
+        }
+        if(game.getKeyManager().right){
+            xMove = speed;
+        }
+        if(game.getKeyManager().left){
+            xMove = -speed;
+        }
+        if(game.getKeyManager().crouch){
+
+        }
+    }
+
+    @Override
+    public void render(Graphics g) {
+        g.drawImage(Assets.marioRightNormal, (int) x, (int) y, width, height, null);
     }
 
 }

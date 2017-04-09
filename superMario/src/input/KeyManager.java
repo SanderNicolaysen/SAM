@@ -19,6 +19,7 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_LEFT];
         crouch = keys[KeyEvent.VK_DOWN];
     }
+
     @Override
     public void keyPressed(KeyEvent e){
         keys[e.getKeyCode()] = true;

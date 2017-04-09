@@ -1,8 +1,6 @@
 package game;
 
 import graphics.Assets;
-import graphics.ImageLoader;
-import graphics.SpriteSheet;
 import gui.Display;
 import input.KeyManager;
 import states.GameState;
@@ -13,7 +11,6 @@ import states.SettingsState;
 import states.State;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 
 /**
@@ -24,14 +21,11 @@ public class Game implements Runnable
     //GUI
     private Display display;
 
-    //Game
+    // Game
     public int width, height;
     public String title;
     private boolean running = false;
     private Thread thread;
-
-    //Input
-    private KeyManager keyManager;
 
     // Graphics
     private BufferStrategy bs;
@@ -41,6 +35,9 @@ public class Game implements Runnable
     private State gameState;
     private State menuState;
     private State settingsState;
+
+    // Input
+    private KeyManager keyManager;
 
     /**
      * Constructor that sets width, height and title of game.
@@ -80,7 +77,6 @@ public class Game implements Runnable
      */
     private void tick()
     {
-
         //Makes the key inputs work
         keyManager.tick();
 
@@ -98,10 +94,10 @@ public class Game implements Runnable
     private void render()
     {
         // BufferStrategy
-        bs = display.getcanvas().getBufferStrategy();
+        bs = display.getCanvas().getBufferStrategy();
         if (bs == null)
         {
-            display.getcanvas().createBufferStrategy(3);
+            display.getCanvas().createBufferStrategy(3);
             return;
         }
 

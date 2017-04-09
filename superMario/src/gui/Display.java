@@ -8,9 +8,8 @@ import java.awt.*;
  */
 public class Display extends JFrame
 {
-    private JFrame frame;
     private Canvas canvas;
-
+    private JFrame frame;
     private String title;
     private int width, height;
 
@@ -45,12 +44,13 @@ public class Display extends JFrame
         canvas.setPreferredSize(new Dimension(width, height));
         canvas.setMaximumSize(new Dimension(width, height));
         canvas.setMinimumSize(new Dimension(width, height));
+        canvas.setFocusable(false);
 
         this.add(canvas);
         this.pack();
     }
 
-    public Canvas getcanvas()
+    public Canvas getCanvas()
     {
         return canvas;
     }

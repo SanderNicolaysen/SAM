@@ -3,9 +3,14 @@ package states;
 import game.Game;
 import java.awt.*;
 
-public class MenuState extends State{
-
-    public MenuState(Game game){
+/**
+ * The class for our menuState
+ */
+public class MenuState extends State
+{
+    // Constructor
+    public MenuState(Game game)
+    {
         super(game);
     }
 

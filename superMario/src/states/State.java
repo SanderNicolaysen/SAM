@@ -33,8 +33,7 @@ public abstract class State {
         return currentState;
     }
 
-    //class
-
+    //Class
     protected Game game;
 
     public State(Game game){
