@@ -21,24 +21,24 @@ public class Assets
      */
     public static void init()
     {
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mario.png"));
 
-        marioRightNormal = sheet.crop(211, 0, width, 16);
-        marioRightMove1 = sheet.crop(0, 0, width, height);
-        marioRightMove2 = sheet.crop(0, 0, width, height);
-        marioRightMove3 = sheet.crop(0, 0, width, height);
-        marioRightJump = sheet.crop(0, 0, width, height);
+        SpriteSheet mariosheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mario.png"));
 
-        marioLeftNormal = sheet.crop(0, 0, width, height);
-        marioLeftMove1 = sheet.crop(0, 0, width, height);
-        marioLeftMove2 = sheet.crop(0, 0, width, height);
-        marioLeftMove3 = sheet.crop(0, 0, width, height);
-        marioLeftJump = sheet.crop(0, 0, width, height);
+        marioRightNormal = mariosheet.crop(211, 0, width, 16);
+        marioRightMove1 = mariosheet.crop(0, 0, width, height);
+        marioRightMove2 = mariosheet.crop(0, 0, width, height);
+        marioRightMove3 = mariosheet.crop(0, 0, width, height);
+        marioRightJump = mariosheet.crop(0, 0, width, height);
 
-        marioDeath = sheet.crop(0, 0, width, height);
+        marioLeftNormal = mariosheet.crop(0, 0, width, height);
+        marioLeftMove1 = mariosheet.crop(0, 0, width, height);
+        marioLeftMove2 = mariosheet.crop(0, 0, width, height);
+        marioLeftMove3 = mariosheet.crop(0, 0, width, height);
+        marioLeftJump = mariosheet.crop(0, 0, width, height);
 
-        ground = sheet.crop(0, 0, width * 2, height * 2);
+        marioDeath = mariosheet.crop(0, 0, width, height);
 
+        ground = mariosheet.crop(0, 0, width * 2, height * 2);
 
     }
 }

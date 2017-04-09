@@ -1,15 +1,12 @@
 package states;
 
 import game.Game;
-import graphics.Assets;
-
 import java.awt.*;
 
 public class MenuState extends State{
 
     public MenuState(Game game){
         super(game);
-
     }
 
     @Override
@@ -18,5 +15,6 @@ public class MenuState extends State{
     }
     @Override
     public void render(Graphics g){
+
     }
 }
