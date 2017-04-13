@@ -6,5 +6,6 @@ public class Runner
     {
         Game game = new Game("Super Mario", 900, 700);
         game.start();
+
     }
 }

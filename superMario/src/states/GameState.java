@@ -2,6 +2,9 @@ package states;
 
 import entities.creatures.SuperMario;
 import game.Game;
+import graphics.Assets;
+import tiles.Tile;
+
 import java.awt.*;
 
 /**
@@ -35,5 +38,6 @@ public class GameState extends State {
         g.fillRect(0, 600, 900, 100);
 
         supermario.render(g);
+        Tile.tiles[0].render(g, 0, 0);
     }
 }

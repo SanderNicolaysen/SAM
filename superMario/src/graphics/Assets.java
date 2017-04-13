@@ -15,7 +15,7 @@ public class Assets
     public static BufferedImage marioRightNormal, marioRightMove1, marioRightMove2, marioRightMove3, marioRightJump,
             marioLeftNormal, marioLeftMove1, marioLeftMove2, marioLeftMove3, marioLeftJump, marioDeath,
             superMarioRightNormal, superMarioRightMove1, superMarioRightMove2, superMarioRightMove3, superMarioRightJump, superMarioRightCrouch,
-            superMarioLeftNormal, superMarioLeftMove1, superMarioLeftMove2, superMarioLeftMove3, superMarioLeftJump, superMarioLeftCrouch;
+            superMarioLeftNormal, superMarioLeftMove1, superMarioLeftMove2, superMarioLeftMove3, superMarioLeftJump, superMarioLeftCrouch, ground;
 
     /**
      * This method will load in all the assets we need in our game.
@@ -24,6 +24,10 @@ public class Assets
     public static void init()
     {
         SpriteSheet superMarioSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mario.png"));
+        SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
+
+        // Test code
+        ground = worldSheet.crop(373, 124, 16, 16);
 
         //Mario's right movements
         marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
