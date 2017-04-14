@@ -3,7 +3,7 @@ package states;
 import entities.creatures.SuperMario;
 import game.Game;
 import graphics.Assets;
-import tiles.Tile;
+import worlds.World;
 
 import java.awt.*;
 
@@ -13,6 +13,7 @@ import java.awt.*;
 public class GameState extends State {
 
     private SuperMario supermario;
+    private World world;
 
     // Constructor
     public GameState(Game game)
@@ -20,24 +21,20 @@ public class GameState extends State {
         super(game);
         // (x, y): start position of SuperMario
         supermario = new SuperMario(game, 100, 100);
+        world = new World("res/worlds/world1.txt");
     }
 
     @Override
     public void tick()
     {
+        world.tick();
         supermario.tick();
     }
 
     @Override
     public void render(Graphics g)
     {
-        g.setColor(Color.CYAN.darker());
-        g.fillRect(0, 0, 900, 700);
-
-        g.setColor(Color.GREEN.darker());
-        g.fillRect(0, 600, 900, 100);
-
+        world.render(g);
         supermario.render(g);
-        Tile.tiles[0].render(g, 0, 0);
     }
 }

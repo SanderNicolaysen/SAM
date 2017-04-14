@@ -31,7 +31,7 @@ public class Assets
 
         //Mario's right movements
         marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
-        marioRightMove1 = superMarioSheet.crop(0, 0, width, height);
+        marioRightMove1 = superMarioSheet.crop((width * 16), 0, width + 4, height);
         marioRightMove2 = superMarioSheet.crop(0, 0, width, height);
         marioRightMove3 = superMarioSheet.crop(0, 0, width, height);
         marioRightJump = superMarioSheet.crop(0, 0, width, height);

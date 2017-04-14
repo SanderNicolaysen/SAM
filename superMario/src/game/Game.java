@@ -113,10 +113,7 @@ public class Game implements Runnable
         {
             State.getState().render(g);
         }
-        // Draw here
 
-
-        // End drawing
         bs.show(); // Make the BufferStrategy visible
         g.dispose(); // Remove the graphics after added to prevent duplication
     }
