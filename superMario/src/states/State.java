@@ -1,6 +1,7 @@
 package states;
 
-import game.Game;
+import handler.Handler;
+
 import java.awt.*;
 
     /**
@@ -17,7 +18,7 @@ public abstract class State {
      */
     private static State currentState = null;
     /**
-     * Set method so we can set the current state of our game
+     * Set method so we can set the current state of our handler
      * The state we send in, will be the new state that we will tick
      * and render.
      * @param state the state we want to render and tick
@@ -35,10 +36,10 @@ public abstract class State {
 
 
     //Class
-    protected Game game;
+    protected Handler handler;
 
-    public State(Game game){
-        this.game = game;
+    public State(Handler handler){
+        this.handler = handler;
     }
 
     // Abstract methods that every state must have

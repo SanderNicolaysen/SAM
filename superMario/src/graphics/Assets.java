@@ -18,7 +18,7 @@ public class Assets
             superMarioLeftNormal, superMarioLeftMove1, superMarioLeftMove2, superMarioLeftMove3, superMarioLeftJump, superMarioLeftCrouch, ground;
 
     /**
-     * This method will load in all the assets we need in our game.
+     * This method will load in all the assets we need in our handler.
      * It will only run once, so we don't have to crop out images several times.
      */
     public static void init()

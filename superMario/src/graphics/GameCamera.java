@@ -1,7 +1,7 @@
 package graphics;
 
 import entities.Entity;
-import game.Game;
+import handler.Game;
 
 public class GameCamera
 {

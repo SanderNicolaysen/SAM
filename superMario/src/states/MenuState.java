@@ -1,6 +1,7 @@
 package states;
 
-import game.Game;
+import handler.Handler;
+
 import java.awt.*;
 
 /**
@@ -9,9 +10,9 @@ import java.awt.*;
 public class MenuState extends State
 {
     // Constructor
-    public MenuState(Game game)
+    public MenuState(Handler handler)
     {
-        super(game);
+        super(handler);
     }
 
     @Override

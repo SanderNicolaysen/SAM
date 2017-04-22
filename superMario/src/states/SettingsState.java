@@ -1,6 +1,7 @@
 package states;
 
-import game.Game;
+import handler.Handler;
+
 import java.awt.*;
 
 /**
@@ -10,9 +11,9 @@ public class SettingsState extends State
 {
 
     // Constructor
-    public SettingsState(Game game)
+    public SettingsState(Handler handler)
     {
-        super(game);
+        super(handler);
     }
 
     @Override

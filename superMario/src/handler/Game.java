@@ -1,11 +1,9 @@
-package game;
+package handler;
 
 import graphics.Assets;
 import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
-import states.GameState;
-import states.MenuState;
 import states.GameState;
 import states.MenuState;
 import states.SettingsState;
@@ -15,7 +13,7 @@ import java.awt.image.BufferStrategy;
 
 
 /**
- * The main class for the game. Holds all the base code.
+ * The main class for the handler. Holds all the base code.
  */
 public class Game implements Runnable
 {
@@ -43,8 +41,11 @@ public class Game implements Runnable
     // Camera
     private GameCamera gameCamera;
 
+    // Handler
+    private Handler handler;
+
     /**
-     * Constructor that sets width, height and title of game.
+     * Constructor that sets width, height and title of handler.
      * @param title the title of the frame
      * @param width the width of the frame
      * @param height the height of the frame
@@ -58,7 +59,7 @@ public class Game implements Runnable
     }
 
     /**
-     * Initialize the game.
+     * Initialize the handler.
      * Run the constructor of display class so that the window will appear.
      * Initialize Assets.
      *
@@ -70,13 +71,14 @@ public class Game implements Runnable
         Assets.init();
 
         gameCamera = new GameCamera(this, 0, 0);
+        handler = new Handler(this);
 
         // Initialization of states
-        gameState = new GameState(this);
-        menuState = new MenuState(this);
-        settingsState = new SettingsState(this);
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
+        settingsState = new SettingsState(handler);
 
-        // Set the current state of the game to gameState.
+        // Set the current state of the handler to gameState.
         State.setState(gameState);
     }
 
@@ -97,7 +99,7 @@ public class Game implements Runnable
     }
 
     /**
-     * Render(draw) the graphics of the game
+     * Render(draw) the graphics of the handler
      */
     private void render()
     {

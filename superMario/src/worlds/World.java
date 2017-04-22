@@ -1,6 +1,6 @@
 package worlds;
 
-import game.Game;
+import handler.Handler;
 import tiles.Tile;
 import utils.Utils;
 
@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class World
 {
-    private Game game;
+    private Handler handler;
     private int width, height;
     private int spawnx, spawny;
 
@@ -16,9 +16,9 @@ public class World
     private int[][] tiles;
 
     // Load world from a file.
-    public World(Game game, String path)
+    public World(Handler handler, String path)
     {
-        this.game = game;
+        this.handler = handler;
         loadWorld(path);
     }
 
@@ -31,17 +31,17 @@ public class World
     public void render(Graphics g)
     {
         // Render efficiency
-        int xStart = (int) Math.max(0, game.getGameCamera().getxOffset() / Tile.TILEWIDTH);
-        int xEnd = (int) Math.min(width, (game.getGameCamera().getxOffset() + game.getWidth()) / Tile.TILEWIDTH + 1);
-        int yStart = (int) Math.max(0, game.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
-        int yEnd = (int) Math.min(height, (game.getGameCamera().getyOffset() + game.getHeight()) / Tile.TILEHEIGHT + 1);
+        int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
+        int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);
+        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
+        int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILEHEIGHT + 1);
 
         for (int y = yStart; y < yEnd; y++)
         {
             for (int x = xStart; x < xEnd; x++)
             {
-                getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - game.getGameCamera().getxOffset()),
-                        (int) (y * Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
+                getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
+                        (int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
     }

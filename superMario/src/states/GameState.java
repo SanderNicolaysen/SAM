@@ -1,8 +1,7 @@
 package states;
 
 import entities.creatures.SuperMario;
-import game.Game;
-import graphics.Assets;
+import handler.Handler;
 import worlds.World;
 
 import java.awt.*;
@@ -16,12 +15,13 @@ public class GameState extends State {
     private World world;
 
     // Constructor
-    public GameState(Game game)
+    public GameState(Handler handler)
     {
-        super(game);
+        super(handler);
+        world = new World(handler, "res/worlds/world1.txt");
+        handler.setWorld(world);
         // (x, y): start position of SuperMario
-        supermario = new SuperMario(game, 100, 100);
-        world = new World(game, "res/worlds/world1.txt");
+        supermario = new SuperMario(handler, 100, 100);
     }
 
     @Override
