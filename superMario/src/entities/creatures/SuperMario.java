@@ -6,20 +6,18 @@ import java.awt.*;
 
 public class SuperMario extends Creature {
 
-    private Game game;
-
     public SuperMario(Game game, float x, float y) {
-        super(x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
-        this.game = game;
-
+        super(game, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
     }
 
     @Override
     public void tick() {
         getInput();
         move();
+        game.getGameCamera().centerOnEntity(this);
     }
 
+    //double temp = 0;
     private void getInput() {
         xMove = 0;
         yMove = 0;
@@ -44,11 +42,16 @@ public class SuperMario extends Creature {
         if(game.getKeyManager().crouch){
             yMove = speed;
         }
+
+        //temp += 3.14/60;
+        //yMove = (float)Math.sin(temp) * 10;
+        //xMove = (float)Math.cos(temp) * 10;
+
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.marioRightNormal, (int) x, (int) y, width, height, null);
+        g.drawImage(Assets.marioRightNormal, (int) (x - game.getGameCamera().getxOffset()), (int) (y - game.getGameCamera().getyOffset()), width, height, null);
     }
 
 }

@@ -1,5 +1,6 @@
 package worlds;
 
+import game.Game;
 import tiles.Tile;
 import utils.Utils;
 
@@ -7,6 +8,7 @@ import java.awt.*;
 
 public class World
 {
+    private Game game;
     private int width, height;
     private int spawnx, spawny;
 
@@ -14,8 +16,9 @@ public class World
     private int[][] tiles;
 
     // Load world from a file.
-    public World(String path)
+    public World(Game game, String path)
     {
+        this.game = game;
         loadWorld(path);
     }
 
@@ -31,7 +34,8 @@ public class World
         {
             for (int x = 0; x < width; x++)
             {
-                getTile(x, y).render(g, x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT);
+                getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - game.getGameCamera().getxOffset()),
+                        (int) (y * Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
             }
         }
     }
@@ -48,7 +52,7 @@ public class World
         return t;
     }
 
-    // Get file from computer.
+    // set values for the tiles array
     private void loadWorld(String path)
     {
         String file = Utils.loadFileAssString(path);

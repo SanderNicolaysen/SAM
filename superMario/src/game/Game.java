@@ -1,6 +1,7 @@
 package game;
 
 import graphics.Assets;
+import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import states.GameState;
@@ -22,8 +23,8 @@ public class Game implements Runnable
     private Display display;
 
     // Game
-    public int width, height;
-    public String title;
+    private int width, height;
+    private String title;
     private boolean running = false;
     private Thread thread;
 
@@ -38,6 +39,9 @@ public class Game implements Runnable
 
     // Input
     private KeyManager keyManager;
+
+    // Camera
+    private GameCamera gameCamera;
 
     /**
      * Constructor that sets width, height and title of game.
@@ -64,6 +68,8 @@ public class Game implements Runnable
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         Assets.init();
+
+        gameCamera = new GameCamera(this, 0, 0);
 
         // Initialization of states
         gameState = new GameState(this);
@@ -179,6 +185,21 @@ public class Game implements Runnable
     // Return keyManager object so other classes can access it.
     public KeyManager getKeyManager(){
         return keyManager;
+    }
+
+    public GameCamera getGameCamera()
+    {
+        return gameCamera;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
     }
 
     /**
