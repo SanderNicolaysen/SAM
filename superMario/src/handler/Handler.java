@@ -4,9 +4,7 @@ import graphics.GameCamera;
 import input.KeyManager;
 import worlds.World;
 
-/**
- * This class will make it easier to pass along variables.
- */
+//This class will make it easier to pass along objects.
 public class Handler
 {
     private Game game;
