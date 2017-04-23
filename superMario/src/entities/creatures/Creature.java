@@ -1,8 +1,7 @@
 package entities.creatures;
 
 import entities.Entity;
-import handler.Game;
-import handler.Handler;
+import game.Handler;
 
 public abstract class Creature extends Entity
 {

@@ -1,4 +1,4 @@
-package handler;
+package game;
 
 import graphics.GameCamera;
 import input.KeyManager;

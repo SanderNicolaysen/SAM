@@ -1,7 +1,6 @@
 package entities;
 
-import handler.Game;
-import handler.Handler;
+import game.Handler;
 
 import java.awt.*;
 

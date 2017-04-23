@@ -1,7 +1,7 @@
 package states;
 
 import entities.creatures.SuperMario;
-import handler.Handler;
+import game.Handler;
 import worlds.World;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package states;
 
-import handler.Handler;
+import game.Handler;
 
 import java.awt.*;
 
@@ -18,7 +18,7 @@ public abstract class State {
      */
     private static State currentState = null;
     /**
-     * Set method so we can set the current state of our handler
+     * Set method so we can set the current state of our game
      * The state we send in, will be the new state that we will tick
      * and render.
      * @param state the state we want to render and tick

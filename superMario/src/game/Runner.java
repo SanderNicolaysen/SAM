@@ -1,4 +1,4 @@
-package handler;
+package game;
 
 public class Runner
 {

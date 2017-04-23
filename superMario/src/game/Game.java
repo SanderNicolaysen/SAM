@@ -1,4 +1,4 @@
-package handler;
+package game;
 
 import graphics.Assets;
 import graphics.GameCamera;
@@ -13,7 +13,7 @@ import java.awt.image.BufferStrategy;
 
 
 /**
- * The main class for the handler. Holds all the base code.
+ * The main class for the game. Holds all the base code.
  */
 public class Game implements Runnable
 {
@@ -45,7 +45,7 @@ public class Game implements Runnable
     private Handler handler;
 
     /**
-     * Constructor that sets width, height and title of handler.
+     * Constructor that sets width, height and title of game.
      * @param title the title of the frame
      * @param width the width of the frame
      * @param height the height of the frame
@@ -59,7 +59,7 @@ public class Game implements Runnable
     }
 
     /**
-     * Initialize the handler.
+     * Initialize the game.
      * Run the constructor of display class so that the window will appear.
      * Initialize Assets.
      *
@@ -78,7 +78,7 @@ public class Game implements Runnable
         menuState = new MenuState(handler);
         settingsState = new SettingsState(handler);
 
-        // Set the current state of the handler to gameState.
+        // Set the current state of the game to gameState.
         State.setState(gameState);
     }
 
@@ -99,7 +99,7 @@ public class Game implements Runnable
     }
 
     /**
-     * Render(draw) the graphics of the handler
+     * Render(draw) the graphics of the game
      */
     private void render()
     {

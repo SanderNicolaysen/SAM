@@ -1,8 +1,7 @@
 package entities.creatures;
 
-import handler.Game;
 import graphics.Assets;
-import handler.Handler;
+import game.Handler;
 
 import java.awt.*;
 

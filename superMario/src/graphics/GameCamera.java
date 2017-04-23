@@ -1,15 +1,14 @@
 package graphics;
 
 import entities.Entity;
-import handler.Game;
-import handler.Handler;
+import game.Handler;
 import tiles.Tile;
 
 public class GameCamera
 {
     private Handler handler;
     // Position/offset from original position.
-    private float xOffset, yOffset;
+    private float xOffset;
 
     public GameCamera(Handler handler, float xOffset)
     {

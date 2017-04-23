@@ -1,6 +1,6 @@
 package worlds;
 
-import handler.Handler;
+import game.Handler;
 import tiles.Tile;
 import utils.Utils;
 
@@ -33,10 +33,10 @@ public class World
         // Render efficiency
 
         // check if 0 is greater or less than offset in tiles in x - direction.
-        // handler.getGameCamera().getxOffset() / Tile.TILEWIDTH -> will convert offset in pixel to offset in tiles
+        // game.getGameCamera().getxOffset() / Tile.TILEWIDTH -> will convert offset in pixel to offset in tiles
         int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
         // Check if width is greater or less than offset in tiles in x - direction.
-        // (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1 -> will convert offset in pixel to offset in tiles
+        // (game.getGameCamera().getxOffset() + game.getWidth()) / Tile.TILEWIDTH + 1 -> will convert offset in pixel to offset in tiles
         int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);
 
         for (int y = 0; y < height; y++)

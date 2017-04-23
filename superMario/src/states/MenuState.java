@@ -1,6 +1,6 @@
 package states;
 
-import handler.Handler;
+import game.Handler;
 
 import java.awt.*;
 
@@ -16,11 +16,10 @@ public class MenuState extends State
     }
 
     @Override
-    public void tick(){
-
+    public void tick() {
     }
     @Override
-    public void render(Graphics g){
+    public void render(Graphics g) {
 
     }
 }

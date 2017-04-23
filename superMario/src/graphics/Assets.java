@@ -19,7 +19,7 @@ public class Assets
             bg;
 
     /**
-     * This method will load in all the assets we need in our handler.
+     * This method will load in all the assets we need in our game.
      * It will only run once, so we don't have to crop out images several times.
      */
     public static void init()
