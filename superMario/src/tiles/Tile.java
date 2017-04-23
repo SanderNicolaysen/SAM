@@ -10,6 +10,7 @@ public class Tile
 {
     public static Tile[] tiles = new Tile[256];
     public static Tile groundTile = new GroundTile(0);
+    public static Tile Background = new Background(1);
 
     public static final int TILEWIDTH = 64 , TILEHEIGHT = 64;
 

@@ -15,7 +15,8 @@ public class Assets
     public static BufferedImage marioRightNormal, marioRightMove1, marioRightMove2, marioRightMove3, marioRightJump,
             marioLeftNormal, marioLeftMove1, marioLeftMove2, marioLeftMove3, marioLeftJump, marioDeath,
             superMarioRightNormal, superMarioRightMove1, superMarioRightMove2, superMarioRightMove3, superMarioRightJump, superMarioRightCrouch,
-            superMarioLeftNormal, superMarioLeftMove1, superMarioLeftMove2, superMarioLeftMove3, superMarioLeftJump, superMarioLeftCrouch, ground;
+            superMarioLeftNormal, superMarioLeftMove1, superMarioLeftMove2, superMarioLeftMove3, superMarioLeftJump, superMarioLeftCrouch, ground,
+            bg;
 
     /**
      * This method will load in all the assets we need in our handler.
@@ -28,6 +29,7 @@ public class Assets
 
         // Test code
         ground = worldSheet.crop(373, 124, 16, 16);
+        bg = worldSheet.crop(274, 341, 306 - 274, 360 - 341);
 
         //Mario's right movements
         marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
