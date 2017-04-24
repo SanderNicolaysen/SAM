@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class Assets
 {
-    private static final int width = 16, height = 16;
+    private static final int width = 32, height = 32;
 
     // Different tiles/images that will be equal to cropped out pictures of our sprite sheet.
 
@@ -28,40 +28,36 @@ public class Assets
      */
     public static void init()
     {
-        SpriteSheet superMarioSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mario.png"));
+        SpriteSheet superMarioSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/mariosprite1.png"));
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
 
         ground = worldSheet.crop(373, 124, 16, 16);
         bg = worldSheet.crop(274, 341, 306 - 274, 360 - 341);
 
         //Mario's right movements
-        marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
-
-        // Right movement
-        marioRightJump = superMarioSheet.crop(0, 0, width, height);
-        marioRightMove = new BufferedImage[2];
-        marioRightMove[0] = superMarioSheet.crop(0, 0, width, height);
-        marioRightMove[1] = superMarioSheet.crop(0, 0, width, height);
-        marioRightMove[2] = superMarioSheet.crop(0, 0, width, height);
+        marioRightNormal = superMarioSheet.crop((width * 4), height, width-16, height-15);
+        marioRightJump = superMarioSheet.crop(0, height, width-15, height-16);
+        marioRightMove = new BufferedImage[3];
+        marioRightMove[2] = superMarioSheet.crop(width, height, width-15, height-15);
+        marioRightMove[1] = superMarioSheet.crop((width*2), height, width-16, height-15);
+        marioRightMove[0] = superMarioSheet.crop((width*3), height, width-15, height-15);
 
         //Mario's left movements
-        marioLeftNormal = superMarioSheet.crop(0, 0, width, height);
-
-        // Left movement
-        marioLeftJump = superMarioSheet.crop(0, 0, width, height);
-        marioLeftMove = new BufferedImage[2];
-        marioLeftMove[0] = superMarioSheet.crop(0, 0, width, height);
-        marioLeftMove[1] = superMarioSheet.crop(0, 0, width, height);
-        marioLeftMove[2] = superMarioSheet.crop(0, 0, width, height);
+        marioLeftNormal = superMarioSheet.crop((width * 4), 0, width-17, height-15);
+        marioLeftJump = superMarioSheet.crop(0, 0, width-15, height-16);
+        marioLeftMove = new BufferedImage[3];
+        marioLeftMove[2] = superMarioSheet.crop(width, 0, width-15, height-15);
+        marioLeftMove[1] = superMarioSheet.crop((width * 2), 0, width-18, height-15);
+        marioLeftMove[0] = superMarioSheet.crop((width * 3), 0, width-17, height-15);
 
         //Mario's death movement
-        marioDeath = superMarioSheet.crop(0, 0, width, height);
+        marioDeath = superMarioSheet.crop((width * 5), 0, width-16, height-15);
 
         //Super Mario's right movements
         superMarioRightNormal = superMarioSheet.crop(0, 0, width, height);
         superMarioRightJump = superMarioSheet.crop(0, 0, width, height);
         superMarioRightCrouch = superMarioSheet.crop(0, 0, width, height);
-        superMarioRightMove = new BufferedImage[2];
+        superMarioRightMove = new BufferedImage[3];
         superMarioRightMove[0] = superMarioSheet.crop(0, 0, width, height);
         superMarioRightMove[1] = superMarioSheet.crop(0, 0, width, height);
         superMarioRightMove[2] = superMarioSheet.crop(0, 0, width, height);
@@ -70,7 +66,7 @@ public class Assets
         superMarioLeftNormal = superMarioSheet.crop(0, 0, width, height);
         superMarioLeftJump = superMarioSheet.crop(0, 0, width, height);
         superMarioLeftCrouch = superMarioSheet.crop(0, 0, width, height);
-        superMarioLeftMove = new BufferedImage[2];
+        superMarioLeftMove = new BufferedImage[3];
         superMarioLeftMove[0] = superMarioSheet.crop(0, 0, width, height);
         superMarioLeftMove[1] = superMarioSheet.crop(0, 0, width, height);
         superMarioLeftMove[2] = superMarioSheet.crop(0, 0, width, height);

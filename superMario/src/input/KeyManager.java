@@ -7,6 +7,7 @@ public class KeyManager implements KeyListener {
 
     private boolean[] keys;
     public boolean jump, run, right, left, crouch;
+    public boolean default_position;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -30,7 +31,12 @@ public class KeyManager implements KeyListener {
     }
     @Override
     public void keyTyped(KeyEvent e){
-
+        if (e.getSource().equals(KeyEvent.VK_LEFT)) {
+            default_position = false;
+        }
+        else if (e.getSource().equals(KeyEvent.VK_RIGHT)){
+            default_position = true;
+        }
     }
 
 }
