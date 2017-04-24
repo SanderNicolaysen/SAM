@@ -1,18 +1,37 @@
 package entities.creatures;
 
+import graphics.Animation;
 import graphics.Assets;
 import game.Handler;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class SuperMario extends Creature {
 
+    //Animations
+
+    private Animation animMarioRight, animMarioLeft, animSuperMarioRight, animSuperMarioLeft;
+
     public SuperMario(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
+
+        //Animations
+        animMarioRight = new Animation(500, Assets.marioRightMove);
+        animMarioLeft = new Animation(500, Assets.marioLeftMove);
+        animSuperMarioRight = new Animation(500, Assets.superMarioRightMove);
+        animSuperMarioLeft = new Animation(500, Assets.superMarioLeftMove);
     }
 
     @Override
     public void tick() {
+        //Animations
+        animMarioRight.tick();
+        animMarioLeft.tick();
+        animSuperMarioRight.tick();
+        animSuperMarioLeft.tick();
+
+        //Movements
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
@@ -53,7 +72,29 @@ public class SuperMario extends Creature {
     @Override
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
-        g.drawImage(Assets.marioRightMove1, (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
+        g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
     }
 
+    private BufferedImage getCurrentMarioAnimationFrame() {
+        if (xMove > 0){
+            return animMarioRight.getCurrentFrame();
+        }
+        if (xMove < 0) {
+            return animMarioLeft.getCurrentFrame();
+        }
+        if (yMove < 0 && xMove >= 0){
+            return Assets.marioRightJump;
+        }
+        if(yMove < 0 && xMove <= 0){
+            return Assets.marioLeftJump;
+        }
+        if(xMove <= 0){
+            return Assets.marioLeftNormal;
+        }
+        else{
+            return Assets.marioRightNormal;
+        }
+    }
+    //private BufferedImage getCurrentSuperMarioAnimationFrame(){}
+    //private BufferedImage getCurrentFireMarioAnimationFrame(){}
 }
