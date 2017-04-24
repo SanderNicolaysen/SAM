@@ -53,7 +53,7 @@ public class SuperMario extends Creature {
     @Override
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
-        g.drawImage(Assets.marioRightNormal, (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
+        g.drawImage(Assets.marioRightMove1, (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
     }
 
 }

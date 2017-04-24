@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class Assets
 {
-    private static final int width = 13, height = 16;
+    private static final int width = 16, height = 16;
 
     // Different tiles/images that will be equal to cropped out pictures of our sprite sheet.
 
@@ -33,12 +33,12 @@ public class Assets
 
         //Mario's right movements
         marioRightNormal = superMarioSheet.crop((width * 14) - 1, 0, width, height);
-        marioRightMove1 = superMarioSheet.crop((width * 16), 0, width + 4, height);
+        marioRightMove1 = superMarioSheet.crop(240,0, width, height);
         marioRightMove2 = superMarioSheet.crop(0, 0, width, height);
         marioRightMove3 = superMarioSheet.crop(0, 0, width, height);
         marioRightJump = superMarioSheet.crop(0, 0, width, height);
         //Mario's left movements
-        marioLeftNormal = superMarioSheet.crop(0, 0, width, height);
+        marioLeftNormal = superMarioSheet.crop((width * 16), 0, width + 4, height);
         marioLeftMove1 = superMarioSheet.crop(0, 0, width, height);
         marioLeftMove2 = superMarioSheet.crop(0, 0, width, height);
         marioLeftMove3 = superMarioSheet.crop(0, 0, width, height);
