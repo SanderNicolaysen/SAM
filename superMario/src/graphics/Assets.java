@@ -32,7 +32,7 @@ public class Assets
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
 
         ground = worldSheet.crop(373, 124, 16, 16);
-        bg = worldSheet.crop(274, 341, 306 - 274, 360 - 341);
+        bg = worldSheet.crop(274, 341, 32, 19);
 
         //Mario's right movements
         marioRightNormal = superMarioSheet.crop((width * 4), height, width-16, height-15);

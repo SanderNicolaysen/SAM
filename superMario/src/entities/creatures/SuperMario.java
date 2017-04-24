@@ -76,22 +76,25 @@ public class SuperMario extends Creature {
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {
+        // right jump movement
         if(yMove < 0 && xMove >= 0){
             return Assets.marioRightJump;
         }
+        // left jump movement
         if(yMove < 0 && xMove <= 0){
             return Assets.marioLeftJump;
         }
+        // right movement
         if (xMove > 0){
             return animMarioRight.getCurrentFrame();
         }
+        // left movement
         if (xMove < 0) {
             return animMarioLeft.getCurrentFrame();
         }
-        if(handler.getKeyManager().default_position){
-            return Assets.marioLeftNormal;
-        }
-        else{
+        // Mario default right
+        else
+        {
             return Assets.marioRightNormal;
         }
     }
