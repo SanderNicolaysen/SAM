@@ -27,6 +27,7 @@ public class SuperMario extends Creature {
 
     @Override
     public void tick() {
+
         //Animations
         animMarioRight.tick();
         animMarioLeft.tick();
@@ -41,14 +42,13 @@ public class SuperMario extends Creature {
         handler.getGameCamera().centerOnEntity(this);
     }
 
-    //double temp = 0;
     private void getInput() {
         xMove = 0;
         yMove = 0;
 
         // If jump == true do this
         if(handler.getKeyManager().jump) {
-            yMove = -speed;
+            yMove = -speed * 3;
             //Pål, do your thing...
         }
         if(handler.getKeyManager().right){
@@ -65,6 +65,9 @@ public class SuperMario extends Creature {
         }
         if(handler.getKeyManager().crouch){
             yMove = speed;
+        }
+        if (y <  700 - 64 * 3) {
+            yMove += 3;
         }
 
         //temp += 3.14/60;
@@ -98,18 +101,12 @@ public class SuperMario extends Creature {
         else if (xMove < 0) {
             return animMarioLeft.getCurrentFrame();
         }
-        else if (xMove > 0 && yMove == 0){
-            return animMarioRight.getCurrentFrame();
-        }
-        else if (xMove < 0 && yMove == 0) {
-            return animMarioLeft.getCurrentFrame();
-        }
         // Mario default right
-        else
-        {
+        else {
             return Assets.marioRightNormal;
         }
     }
+
     private BufferedImage getCurrentSuperMarioAnimationFrame(){
         if(yMove < 0 && xMove >= 0){
             return Assets.superMarioRightJump;
@@ -144,4 +141,6 @@ public class SuperMario extends Creature {
             return Assets.fireMarioRightNormal;
         }
     }
+    //private BufferedImage getCurrentSuperMarioAnimationFrame(){}
+    //private BufferedImage getCurrentFireMarioAnimationFrame(){}
 }

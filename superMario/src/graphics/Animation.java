@@ -17,12 +17,15 @@ public class Animation {
     }
 
     public void tick(){
+        // Time that has passed since last tick method.
         timer += System.currentTimeMillis() - lastTime;
         lastTime = System.currentTimeMillis();
 
+        // Time that has passed since last tick method must be greater than the speed for the animation.
         if(timer > speed){
             index++;
             timer = 0;
+            // If index of array is larger than it's size reset it to zero.
             if(index >= frames.length)
                 index = 0;
         }
@@ -30,4 +33,5 @@ public class Animation {
     public BufferedImage getCurrentFrame(){
         return frames[index];
     }
+
 }

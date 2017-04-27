@@ -67,6 +67,7 @@ public class Assets
 
     //All level design tiles/images
     public static BufferedImage ground, bg;
+    public static BufferedImage[] menu;
 
     /**
      * This method will load in all the assets we need in our game.
@@ -91,6 +92,7 @@ public class Assets
         marioLeftMove[1] = superMarioSheet.crop(width16*2, 0, width16, height16);
         marioLeftMove[2] = superMarioSheet.crop(width16, 0, width16, height16);
         marioLeftMove[3] = superMarioSheet.crop(width16*2, 0, width16, height16);
+
         //Super Mario's movements
         superMarioRightNormal = superMarioSheet.crop(width32*4, height32*2, width32, height32);
         superMarioRightJump = superMarioSheet.crop(0, height32*2, width32, height32);
@@ -108,6 +110,7 @@ public class Assets
         superMarioLeftMove[1] = superMarioSheet.crop(width32*2, height32, width32, height32);
         superMarioLeftMove[2] = superMarioSheet.crop(width32, height32, width32, height32);
         superMarioLeftMove[3] = superMarioSheet.crop(width32*2, height32, width32, height32);
+
         //Fire Mario's movements
         fireMarioRightNormal = superMarioSheet.crop(width32*4, height32*4, width32, height32);
         fireMarioRightJump = superMarioSheet.crop(0, height32*4, width32, height32);
@@ -127,6 +130,7 @@ public class Assets
         fireMarioLeftMove[1] = superMarioSheet.crop(width32*2, height32*3, width32, height32);
         fireMarioLeftMove[2] = superMarioSheet.crop(width32, height32*3, width32, height32);
         fireMarioLeftMove[3] = superMarioSheet.crop(width32*2, height32*3, width32, height32);
+
         //Fire ball movements
         fireBall = new BufferedImage[4];
         fireBall[0] = superMarioSheet.crop(width16*6, 0, width16, height16);
@@ -147,6 +151,7 @@ public class Assets
         goombaMovement[1] = enemySheet.crop(width16, 0, width16, height16);
         goombaDeath = enemySheet.crop(width16*21, 0, width16, height16);
         goombaJumpDeath = enemySheet.crop(width16*2, 0, width16, height16);
+
         //Green Koopa Troopa movements
         greenKoopaTroopaLeft = new BufferedImage[2];
         greenKoopaTroopaLeft[0] = enemySheet.crop(width32*4, height32, width32, height32);
@@ -162,6 +167,7 @@ public class Assets
         flyingGreenKoopaTroopaLeft[1] = enemySheet.crop(width32, height32, width32, height32);
         greenKoopaTroopaDeath = enemySheet.crop(width16*5, 0, width16, height16);
         greenKoopaTroopaShell = enemySheet.crop(width16*3, 0, width16, height16);
+
         //Red Koopa Troopa movements
         redKoopaTroopaLeft = new BufferedImage[2];
         redKoopaTroopaLeft[0] = enemySheet.crop(width32*4, height32*2, width32, height32);
@@ -177,6 +183,7 @@ public class Assets
         flyingRedKoopaTroopaLeft[1] = enemySheet.crop(width32, height32*2, width32, height32);
         redKoopaTroopaDeath = enemySheet.crop(width16*8, 0, width16, height16);
         redKoopaTroopaShell = enemySheet.crop(width16*6, 0, width16, height16);
+
         //Hammer brothers movements + hammer
         hammerBrotherLeft = new BufferedImage[4];
         hammerBrotherLeft[0] = enemySheet.crop(0, height32*3, width32, height32);
@@ -198,6 +205,7 @@ public class Assets
         hammerThrownLeft[1] = enemySheet.crop(width16*9, 0, width16, height16);
         hammerThrownLeft[2] = enemySheet.crop(width16*12, 0, width16, height16);
         hammerThrownLeft[3] = enemySheet.crop(width16*11, 0, width16, height16);
+
         //Lakitu's movements + dropping beetle
         lakitu = new BufferedImage[4];
         lakitu[0] = enemySheet.crop(width32*6, height32*3, width32, height32);
@@ -207,6 +215,7 @@ public class Assets
         beetleThrownDown = new BufferedImage[2];
         beetleThrownDown[0] = enemySheet.crop(width16*17, 0, width16, height16);
         beetleThrownDown[1] = enemySheet.crop(width16*18, 0, width16, height16);
+
         //Beetle movements
         beetleLeft = new BufferedImage[2];
         beetleLeft[0] = enemySheet.crop(width16*13, 0, width16, height16);
@@ -214,14 +223,17 @@ public class Assets
         beetleRight = new BufferedImage[2];
         beetleRight[0] = enemySheet.crop(width16*15, 0, width16, height16);
         beetleRight[1] = enemySheet.crop(width16*16, 0, width16, height16);
+
         //Piranha plant movement
         piranhaPlant = new BufferedImage[2];
         piranhaPlant[0] = enemySheet.crop(width32*9, height32*3, width32, height32);
         piranhaPlant[1] = enemySheet.crop(width32*10, height32*3, width32, height32);
+
         //Bullet Bill movements + canon
         bulletBillCanon = enemySheet.crop(width32*11, height32*3, width32, height32);
         bulletBillRight = enemySheet.crop(width16*19, 0, width16, height16);
         bulletBillLeft = enemySheet.crop(width16*20, 0, width16, height16);
+
         //Bowser's movements + breathing fire
         bowserLeft = new BufferedImage[4];
         bowserLeft[0] = enemySheet.crop(0, height32*4, width32, height32);
@@ -340,6 +352,10 @@ public class Assets
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
         ground = worldSheet.crop(373, 124, 16, 16);
         bg = worldSheet.crop(274, 341, 306 - 274, 360 - 341);
+
+        SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Super_Mario_Bros._-_NES_-_Title.png"));
+        menu = new BufferedImage[3];
+        menu[0] = menuSheet.crop(40, 24, 175, 95);
 
     }
 }
