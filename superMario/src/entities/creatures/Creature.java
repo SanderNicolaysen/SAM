@@ -30,28 +30,43 @@ public abstract class Creature extends Entity
 
     public void moveX()
     {
+        // RIGHT
         if (xMove > 0)
         {
+            // Collision detection with right side of bounding box
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
+            // If tile entity collides with is solid do not increment x position.
             if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) && !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))
             {
                 x += xMove;
             }
+            else
+            {
+                x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
+            }
         }
+        // LEFT
         else if (xMove < 0)
         {
+            // Collision detection with left side of bounding box
             int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
             if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) && !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))
             {
                 x += xMove;
+            }
+            else
+            {
+                x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
             }
         }
     }
 
     public void moveY()
     {
-        if (yMove < 0) // UP
+        // UP
+        if (yMove < 0)
         {
+            // Collision detection with top of bounding box
             int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;
 
             if (!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty) &&
@@ -59,15 +74,25 @@ public abstract class Creature extends Entity
             {
                 y += yMove;
             }
+            else
+            {
+                y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+            }
         }
+        // DOWN
         if (yMove > 0)
         {
+            // Collision detection with bottom of bounding box
             int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
 
             if (!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty) &&
                     !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty))
             {
                 y += yMove;
+            }
+            else
+            {
+                y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
             }
         }
     }
