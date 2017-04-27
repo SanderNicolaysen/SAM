@@ -51,6 +51,12 @@ public class World
 
     public Tile getTile(int x, int y)
     {
+        // If player is outside of map return groundTile so the game won't crash if player find's a glitch.
+        if (x < 0 || y < 0 || x >= width || y >= height)
+        {
+            return Tile.groundTile;
+        }
+
         Tile t = Tile.tiles[tiles[x][y]];
         // return a default tile.
         if (t == null)

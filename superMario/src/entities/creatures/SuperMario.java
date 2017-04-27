@@ -16,6 +16,12 @@ public class SuperMario extends Creature {
     public SuperMario(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
 
+        // Bounding box for player
+        bounds.x = 16;
+        bounds.y = 32;
+        bounds.width = 32;
+        bounds.height = 32;
+
         //Animations
         animMarioRight = new Animation(70, Assets.marioRightMove);
         animMarioLeft = new Animation(70, Assets.marioLeftMove);
@@ -51,6 +57,9 @@ public class SuperMario extends Creature {
             yMove = -speed * 3;
             //Pål, do your thing...
         }
+        else {
+            yMove += 8;
+        }
         if(handler.getKeyManager().right){
             xMove = speed;
         }
@@ -66,9 +75,6 @@ public class SuperMario extends Creature {
         if(handler.getKeyManager().crouch){
             yMove = speed;
         }
-        if (y <  700 - 64 * 3) {
-            yMove += 3;
-        }
 
         //temp += 3.14/60;
         //yMove = (float)Math.sin(temp) * 10;
@@ -80,7 +86,9 @@ public class SuperMario extends Creature {
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
-        g.drawImage(getCurrentSuperMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
+        //g.setColor(Color.RED);
+        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        //g.drawImage(getCurrentSuperMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
         //g.drawImage(getCurrentFireMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
     }
 

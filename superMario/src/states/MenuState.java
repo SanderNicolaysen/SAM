@@ -38,7 +38,8 @@ public class MenuState extends State
         {
             State.setState(handler.getGame().gameState);
         }
-        
+
+        superMario.tick();
         uiManager.tick();
     }
     @Override
