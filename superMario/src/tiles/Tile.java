@@ -17,7 +17,7 @@ public class Tile
     // CLASS
 
     // Every tile will have it's own id and texture.
-    protected BufferedImage texture;
+    protected BufferedImage texture, texture32x32, texture48x48, texture64x64, texture80x80, texture176x176;
     protected final int id;
 
     /**

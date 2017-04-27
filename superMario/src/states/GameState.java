@@ -21,7 +21,7 @@ public class GameState extends State {
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
         // (x, y): start position of SuperMario
-        supermario = new SuperMario(handler, 418, 700 - 64 * 3);
+        supermario = new SuperMario(handler, 418, 704 - 64 * 3);
     }
 
     @Override

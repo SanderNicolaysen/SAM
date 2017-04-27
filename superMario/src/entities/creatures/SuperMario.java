@@ -11,7 +11,7 @@ public class SuperMario extends Creature {
 
     //Animations
 
-    private Animation animMarioRight, animMarioLeft, animSuperMarioRight, animSuperMarioLeft;
+    private Animation animMarioRight, animMarioLeft, animSuperMarioRight, animSuperMarioLeft, animFireMarioRight, animFireMarioLeft;
 
     public SuperMario(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
@@ -21,6 +21,8 @@ public class SuperMario extends Creature {
         animMarioLeft = new Animation(70, Assets.marioLeftMove);
         animSuperMarioRight = new Animation(70, Assets.superMarioRightMove);
         animSuperMarioLeft = new Animation(70, Assets.superMarioLeftMove);
+        animFireMarioRight = new Animation(70, Assets.fireMarioRightMove);
+        animFireMarioLeft = new Animation(70,Assets.fireMarioLeftMove);
     }
 
     @Override
@@ -30,6 +32,8 @@ public class SuperMario extends Creature {
         animMarioLeft.tick();
         animSuperMarioRight.tick();
         animSuperMarioLeft.tick();
+        animFireMarioRight.tick();
+        animFireMarioLeft.tick();
 
         //Movements
         getInput();
@@ -73,6 +77,8 @@ public class SuperMario extends Creature {
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
+        g.drawImage(getCurrentSuperMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
+        //g.drawImage(getCurrentFireMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {
@@ -81,15 +87,21 @@ public class SuperMario extends Creature {
             return Assets.marioRightJump;
         }
         // left jump movement
-        if(yMove < 0 && xMove <= 0){
+        else if(yMove < 0 && xMove <= 0){
             return Assets.marioLeftJump;
         }
         // right movement
-        if (xMove > 0){
+        else if (xMove > 0){
             return animMarioRight.getCurrentFrame();
         }
         // left movement
-        if (xMove < 0) {
+        else if (xMove < 0) {
+            return animMarioLeft.getCurrentFrame();
+        }
+        else if (xMove > 0 && yMove == 0){
+            return animMarioRight.getCurrentFrame();
+        }
+        else if (xMove < 0 && yMove == 0) {
             return animMarioLeft.getCurrentFrame();
         }
         // Mario default right
@@ -98,6 +110,38 @@ public class SuperMario extends Creature {
             return Assets.marioRightNormal;
         }
     }
-    //private BufferedImage getCurrentSuperMarioAnimationFrame(){}
-    //private BufferedImage getCurrentFireMarioAnimationFrame(){}
+    private BufferedImage getCurrentSuperMarioAnimationFrame(){
+        if(yMove < 0 && xMove >= 0){
+            return Assets.superMarioRightJump;
+        }
+        else if(yMove < 0 && xMove <= 0){
+            return Assets.superMarioLeftJump;
+        }
+        else if (xMove > 0){
+            return animSuperMarioRight.getCurrentFrame();
+        }
+        else if (xMove < 0) {
+            return animSuperMarioLeft.getCurrentFrame();
+        }
+        else{
+            return Assets.superMarioRightNormal;
+        }
+    }
+    private BufferedImage getCurrentFireMarioAnimationFrame(){
+        if(yMove < 0 && xMove >= 0){
+            return Assets.fireMarioRightJump;
+        }
+        else if(yMove < 0 && xMove <= 0){
+            return Assets.fireMarioLeftJump;
+        }
+        else if (xMove > 0 && yMove == 0){
+            return animFireMarioRight.getCurrentFrame();
+        }
+        else if (xMove < 0 && yMove == 0) {
+            return animFireMarioLeft.getCurrentFrame();
+        }
+        else{
+            return Assets.fireMarioRightNormal;
+        }
+    }
 }

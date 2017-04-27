@@ -8,7 +8,7 @@ public abstract class Creature extends Entity
 
     public static final int DEFAULT_HEALTH = 1;
     public static final float DEFAULT_SPEED = 4.0f;
-    public static final int DEFAULT_MARIO_WIDTH = 64, DEFAULT_MARIO_HEIGHT = 64;
+    public static final int DEFAULT_MARIO_WIDTH = 64, DEFAULT_MARIO_HEIGHT = 64, DEFAULT_SUPERMARIO_WIDTH = 128, DEFAULT_SUPERMARIO_HEIGHT = 128;
 
     protected int health;
     protected float speed;
