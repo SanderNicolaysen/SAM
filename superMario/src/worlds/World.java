@@ -45,7 +45,7 @@ public class World
             for (int x = xStart; x < xEnd; x++)
             {
                 getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
-                        (y * Tile.TILEHEIGHT));
+                        (int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
     }

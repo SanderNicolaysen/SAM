@@ -8,12 +8,13 @@ public class GameCamera
 {
     private Handler handler;
     // Position/offset from original position.
-    private float xOffset;
+    private float xOffset, yOffset;
 
     public GameCamera(Handler handler, float xOffset)
     {
         this.handler = handler;
         this.xOffset = xOffset;
+        this.yOffset = yOffset;
     }
 
     public void checkBlankSpace()
@@ -42,6 +43,7 @@ public class GameCamera
     public void move(float xAmount, float yAmount)
     {
         xOffset += xAmount;
+        yOffset += yAmount;
         checkBlankSpace();
     }
 
@@ -53,5 +55,15 @@ public class GameCamera
     public void setxOffset(float xOffset)
     {
         this.xOffset = xOffset;
+    }
+
+    public float getyOffset()
+    {
+        return yOffset;
+    }
+
+    public void setyOffset(float yOffset)
+    {
+        this.yOffset = yOffset;
     }
 }
