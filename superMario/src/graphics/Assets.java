@@ -55,8 +55,8 @@ public class Assets
     public static BufferedImage grid, threeTopLeft, threeTopMiddle, threeTopRight, threeWood, mushroomTopLeft, mushroomTopMiddle, mushroomTopRight, mushroomStemTop, mushroomStemElse,
             castleFlag, levelPlatform1, levelPlatform2, levelPlatform3, levelPlatform4, levelPlatform5, levelPlatform6, redMushroom, greenMushroom,
             mushroomPowerUp, extraLifePowerUp, finishFlag, singleCloud, smallThree, tubeLeft, tubeUp, tubeMiddle, tubeCore, tubeDown, toad, peach,
-            skyBackground, waterBackground, water, lavaBackground, lava, blackBackground, castleGateOpen, doubleCloud, smallHill, bigThree, trippleCloud,
-            bigHill, smallCastle, bigCastle, emptyFlagPole, topFlagPole, bottomFlagPole;
+            skyBackground, waterBackground, water, lavaBackground, lava, blackBackground, castleGateOpen, doubleCloud, smallHill1, smallHill2, bigThree, trippleCloud,
+            bigHill, smallCastle, bigCastle, emptyFlagPole, topFlagPole, bottomFlagPole, tubeUpLeft, tubeUpRight, tubeUpLeftDown, tubeUpRightDown;
     public static BufferedImage[] fireFlower;
     public static BufferedImage[] star;
     public static BufferedImage[] coin;
@@ -281,7 +281,7 @@ public class Assets
         levelPlatform4 = levelSheet.crop(width16*21, 0, width16, height16);
         levelPlatform5 = levelSheet.crop(width16*22, 0, width16, height16);
         levelPlatform6 = levelSheet.crop(width16*23, 0, width16, height16);
-        //Next Line
+        // second Line
         redMushroom = levelSheet.crop(0, height16, width16, height16);
         greenMushroom = levelSheet.crop(width16, height16, width16, height16);
         mushroomPowerUp = levelSheet.crop(width16*2, height16, width16, height16);
@@ -309,11 +309,18 @@ public class Assets
         boxCoin[3] = levelSheet.crop(width16*18, height16, width16, height16);
         finishFlag = levelSheet.crop(width16*19, height16, width16, height16);
 
-        //Next line
+        //Third line
         singleCloud = levelSheet.crop(0, height32, width32, height32);
         smallThree = levelSheet.crop(width32, height32, width32, height32);
         tubeLeft = levelSheet.crop(width32*2, height32, width32, height32);
-        tubeUp = levelSheet.crop(width32*3, height32, width32, height32);
+
+        // Tube up
+        tubeUpLeft = levelSheet.crop(width32 * 3, height32, width16, height16);
+        tubeUpLeftDown = levelSheet.crop(width32 * 3, height32 + height16, width16, height16);
+        tubeUpRight = levelSheet.crop(width32 * 3 + width16, height32, width16, height16);
+        tubeUpRightDown = levelSheet.crop(width32 * 3 + width16, height32 + height16, width16, height16);
+
+
         tubeMiddle = levelSheet.crop(width32*4, height32, width32, height32);
         tubeCore = levelSheet.crop(width32*5, height32, width32, height32);
         tubeDown = levelSheet.crop(width32*6, height32, width32, height32);
@@ -326,9 +333,13 @@ public class Assets
         lava = levelSheet.crop(width32*13, height32, width32, height32);
         blackBackground = levelSheet.crop(width32*14, height32, width32, height32);
         castleGateOpen = levelSheet.crop(width32*15, height32, width32, height32);
-        //Next line
+
+        //Fourth line
         doubleCloud = levelSheet.crop(0, height32*2, width16*3, height16*3);
-        smallHill = levelSheet.crop(width16*3, height32*2, width16*3, height16*3);
+        smallHill1 = levelSheet.crop(width16*3, height32*2, width16*3 / 2, height16*3);
+        smallHill2 = levelSheet.crop(width16*3 + width16*3 / 2, height32*2, width16*3 / 2, height16*3);
+
+
         bigThree = levelSheet.crop(width16*6, height32*2, width16*3, height16*3);
         //Next line
         trippleCloud = levelSheet.crop(0, height16*7, width32*2, height32*2);

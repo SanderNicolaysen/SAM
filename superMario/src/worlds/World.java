@@ -1,6 +1,7 @@
 package worlds;
 
 import game.Handler;
+import states.State;
 import tiles.Tile;
 import utils.Utils;
 
@@ -51,10 +52,11 @@ public class World
 
     public Tile getTile(int x, int y)
     {
-        // If player is outside of map return groundTile so the game won't crash if player find's a glitch.
-
+        // If player is outside of map return a tile so the game won't crash if player is outside of map.
         if (x < 0 || y < 0 || x >= width || y >= height)
         {
+            //State.setState(handler.getGame().menuState);
+            //handler.getKeyManager().enter = false;
             return Tile.Background;
         }
 

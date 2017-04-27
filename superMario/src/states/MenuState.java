@@ -44,6 +44,7 @@ public class MenuState extends State
     }
     @Override
     public void render(Graphics g) {
+        g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         world.render(g);
         uiManager.render(g);
         superMario.render(g);

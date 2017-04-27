@@ -2,6 +2,7 @@ package states;
 
 import entities.creatures.SuperMario;
 import game.Handler;
+import graphics.Assets;
 import worlds.World;
 
 import java.awt.*;
@@ -34,6 +35,7 @@ public class GameState extends State {
     @Override
     public void render(Graphics g)
     {
+        g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         world.render(g);
         supermario.render(g);
     }
