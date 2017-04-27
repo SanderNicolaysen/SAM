@@ -308,6 +308,7 @@ public class Assets
         boxCoin[2] = levelSheet.crop(width16*17, height16, width16, height16);
         boxCoin[3] = levelSheet.crop(width16*18, height16, width16, height16);
         finishFlag = levelSheet.crop(width16*19, height16, width16, height16);
+
         //Next line
         singleCloud = levelSheet.crop(0, height32, width32, height32);
         smallThree = levelSheet.crop(width32, height32, width32, height32);

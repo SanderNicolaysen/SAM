@@ -3,6 +3,7 @@ package entities.creatures;
 import graphics.Animation;
 import graphics.Assets;
 import game.Handler;
+import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -76,7 +77,9 @@ public class SuperMario extends Creature {
             yMove = speed;
         }
 
-        
+        //float currentTime = System.currentTimeMillis();
+        //float previousTime = currentTime;
+        //float currentTime = currentTime - previousTime;
 
         //temp += 3.14/60;
         //yMove = (float)Math.sin(temp) * 10;

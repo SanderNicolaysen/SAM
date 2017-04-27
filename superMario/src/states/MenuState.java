@@ -24,7 +24,7 @@ public class MenuState extends State
         super(handler);
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
-        superMario = new SuperMario(handler, 150, 700 - 64 * 3);
+        superMario = new SuperMario(handler, 150, 1080 - 64 * 3);
 
         uiManager = new UIManager(handler);
 
@@ -45,7 +45,7 @@ public class MenuState extends State
     @Override
     public void render(Graphics g) {
         world.render(g);
-        superMario.render(g);
         uiManager.render(g);
+        superMario.render(g);
     }
 }

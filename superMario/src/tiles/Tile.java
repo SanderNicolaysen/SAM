@@ -11,6 +11,9 @@ public class Tile
     public static Tile[] tiles = new Tile[256];
     public static Tile groundTile = new GroundTile(0);
     public static Tile Background = new Background(1);
+    public static Tile brickTile = new BrickTile(2);
+    public static Tile singleCloudTIle = new SingleCloudTile(3);
+    public static Tile tubeUp = new TubeUp(4);
 
     public static final int TILEWIDTH = 64 , TILEHEIGHT = 64;
 
