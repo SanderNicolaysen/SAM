@@ -11,7 +11,7 @@ public class FireMario extends Creature{
     private Animation animFireMarioRight, animFireMarioLeft;
 
     public FireMario(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
 
         animFireMarioRight = new Animation(70, Assets.fireMarioRightMove);
         animFireMarioLeft = new Animation(70, Assets.fireMarioLeftMove);

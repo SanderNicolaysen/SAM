@@ -1,5 +1,9 @@
 package input;
 
+import entities.Entity;
+import entities.creatures.Creature;
+import game.Game;
+import game.Handler;
 import states.State;
 
 import java.awt.event.KeyEvent;
@@ -25,17 +29,19 @@ public class KeyManager implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e){
+    public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
 
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             enter = !enter;
         }
     }
+
     @Override
     public void keyReleased(KeyEvent e){
         keys[e.getKeyCode()] = false;
     }
+
     @Override
     public void keyTyped(KeyEvent e){
         throwFireBall = true;

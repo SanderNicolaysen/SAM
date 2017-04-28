@@ -1,10 +1,10 @@
 package entities.creatures;
 
 
+import entities.Entity;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
-import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,8 +15,7 @@ public class Mario extends Creature {
     private Animation animMarioRight, animMarioLeft;
 
     public Mario(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
-
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
         animMarioRight = new Animation(70, Assets.marioRightMove);
         animMarioLeft = new Animation(70, Assets.marioLeftMove);
         bounds.x = 4;
@@ -41,11 +40,25 @@ public class Mario extends Creature {
         xMove = 0;
         yMove = 0;
 
+        if(jumping){
+            gravity -= 0.1;
+            setyMove((int) -gravity);
+            if(gravity<=0.0){
+                jumping = false;
+                falling = true;
+            }
+        }
+        if(falling){
+            gravity += 0.1;
+            setyMove((int) gravity);
+        }
+
         if(handler.getKeyManager().jump) {
-            yMove = -speed * 3;
+                jumping = true;
+                gravity = 10.0;
         }
         else {
-            yMove += 8;
+            falling = true;
         }
         if(handler.getKeyManager().right){
             xMove = speed;
@@ -58,9 +71,6 @@ public class Mario extends Creature {
         }
         if(handler.getKeyManager().run && handler.getKeyManager().left && x > -2){
             xMove = -speed*2;
-        }
-        if(handler.getKeyManager().crouch){
-            yMove = speed;
         }
     }
 
@@ -75,12 +85,12 @@ public class Mario extends Creature {
 
     private BufferedImage getCurrentMarioAnimationFrame() {
         // right jump movement
-        if(yMove < 0 && xMove >= 0){
-            return Assets.marioRightJump;
+        if(jumping && xMove >= 0){
+                return Assets.marioRightJump;
         }
         // left jump movement
-        else if(yMove < 0 && xMove <= 0){
-            return Assets.marioLeftJump;
+        else if(jumping && xMove <= 0){
+                return Assets.marioLeftJump;
         }
         // right movement
         else if (xMove > 0){
@@ -96,8 +106,7 @@ public class Mario extends Creature {
         else if (xMove < 0 && yMove == 0) {
             return animMarioLeft.getCurrentFrame();
         }
-        else
-        {
+        else {
             return Assets.marioRightNormal;
         }
     }

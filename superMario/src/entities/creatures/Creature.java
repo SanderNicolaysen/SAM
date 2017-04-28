@@ -9,11 +9,14 @@ public abstract class Creature extends Entity
 
     public static final int DEFAULT_HEALTH = 1;
     public static final float DEFAULT_SPEED = 4.0f;
-    public static final int DEFAULT_MARIO_WIDTH = 64, DEFAULT_MARIO_HEIGHT = 64, DEFAULT_SUPERMARIO_WIDTH = 128, DEFAULT_SUPERMARIO_HEIGHT = 128;
+    public static final int DEFAULT_16x16_WIDTH = 64, DEFAULT_16x16_HEIGHT = 64, DEFAULT_32x32_WIDTH = 128, DEFAULT_32x32_HEIGHT = 128;
 
     protected int health;
     protected float speed;
     protected float xMove, yMove;
+    protected boolean jumping;
+    protected boolean falling;
+    protected double gravity;
 
     public Creature(Handler handler, float x, float y, int width, int height){
         super(handler, x, y, width, height);
@@ -21,12 +24,15 @@ public abstract class Creature extends Entity
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
+        jumping = false;
+        falling = true;
+        gravity = 0.0;
     }
 
     public void move(){
-        if(!checkEntityCollisions(xMove, 0f))
+        //if(!checkEntityCollisions(xMove, 0f))
             moveX();
-        if(!checkEntityCollisions(0f, yMove))
+        //if(!checkEntityCollisions(0f, yMove))
             moveY();
     }
 

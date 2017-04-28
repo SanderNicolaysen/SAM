@@ -51,10 +51,7 @@ public class Tile
         tiles[id] = this;
     }
 
-    public void tick()
-    {
-
-    }
+    public void tick() {}
 
     // Render a tile to the screen.
     public void render(Graphics g, int x, int y)
