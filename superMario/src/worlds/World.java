@@ -26,8 +26,9 @@ public class World
     public World(Handler handler, String path)
     {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Mario(handler, 200, 300));
+        entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
         entityManager.addEntity(new Tube(handler, 100, 100));
+
         loadWorld(path);
 
         entityManager.getMario().setX(spawnx);

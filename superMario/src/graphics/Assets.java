@@ -54,7 +54,7 @@ public class Assets
     //All items, objects and level design tiles/images
     public static BufferedImage grid, threeTopLeft, threeTopMiddle, threeTopRight, threeWood, mushroomTopLeft, mushroomTopMiddle, mushroomTopRight, mushroomStemTop, mushroomStemElse,
             castleFlag, levelPlatform1, levelPlatform2, levelPlatform3, levelPlatform4, levelPlatform5, levelPlatform6, redMushroom, greenMushroom,
-            mushroomPowerUp, extraLifePowerUp, finishFlag, singleCloud, smallThree, tubeLeft, tubeUp, tubeMiddle, tubeCore, tubeDown, toad, peach,
+            mushroomPowerUp, extraLifePowerUp, finishFlag, singleCloud, smallThree, tubeLeft, tubeMiddle, tubeCore, tubeDown, toad, peach,
             skyBackground, waterBackground, water, lavaBackground, lava, blackBackground, castleGateOpen, doubleCloud, smallHill1, smallHill2, bigThree, trippleCloud,
             bigHill, smallCastle, bigCastle, emptyFlagPole, topFlagPole, bottomFlagPole, tubeUpLeft, tubeUpRight, tubeUpLeftDown, tubeUpRightDown;
     public static BufferedImage[] fireFlower;

@@ -70,7 +70,7 @@ public class Mario extends Creature {
         //g.setColor(Color.yellow);
         //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
-        
+
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {

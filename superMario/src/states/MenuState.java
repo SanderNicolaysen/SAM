@@ -25,10 +25,8 @@ public class MenuState extends State
         super(handler);
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
-        mario = new Mario(handler, 150, 1080 - 64 * 3);
 
         uiManager = new UIManager(handler);
-
         uiManager.addObject(new UIImage(handler.getWidth() / 2 - (175 * 3)/2, handler.getHeight() / 2 - (87 * 3), 175 * 3, 87 * 3, Assets.menu));
     }
 
@@ -40,14 +38,13 @@ public class MenuState extends State
             State.setState(handler.getGame().gameState);
         }
 
-        mario.tick();
         uiManager.tick();
+        world.tick();
     }
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         world.render(g);
         uiManager.render(g);
-        mario.render(g);
     }
 }
