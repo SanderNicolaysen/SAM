@@ -28,9 +28,8 @@ public class KeyManager implements KeyListener {
     public void keyPressed(KeyEvent e){
         keys[e.getKeyCode()] = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            enter = !enter;
-        }
+        // TODO Må kanskje endres
+        enter = !enter;
     }
     @Override
     public void keyReleased(KeyEvent e){

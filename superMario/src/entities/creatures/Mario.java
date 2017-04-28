@@ -4,6 +4,8 @@ package entities.creatures;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
+import tiles.Tile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -42,27 +44,33 @@ public class Mario extends Creature {
         if(handler.getKeyManager().jump) {
             yMove = -speed * 3;
         }
+        else {
+            yMove += 8;
+        }
         if(handler.getKeyManager().right){
             xMove = speed;
         }
-        if(handler.getKeyManager().left){
+        if(handler.getKeyManager().left && x > 0){
             xMove = -speed;
         }
         if(handler.getKeyManager().run && handler.getKeyManager().right){
             xMove = speed*2;
         }
-        if(handler.getKeyManager().run && handler.getKeyManager().left){
+        if(handler.getKeyManager().run && handler.getKeyManager().left && x > -2){
             xMove = -speed*2;
+        }
+        if(handler.getKeyManager().crouch){
+            yMove = speed;
         }
     }
 
     @Override
     public void render(Graphics g) {
-        // Super Mario stay's in the same place.
-        /*g.setColor(Color.yellow);
-        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        // Mario stay's in the same place.
+        //g.setColor(Color.yellow);
+        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
-        */
+        
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {

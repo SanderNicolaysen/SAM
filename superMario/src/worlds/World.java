@@ -65,11 +65,12 @@ public class World
 
     public Tile getTile(int x, int y)
     {
-        // If player is outside of map return a tile so the game won't crash if player is outside of map.
+        // If player is outside of map return a tile so the game won't crash
         if (x < 0 || y < 0 || x >= width || y >= height)
         {
             //State.setState(handler.getGame().menuState);
             //handler.getKeyManager().enter = false;
+
             return Tile.Background;
         }
 

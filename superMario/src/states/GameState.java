@@ -33,7 +33,7 @@ public class GameState extends State {
     public void tick()
     {
         world.tick();
-        supermario.tick();
+        //supermario.tick();
         mario.tick();
     }
 
@@ -42,7 +42,7 @@ public class GameState extends State {
     {
         g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         world.render(g);
-        supermario.render(g);
+        //supermario.render(g);
         mario.render(g);
     }
 }
