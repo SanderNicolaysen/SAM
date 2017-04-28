@@ -28,12 +28,25 @@ public class GameState extends State {
     public void tick()
     {
         world.tick();
+        /*
+        if (handler.getWorld().getEntityManager().getMario().getHealth() == 1)
+        {
+            mario.tick();
+        }
+        */
+
     }
 
     @Override
     public void render(Graphics g)
     {
-        g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
+        g.drawImage(Assets.bg,0, 0, handler.getWidth(), handler.getHeight(), null);
         world.render(g);
+        /*
+        if (handler.getWorld().getEntityManager().getMario().getHealth() == 1)
+        {
+            mario.render(g);
+        }
+        */
     }
 }

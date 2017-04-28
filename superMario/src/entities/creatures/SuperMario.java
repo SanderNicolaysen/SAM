@@ -65,8 +65,8 @@ public class SuperMario extends Creature {
     @Override
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
-        g.setColor(Color.yellow);
-        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        //g.setColor(Color.yellow);
+        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         g.drawImage(getCurrentSuperMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), DEFAULT_SUPERMARIO_WIDTH, DEFAULT_SUPERMARIO_HEIGHT, null);
     }
 

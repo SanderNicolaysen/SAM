@@ -5,7 +5,7 @@ import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import states.GameState;
-import states.MenuState;
+//import states.MenuState;
 import states.SettingsState;
 import states.State;
 import java.awt.*;
@@ -75,11 +75,11 @@ public class Game implements Runnable
 
         // Initialization of states
         gameState = new GameState(handler);
-        menuState = new MenuState(handler);
+        //menuState = new MenuState(handler);
         settingsState = new SettingsState(handler);
 
         // Set the current state of the game to gameState.
-        State.setState(menuState);
+        State.setState(gameState);
     }
 
     /**

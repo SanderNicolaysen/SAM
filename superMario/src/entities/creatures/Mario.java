@@ -20,9 +20,9 @@ public class Mario extends Creature {
         animMarioRight = new Animation(70, Assets.marioRightMove);
         animMarioLeft = new Animation(70, Assets.marioLeftMove);
         bounds.x = 4;
-        bounds.y = 0;
+        bounds.y = 4;
         bounds.width = 60;
-        bounds.height = 64;
+        bounds.height = 60;
     }
 
     @Override

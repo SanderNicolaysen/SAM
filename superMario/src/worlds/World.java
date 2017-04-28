@@ -1,7 +1,10 @@
 package worlds;
 
 import entities.EntityManager;
+import entities.creatures.Creature;
+import entities.creatures.GreenKoopaTroopa;
 import entities.creatures.Mario;
+import entities.creatures.SuperMario;
 import entities.staticEntities.Tube;
 import game.Handler;
 import states.State;
@@ -27,7 +30,9 @@ public class World
     {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
-        entityManager.addEntity(new Tube(handler, 100, 100));
+        //entityManager.addEntity(new Tube(handler, 100, 100));
+        //entityManager.addEntity(new SuperMario(handler, 300, 300));
+        entityManager.addEntity(new GreenKoopaTroopa(handler, 31 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_SUPERMARIO_HEIGHT * 2));
 
         loadWorld(path);
 
@@ -72,6 +77,8 @@ public class World
             //State.setState(handler.getGame().menuState);
             //handler.getKeyManager().enter = false;
 
+            //entityManager.getMario().setX(150);
+            //entityManager.getMario().setY(888);
             return Tile.Background;
         }
 

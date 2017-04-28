@@ -1,3 +1,4 @@
+
 package states;
 
 import entities.creatures.Mario;
@@ -10,14 +11,16 @@ import worlds.World;
 
 import java.awt.*;
 
+
 /**
  * The class for our menuState
  */
+/*
+
 public class MenuState extends State
 {
     private UIManager uiManager;
     private World world;
-    private Mario mario;
 
     // Constructor
     public MenuState(Handler handler)
@@ -28,6 +31,7 @@ public class MenuState extends State
 
         uiManager = new UIManager(handler);
         uiManager.addObject(new UIImage(handler.getWidth() / 2 - (175 * 3)/2, handler.getHeight() / 2 - (87 * 3), 175 * 3, 87 * 3, Assets.menu));
+
     }
 
     @Override
@@ -39,12 +43,13 @@ public class MenuState extends State
         }
 
         uiManager.tick();
-        world.tick();
+        //world.tick();
     }
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
-        world.render(g);
+        //world.render(g);
         uiManager.render(g);
     }
 }
+*/
