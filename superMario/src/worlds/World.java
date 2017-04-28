@@ -1,5 +1,8 @@
 package worlds;
 
+import entities.EntityManager;
+import entities.creatures.Mario;
+import entities.staticEntities.Tube;
 import game.Handler;
 import states.State;
 import tiles.Tile;
@@ -16,16 +19,24 @@ public class World
     // Holds id's saying which tile should be rendered in which position.
     private int[][] tiles;
 
+    //Entities
+    private EntityManager entityManager;
+
     // Load world from a file.
     public World(Handler handler, String path)
     {
         this.handler = handler;
+        entityManager = new EntityManager(handler, new Mario(handler, 200, 300));
+        entityManager.addEntity(new Tube(handler, 100, 100));
         loadWorld(path);
+
+        entityManager.getMario().setX(spawnx);
+        entityManager.getMario().setY(spawny);
     }
 
     public void tick()
     {
-
+        entityManager.tick();
     }
 
     // Render every tile to the screen.
@@ -48,6 +59,8 @@ public class World
                         (int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
+        //Entities
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y)
@@ -94,6 +107,10 @@ public class World
         }
     }
 
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
     public int getWidth()
     {
         return width;
@@ -103,4 +120,5 @@ public class World
     {
         return height;
     }
+
 }

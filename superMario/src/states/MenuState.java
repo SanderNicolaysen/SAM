@@ -1,5 +1,6 @@
 package states;
 
+import entities.creatures.Mario;
 import entities.creatures.SuperMario;
 import game.Handler;
 import graphics.Assets;
@@ -16,7 +17,7 @@ public class MenuState extends State
 {
     private UIManager uiManager;
     private World world;
-    private SuperMario superMario;
+    private Mario mario;
 
     // Constructor
     public MenuState(Handler handler)
@@ -24,7 +25,7 @@ public class MenuState extends State
         super(handler);
         world = new World(handler, "res/worlds/world1.txt");
         handler.setWorld(world);
-        superMario = new SuperMario(handler, 150, 1080 - 64 * 3);
+        mario = new Mario(handler, 150, 1080 - 64 * 3);
 
         uiManager = new UIManager(handler);
 
@@ -39,7 +40,7 @@ public class MenuState extends State
             State.setState(handler.getGame().gameState);
         }
 
-        superMario.tick();
+        mario.tick();
         uiManager.tick();
     }
     @Override
@@ -47,6 +48,6 @@ public class MenuState extends State
         g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         world.render(g);
         uiManager.render(g);
-        superMario.render(g);
+        mario.render(g);
     }
 }

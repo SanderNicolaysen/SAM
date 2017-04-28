@@ -40,7 +40,7 @@ public class Mario extends Creature {
         yMove = 0;
 
         if(handler.getKeyManager().jump) {
-            yMove = -speed;
+            yMove = -speed * 3;
         }
         if(handler.getKeyManager().right){
             xMove = speed;
@@ -59,9 +59,10 @@ public class Mario extends Creature {
     @Override
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
-        g.setColor(Color.yellow);
+        /*g.setColor(Color.yellow);
         g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
+        */
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {

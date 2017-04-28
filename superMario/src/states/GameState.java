@@ -25,7 +25,7 @@ public class GameState extends State {
         handler.setWorld(world);
         // (x, y): start position of SuperMario
         mario = new Mario(handler, 150, 1080 - 64 * 3);
-        supermario = new SuperMario(handler, 418, 704 - 64 * 3);
+        supermario = new SuperMario(handler, 150, 1080 - 64 * 3);
 
     }
 
