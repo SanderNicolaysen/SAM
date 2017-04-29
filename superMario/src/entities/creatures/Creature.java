@@ -85,6 +85,13 @@ public abstract class Creature extends Entity
             else
             {
                 y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+
+                if (jumping)
+                {
+                    jumping = false;
+                    gravity = 0.0f;
+                    falling = true;
+                }
             }
         }
         // DOWN
@@ -101,6 +108,21 @@ public abstract class Creature extends Entity
             else
             {
                 y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
+
+                // If collision detection stop falling
+                if (falling)
+                {
+                    falling = false;
+                }
+            }
+        }
+        else
+        {
+            // If yMove == 0 set falling to true
+            if (!falling && !jumping)
+            {
+                gravity = 0.0f;
+                falling = true;
             }
         }
     }
@@ -143,5 +165,35 @@ public abstract class Creature extends Entity
 
     public void setyMove(float yMove) {
         this.yMove = yMove;
+    }
+
+    public boolean isJumping()
+    {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping)
+    {
+        this.jumping = jumping;
+    }
+
+    public boolean isFalling()
+    {
+        return falling;
+    }
+
+    public void setFalling(boolean falling)
+    {
+        this.falling = falling;
+    }
+
+    public float getGravity()
+    {
+        return gravity;
+    }
+
+    public void setGravity(float gravity)
+    {
+        this.gravity = gravity;
     }
 }

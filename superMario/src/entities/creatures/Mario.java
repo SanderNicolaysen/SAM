@@ -42,23 +42,24 @@ public class Mario extends Creature {
         yMove = 0;
 
         if(jumping){
-            gravity -= 1.0f;
+            gravity -= 1.0;
             yMove = (-gravity);
-            if(gravity<=0.0f){
+            if(gravity<=0.0){
                 jumping = false;
                 falling = true;
             }
         }
         if(falling){
-            gravity += 1.2f;
+            gravity += 0.9;
             yMove = gravity;
         }
 
-        if(handler.getKeyManager().jump && y >= (handler.getHeight() - Tile.TILEHEIGHT*3)) {
+        if(handler.getKeyManager().jump && !falling && !jumping) {
                 jumping = true;
                 falling = false;
-                gravity = 30.0f;
+                gravity = 25.0f;
         }
+
         if(handler.getKeyManager().right){
             xMove = speed;
         }
@@ -84,28 +85,32 @@ public class Mario extends Creature {
 
     private BufferedImage getCurrentMarioAnimationFrame() {
         // right jump movement
-        if(jumping && xMove >= 0){
-                return Assets.marioRightJump;
+        if (jumping && xMove >= 0){
+            return Assets.marioRightJump;
         }
         // left jump movement
-        else if(jumping && xMove <= 0){
-                return Assets.marioLeftJump;
+        else if (jumping && xMove <= 0){
+            return Assets.marioLeftJump;
         }
         // right movement
-        else if (xMove > 0){
+        else if (xMove > 0)
+        {
             return animMarioRight.getCurrentFrame();
         }
         // left movement
-        else if (xMove < 0) {
+        else if (xMove < 0)
+        {
             return animMarioLeft.getCurrentFrame();
         }
-        else if (xMove > 0 && yMove == 0){
+
+        /*else if (xMove > 0 && yMove == 0){
             return animMarioRight.getCurrentFrame();
         }
         else if (xMove < 0 && yMove == 0) {
             return animMarioLeft.getCurrentFrame();
-        }
-        else {
+        }*/
+        else
+        {
             return Assets.marioRightNormal;
         }
     }

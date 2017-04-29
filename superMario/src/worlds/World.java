@@ -30,7 +30,7 @@ public class World
     {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
-        //entityManager.addEntity(new Tube(handler, 100, 100));
+        entityManager.addEntity(new Tube(handler, 100, 700));
         //entityManager.addEntity(new SuperMario(handler, 300, 300));
         entityManager.addEntity(new GreenKoopaTroopa(handler, 31 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
 
@@ -79,6 +79,7 @@ public class World
 
             //entityManager.getMario().setX(150);
             //entityManager.getMario().setY(888);
+            State.setState(handler.getGame().gameOver);
             return Tile.Background;
         }
 

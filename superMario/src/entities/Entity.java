@@ -26,10 +26,29 @@ public abstract class Entity {
     public abstract void render(Graphics g);
 
     public boolean checkEntityCollisions(float xOffset, float yOffset){
-        for(Entity e : handler.getWorld().getEntityManager().getEntities()){
+        for(Entity e : handler.getWorld().getEntityManager().getEntities())
+        {
             if(e.equals(this))
                 continue;
-            if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))) {
+            if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
+            {
+
+                // Collision with top of entity
+                if (yOffset > 0)
+
+                {
+                    handler.getWorld().getEntityManager().getMario().setJumping(true);
+                    handler.getWorld().getEntityManager().getMario().setFalling(false);
+                    handler.getWorld().getEntityManager().getMario().setGravity(25.0f);
+                }
+                // Collision with bottom of entity
+                else if (yOffset < 0)
+                {
+                    handler.getWorld().getEntityManager().getMario().setJumping(false);
+                    handler.getWorld().getEntityManager().getMario().setFalling(true);
+                    handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
+                }
+
                 return true;
             }
         }

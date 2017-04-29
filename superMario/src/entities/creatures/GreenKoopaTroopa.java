@@ -56,7 +56,6 @@ public class GreenKoopaTroopa extends Creature {
         xMove = 0;
         yMove = 0;
 
-        if (x > 2000)
         xMove = -speed + 2;
         yMove = speed;
 

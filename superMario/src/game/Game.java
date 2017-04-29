@@ -4,6 +4,7 @@ import graphics.Assets;
 import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
+import states.GameOver;
 import states.GameState;
 //import states.MenuState;
 import states.SettingsState;
@@ -33,7 +34,9 @@ public class Game implements Runnable
     // States
     public State gameState;
     public State menuState;
-    private State settingsState;
+    public State settingsState;
+    public State gameOver;
+
 
     // Input
     private KeyManager keyManager;
@@ -77,6 +80,7 @@ public class Game implements Runnable
         gameState = new GameState(handler);
         //menuState = new MenuState(handler);
         settingsState = new SettingsState(handler);
+        gameOver = new GameOver(handler);
 
         // Set the current state of the game to gameState.
         State.setState(gameState);
