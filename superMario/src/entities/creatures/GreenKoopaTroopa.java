@@ -14,7 +14,7 @@ public class GreenKoopaTroopa extends Creature {
 
     public GreenKoopaTroopa(Handler handler, float x, float y)
     {
-        super(handler, x, y, Creature.DEFAULT_MARIO_WIDTH, Creature.DEFAULT_MARIO_HEIGHT);
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
 
         animKoopaRight = new Animation(200, Assets.greenKoopaTroopaRight);
         animKoopaLeft = new Animation(200, Assets.greenKoopaTroopaLeft);
@@ -40,7 +40,7 @@ public class GreenKoopaTroopa extends Creature {
     {
         //g.setColor(Color.RED);
         //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_SUPERMARIO_WIDTH, DEFAULT_SUPERMARIO_HEIGHT, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentAnimationFrame()

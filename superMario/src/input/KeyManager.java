@@ -45,7 +45,6 @@ public class KeyManager implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e){
         throwFireBall = true;
-        jump = true;
     }
 
 }

@@ -16,7 +16,7 @@ public abstract class Creature extends Entity
     protected float xMove, yMove;
     protected boolean jumping;
     protected boolean falling;
-    protected double gravity;
+    protected float gravity;
 
     public Creature(Handler handler, float x, float y, int width, int height){
         super(handler, x, y, width, height);
@@ -26,13 +26,13 @@ public abstract class Creature extends Entity
         yMove = 0;
         jumping = false;
         falling = true;
-        gravity = 0.0;
+        gravity = 0.0f;
     }
 
     public void move(){
-        //if(!checkEntityCollisions(xMove, 0f))
+        if(!checkEntityCollisions(xMove, 0f))
             moveX();
-        //if(!checkEntityCollisions(0f, yMove))
+        if(!checkEntityCollisions(0f, yMove))
             moveY();
     }
 

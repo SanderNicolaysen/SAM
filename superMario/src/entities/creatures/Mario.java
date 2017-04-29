@@ -5,6 +5,7 @@ import entities.Entity;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
+import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -41,24 +42,22 @@ public class Mario extends Creature {
         yMove = 0;
 
         if(jumping){
-            gravity -= 0.1;
-            setyMove((int) -gravity);
-            if(gravity<=0.0){
+            gravity -= 1.0f;
+            yMove = (-gravity);
+            if(gravity<=0.0f){
                 jumping = false;
                 falling = true;
             }
         }
         if(falling){
-            gravity += 0.1;
-            setyMove((int) gravity);
+            gravity += 1.2f;
+            yMove = gravity;
         }
 
-        if(handler.getKeyManager().jump) {
+        if(handler.getKeyManager().jump && y >= (handler.getHeight() - Tile.TILEHEIGHT*3)) {
                 jumping = true;
-                gravity = 10.0;
-        }
-        else {
-            falling = true;
+                falling = false;
+                gravity = 30.0f;
         }
         if(handler.getKeyManager().right){
             xMove = speed;

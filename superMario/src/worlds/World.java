@@ -32,7 +32,7 @@ public class World
         entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
         //entityManager.addEntity(new Tube(handler, 100, 100));
         //entityManager.addEntity(new SuperMario(handler, 300, 300));
-        entityManager.addEntity(new GreenKoopaTroopa(handler, 31 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_SUPERMARIO_HEIGHT * 2));
+        entityManager.addEntity(new GreenKoopaTroopa(handler, 31 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
 
         loadWorld(path);
 
