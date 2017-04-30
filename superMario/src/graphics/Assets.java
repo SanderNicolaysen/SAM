@@ -76,6 +76,7 @@ public class Assets
 
     //All menu images
     public static BufferedImage[] play;
+    public static BufferedImage[] quit;
 
     /**
      * This method will load in all the assets we need in our game.
@@ -450,6 +451,9 @@ public class Assets
         play = new BufferedImage[2];
         play[0] = playButton.crop(0,0,305,80);
         play[1]= playButton.crop(305,0,305,80);
+        quit = new BufferedImage[2];
+        quit[0] = playButton.crop(0,80,305,80);
+        quit[1] = playButton.crop(305,80,305,80);
 
         SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Super_Mario_Bros._-_NES_-_Title.png"));
         menu = new BufferedImage[3];
