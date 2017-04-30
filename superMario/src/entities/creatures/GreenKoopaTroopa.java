@@ -31,16 +31,15 @@ public class GreenKoopaTroopa extends Creature {
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
                 //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
-        // If mario is at middle of screen tick enemy
         if (handler.getGameCamera().getxOffset() > 0 || spawned)
         {
+            //Animations
+            animKoopaRight.tick();
+            animKoopaLeft.tick();
+            //Movements
+            getInput();
+            move();
         }
-        //Animations
-        animKoopaRight.tick();
-        animKoopaLeft.tick();
-        //Movements
-        getInput();
-        move();
 
         spawned = true;
     }

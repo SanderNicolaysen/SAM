@@ -2,11 +2,13 @@ package tiles;
 
 import graphics.Assets;
 
+import java.awt.image.BufferedImage;
+
 public class Background extends Tile
 {
-    public Background(int id)
+    public Background(BufferedImage texture, int id)
     {
-        super(Assets.bg, id);
+        super(texture, id);
     }
 
 }

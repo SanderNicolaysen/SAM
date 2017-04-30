@@ -87,7 +87,7 @@ public class Game implements Runnable
         gameOver = new GameOver(handler);
 
         // Set the current state of the game to gameState.
-        State.setState(menuState);
+        State.setState(gameState);
     }
 
     /**

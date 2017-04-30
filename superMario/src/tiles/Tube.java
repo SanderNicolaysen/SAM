@@ -4,9 +4,9 @@ import graphics.Assets;
 
 import java.awt.image.BufferedImage;
 
-public class TubeUp extends Tile
+public class Tube extends Tile
 {
-    public TubeUp(BufferedImage textures, int id)
+    public Tube(BufferedImage textures, int id)
     {
         super(textures, id);
     }

@@ -455,7 +455,7 @@ public class Assets
         quit[0] = playButton.crop(0,80,305,80);
         quit[1] = playButton.crop(305,80,305,80);
 
-        SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Super_Mario_Bros._-_NES_-_Title.png"));
+        SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Logo.png"));
         menu = new BufferedImage[3];
         menu[0] = menuSheet.crop(40, 24, 176, 88);
 

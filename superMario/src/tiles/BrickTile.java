@@ -2,11 +2,13 @@ package tiles;
 
 import graphics.Assets;
 
+import java.awt.image.BufferedImage;
+
 public class BrickTile extends Tile
 {
-    public BrickTile(int id)
+    public BrickTile(BufferedImage textures, int id)
     {
-        super(Assets.levelPlatform2, id);
+        super(textures, id);
     }
 
     public boolean isSolid()

@@ -16,7 +16,7 @@ public class Lakitu extends Creature {
     {
         super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
 
-        animLakitu = new Animation(200, Assets.lakitu);
+        animLakitu = new Animation(3000, Assets.lakitu);
 
         bounds.x = 40;
         bounds.y = 80;

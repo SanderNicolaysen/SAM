@@ -2,9 +2,9 @@ package tiles;
 
 import java.awt.image.BufferedImage;
 
-public class GrassTile extends Tile
+public class TreeTile extends Tile
 {
-    public GrassTile(BufferedImage texture, int id)
+    public TreeTile(BufferedImage texture, int id)
     {
         super(texture, id);
     }
