@@ -19,7 +19,7 @@ public class SettingsState extends State
     @Override
     public void tick()
     {
-
+        System.out.println("hei");
     }
 
     @Override

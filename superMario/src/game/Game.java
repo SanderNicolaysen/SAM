@@ -4,11 +4,8 @@ import graphics.Assets;
 import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
-import states.GameOver;
-import states.GameState;
+import states.*;
 //import states.MenuState;
-import states.SettingsState;
-import states.State;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
@@ -78,12 +75,12 @@ public class Game implements Runnable
 
         // Initialization of states
         gameState = new GameState(handler);
-        //menuState = new MenuState(handler);
+        menuState = new MenuState(handler);
         settingsState = new SettingsState(handler);
         gameOver = new GameOver(handler);
 
         // Set the current state of the game to gameState.
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     /**

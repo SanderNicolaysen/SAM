@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     private boolean[] keys;
-    public boolean enter = false;
+    //public boolean enter = false;
     public boolean jump, run, right, left, crouch, throwFireBall;
 
     public KeyManager(){
@@ -32,9 +32,9 @@ public class KeyManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
 
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            enter = !enter;
-        }
+       // if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        //    enter = !enter;
+       // }
     }
 
     @Override
