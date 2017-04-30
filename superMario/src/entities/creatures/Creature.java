@@ -132,6 +132,7 @@ public abstract class Creature extends Entity
         return handler.getWorld().getTile(x, y).isSolid();
     }
 
+
     public void playerGravity()
     {
         yMove = 0;

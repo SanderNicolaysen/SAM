@@ -55,7 +55,6 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(15.0f);
                     handler.getWorld().getEntityManager().getEntities().remove(e);
-                    System.out.println("Y - collision bottom");
                 }
 
                 // Top collision
@@ -64,13 +63,25 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(false);
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
-                    handler.getWorld().getEntityManager().getMario().setHealth(0);
-                    //System.out.println("Y - collision top");
+                    handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
                 }
-                if (handler.getWorld().getEntityManager().getMario().getHealth() == 0)
+                // Left collision
+                if (handler.getWorld().getEntityManager().getMario().getxMove() <= 0 && handler.getWorld().getEntityManager().getMario().isFalling())
                 {
-                    handler.getWorld().getEntityManager().getEntities().remove(0);
+                    handler.getWorld().getEntityManager().getMario().setJumping(false);
+                    handler.getWorld().getEntityManager().getMario().setFalling(true);
+                    handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
+                    handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
                 }
+                // Right collision
+                if (handler.getWorld().getEntityManager().getMario().getxMove() >= 0 && handler.getWorld().getEntityManager().getMario().isFalling())
+                {
+                    handler.getWorld().getEntityManager().getMario().setJumping(false);
+                    handler.getWorld().getEntityManager().getMario().setFalling(true);
+                    handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
+                    handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
+                }
+
 
                 // Right
                // if (handler.getWorld().getEntityManager().getMario().getxMove() > 0)

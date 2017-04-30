@@ -1,7 +1,6 @@
 package states;
 
 import entities.creatures.Mario;
-import entities.creatures.SuperMario;
 import game.Handler;
 import graphics.Assets;
 import input.KeyManager;

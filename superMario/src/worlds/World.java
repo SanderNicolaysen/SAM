@@ -28,8 +28,7 @@ public class World
         //74
         this.handler = handler;
         entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
-        //entityManager.addEntity(new SuperMario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3));
-        //entityManager.addEntity(new GreenKoopaTroopa(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
+        entityManager.addEntity(new GreenKoopaTroopa(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
         //entityManager.addEntity(new RedKoopaTroopa(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
         //entityManager.addEntity(new FlyingGreenKoopaTroopa(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 3));
         //entityManager.addEntity(new FlyingRedKoopaTroopa(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2));
