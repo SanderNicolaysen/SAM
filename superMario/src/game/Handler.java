@@ -36,7 +36,9 @@ public class Handler
         return game.getKeyManager();
     }
 
-    public MouseManager getMouseManager(){ return game.getMouseManager();}
+    public MouseManager getMouseManager() {
+        return game.getMouseManager();
+    }
 
     public Game getGame()
     {

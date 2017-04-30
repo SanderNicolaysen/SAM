@@ -37,7 +37,6 @@ public class Game implements Runnable
 
     // Input
     private KeyManager keyManager;
-
     private MouseManager mouseManager;
 
     // Camera
@@ -71,6 +70,7 @@ public class Game implements Runnable
     {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
+
         display.getFrame().addMouseListener(mouseManager);
         display.getFrame().addMouseMotionListener(mouseManager);
         display.getCanvas().addMouseListener(mouseManager);

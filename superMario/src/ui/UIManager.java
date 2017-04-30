@@ -60,5 +60,23 @@ public class UIManager
         objects.remove(o);
     }
 
+    public Handler getHandler()
+    {
+        return handler;
+    }
 
+    public void setHandler(Handler handler)
+    {
+        this.handler = handler;
+    }
+
+    public ArrayList<UIObject> getObjects()
+    {
+        return objects;
+    }
+
+    public void setObjects(ArrayList<UIObject> objects)
+    {
+        this.objects = objects;
+    }
 }

@@ -3,17 +3,14 @@ package ui;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-/**
- * Created by PålTømte on 30.04.2017.
- */
 public class UIImageButtons extends UIObject {
 
-    private BufferedImage[] play, quit;
+    private BufferedImage[] images;
     private ClickListener clicker;
 
-    public UIImageButtons(float x, float y, int width, int heigth, BufferedImage[] play, ClickListener clicker){
-        super(x,y,width,heigth);
-        this.play = play;
+    public UIImageButtons(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker){
+        super(x, y, width, height);
+        this.images = images;
         this.clicker = clicker;
 
     }
@@ -27,10 +24,10 @@ public class UIImageButtons extends UIObject {
     public void render(Graphics g) {
 
         if(hovering){
-            g.drawImage(play[0],(int) x, (int) y, width,height,null);
+            g.drawImage(images[0],(int) x, (int) y, width, height,null);
         }
         else{
-            g.drawImage(play[1],(int) x, (int) y, width,height,null);
+            g.drawImage(images[1],(int) x, (int) y, width, height,null);
         }
     }
 
