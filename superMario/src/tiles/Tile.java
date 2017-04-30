@@ -14,15 +14,15 @@ public class Tile
     public static Tile groundTile = new GroundTile(0);
     public static Tile Background = new Background(1);
     public static Tile brickTile = new BrickTile(2);
-    public static Tile singleCloudTile = new CloudTile(Assets.singleCloud,3);
-    public static Tile doubleCloudTile = new CloudTile(Assets.doubleCloud, 4);
-    public static Tile tripleCloudTile = new CloudTile(Assets.trippleCloud, 5);
+    public static Tile singleCloudTile = new CloudTile(Assets.singleCloud1,3);
+    public static Tile doubleCloudTile = new CloudTile(Assets.doubleCloud1, 4);
+    public static Tile tripleCloudTile = new CloudTile(Assets.tripleCloud1, 5);
 
     // TubeUp
-    public static Tile tubeUpLeftTile = new TubeUp(Assets.tubeUpLeft,6);
-    public static Tile tubeUpLeftDownTile = new TubeUp(Assets.tubeUpLeftDown,7);
-    public static Tile tubeUpRightTile = new TubeUp(Assets.tubeUpRight,8);
-    public static Tile tubeUpRightDownTile = new TubeUp(Assets.tubeUpRightDown,9);
+    public static Tile tubeUpLeftTile = new TubeUp(Assets.tubeUp1,6);
+    public static Tile tubeUpLeftDownTile = new TubeUp(Assets.tubeUp3,7);
+    public static Tile tubeUpRightTile = new TubeUp(Assets.tubeUp2,8);
+    public static Tile tubeUpRightDownTile = new TubeUp(Assets.tubeUp4,9);
 
     public static Tile grassTile1 = new GrassTile(Assets.smallHill1, 10);
     public static Tile grassTile2 = new GrassTile(Assets.smallHill2, 11);

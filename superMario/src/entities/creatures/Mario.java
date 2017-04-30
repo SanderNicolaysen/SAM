@@ -61,7 +61,6 @@ public class Mario extends Creature {
             moveY();
         }
     }
-
     /*
     public boolean checkEntityCollision()
     {
