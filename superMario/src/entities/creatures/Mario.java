@@ -135,7 +135,7 @@ public class Mario extends Creature {
         if(handler.getKeyManager().run && handler.getKeyManager().right){
             xMove = speed*2;
         }
-        if(handler.getKeyManager().run && handler.getKeyManager().left && x > -2){
+        if(handler.getKeyManager().run && handler.getKeyManager().left && x > 0){
             xMove = -speed*2;
         }
     }

@@ -1,6 +1,4 @@
-
 package states;
-
 import game.Handler;
 import graphics.Assets;
 import ui.UIImageButtons;
@@ -9,10 +7,6 @@ import ui.ClickListener;
 
 import java.awt.*;
 
-
-/**
- * The class for our menuState
- */
 
 public class MenuState extends State{
 

@@ -1,10 +1,8 @@
 package entities.creatures;
-
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
 import tiles.Tile;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.DoubleSummaryStatistics;
@@ -21,10 +19,10 @@ public class GreenKoopaTroopa extends Creature {
         animKoopaRight = new Animation(200, Assets.greenKoopaTroopaRight);
         animKoopaLeft = new Animation(200, Assets.greenKoopaTroopaLeft);
 
-        bounds.x = 44;
-        bounds.y = 66;
+        bounds.x = 40;
+        bounds.y = 80;
         bounds.width = 48;
-        bounds.height = 61;
+        bounds.height = 48;
     }
 
     @Override
@@ -36,11 +34,13 @@ public class GreenKoopaTroopa extends Creature {
         // If mario is at middle of screen tick enemy
         if (handler.getGameCamera().getxOffset() > 0 || spawned)
         {
-            animKoopaRight.tick();
-            animKoopaLeft.tick();
-            getInput();
-            move();
         }
+        //Animations
+        animKoopaRight.tick();
+        animKoopaLeft.tick();
+        //Movements
+        getInput();
+        move();
 
         spawned = true;
     }
@@ -60,13 +60,14 @@ public class GreenKoopaTroopa extends Creature {
 
     private BufferedImage getCurrentAnimationFrame()
     {
-        //return animKoopaRight.getCurrentFrame();
-        //System.out.println(bounds.x);
-
-        //if(checkEntityCollisions(xMove, 0f))
-          //  return animKoopaRight.getCurrentFrame();
-
-        return animKoopaLeft.getCurrentFrame();
+        if (checkEntityCollisions(0f, yMove))
+        {
+            return animKoopaRight.getCurrentFrame();
+        }
+        else
+        {
+            return animKoopaLeft.getCurrentFrame();
+        }
     }
 
     //private float temp = 0;
@@ -77,10 +78,5 @@ public class GreenKoopaTroopa extends Creature {
         enemyGravity();
 
         xMove = -speed + 2;
-
-        //temp -= increment;
-        //xMove = (float) Math.sin(temp) * 4;
-        //yMove = (float) Math.cos(temp) * 5;
     }
-
 }

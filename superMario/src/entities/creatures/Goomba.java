@@ -2,7 +2,6 @@ package entities.creatures;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -10,36 +9,54 @@ import java.awt.image.BufferedImage;
 public class Goomba extends Creature{
 
     private Animation animGoombaMovement, animGoombaDeath, animGoombaJumpDeath;
+    private boolean spawned = false;
 
     public Goomba(Handler handler, float x, float y){
         super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
         //Animations
-        animGoombaMovement = new Animation(300, Assets.goombaMovement);
-        bounds.x = 0;
-        bounds.y = 0;
-        bounds.width = 0;
-        bounds.height = 0;
+        animGoombaMovement = new Animation(200, Assets.goombaMovement);
+        bounds.x = 8;
+        bounds.y = 16;
+        bounds.width = 56;
+        bounds.height = 48;
     }
 
     @Override
     public void tick() {
+
+        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
+        //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
+
+        // If mario is at middle of screen tick enemy
+        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        {
+        }
         //Animations
         animGoombaMovement.tick();
-
         //Movements
         getInput();
         move();
+
+        spawned = true;
     }
 
-    private void getInput() {
-        xMove =+ 4;
-    }
     @Override
-    public void render(Graphics g) {
-
+    public void render(Graphics g)
+    {
+        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
+        // If mario is at middle of screen render enemy
+        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        {
+            //g.setColor(Color.RED);
+            //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        }
+        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
     }
-    private BufferedImage getCurrentGoombaAnimationFrame(){
-        if (xMove > 0 || xMove < 0){
+
+    private BufferedImage getCurrentAnimationFrame()
+    {
+        if (checkEntityCollisions(0f, yMove))
+        {
             return animGoombaMovement.getCurrentFrame();
         }
         else if (xMove == 0) {
@@ -48,5 +65,12 @@ public class Goomba extends Creature{
         else{
             return Assets.goombaDeath;
         }
+    }
+
+    private void getInput()
+    {
+        xMove = 0;
+        enemyGravity();
+        xMove = -speed + 2;
     }
 }

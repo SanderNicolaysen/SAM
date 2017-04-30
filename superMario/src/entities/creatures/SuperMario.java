@@ -56,6 +56,9 @@ public class SuperMario extends Creature {
         if(handler.getKeyManager().run && handler.getKeyManager().left && x > -2){
             xMove = -speed*2;
         }
+        if(handler.getKeyManager().crouch){
+            xMove = 0;
+        }
     }
 
     @Override
@@ -67,10 +70,10 @@ public class SuperMario extends Creature {
     }
 
     private BufferedImage getCurrentSuperMarioAnimationFrame(){
-        if(yMove < 0 && xMove >= 0){
+        if(jumping && xMove >= 0){
             return Assets.superMarioRightJump;
         }
-        else if(yMove < 0 && xMove <= 0){
+        else if(jumping && xMove <= 0){
             return Assets.superMarioLeftJump;
         }
         // right crouch movement

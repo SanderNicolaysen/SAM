@@ -16,10 +16,10 @@ public class HammerBrother extends Creature {
         super(handler, x, y, Creature.DEFAULT_32x32_WIDTH, Creature.DEFAULT_32x32_HEIGHT);
         animHammerBrotherRight = new Animation(200, Assets.hammerBrotherRight);
         animHammerBrotherLeft = new Animation(200, Assets.hammerBrotherLeft);
-        bounds.x = 0;
-        bounds.y = 0;
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.x = 40;
+        bounds.y = 80;
+        bounds.width = 48;
+        bounds.height = 48;
     }
 
     @Override
@@ -33,10 +33,6 @@ public class HammerBrother extends Creature {
         move();
     }
 
-    private void getInput(){
-        xMove = 0;
-    }
-
     @Override
     public void render(Graphics g) {
         g.setColor(Color.yellow);
@@ -45,14 +41,17 @@ public class HammerBrother extends Creature {
     }
 
     private BufferedImage getCurrentHammerBrotherAnimationFrame(){
-        if(xMove <= 0){
-            return animHammerBrotherLeft.getCurrentFrame();
-        }
-        else if (xMove >= 0){
+        if (checkEntityCollisions(0f, yMove))
+        {
             return animHammerBrotherRight.getCurrentFrame();
         }
-        else{
+        else
+        {
             return animHammerBrotherLeft.getCurrentFrame();
         }
     }
+    private void getInput(){
+        xMove = 0;
+    }
+
 }

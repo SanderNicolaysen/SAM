@@ -15,6 +15,10 @@ public class FireMario extends Creature{
 
         animFireMarioRight = new Animation(70, Assets.fireMarioRightMove);
         animFireMarioLeft = new Animation(70, Assets.fireMarioLeftMove);
+        bounds.x = 4;
+        bounds.y = -56;
+        bounds.width = 56;
+        bounds.height = 120;
     }
 
     @Override
@@ -25,16 +29,18 @@ public class FireMario extends Creature{
 
         //Movements
         getInput();
-        move();
         handler.getGameCamera().centerOnEntity(this);
+
+        if(!checkEntityCollisionPlayer(xMove, 0f))
+            moveX();
+        if(!checkEntityCollisionPlayer(0f, yMove)){
+            moveY();
+        }
     }
     private void getInput() {
         xMove = 0;
-        yMove = 0;
+        playerGravity();
 
-        if(handler.getKeyManager().jump) {
-            yMove = -speed;
-        }
         if(handler.getKeyManager().right){
             xMove = speed;
         }
@@ -48,7 +54,7 @@ public class FireMario extends Creature{
             xMove = -speed*2;
         }
         if(handler.getKeyManager().crouch){
-            yMove = speed;
+            xMove = 0;
         }
 
     }
@@ -56,14 +62,14 @@ public class FireMario extends Creature{
     @Override
     public void render(Graphics g) {
         // Super Mario stay's in the same place.
-        g.drawImage(getCurrentFireMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), 128, 128, null);
+        g.drawImage(getCurrentFireMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentFireMarioAnimationFrame(){
-        if(yMove != 0 && xMove >= 0){
+        if(jumping && xMove >= 0){
             return Assets.fireMarioRightJump;
         }
-        else if(yMove != 0 && xMove <= 0){
+        else if(jumping && xMove <= 0){
             return Assets.fireMarioLeftJump;
         }
         else if(xMove >= 0 && handler.getKeyManager().throwFireBall){
@@ -75,10 +81,10 @@ public class FireMario extends Creature{
         else if (handler.getKeyManager().crouch){
             return Assets.fireMarioRightCrouch;
         }
-        else if (xMove > 0 && yMove == 0){
+        else if (xMove > 0){
             return animFireMarioRight.getCurrentFrame();
         }
-        else if (xMove < 0 && yMove == 0) {
+        else if (xMove < 0) {
             return animFireMarioLeft.getCurrentFrame();
         }
         else{
