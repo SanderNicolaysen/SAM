@@ -24,4 +24,17 @@ public class UIImage extends UIObject
     {
         g.drawImage(images[0], (int) x, (int) y, width, height, null);
     }
+
+    public BufferedImage[] getImages() {
+        return images;
+    }
+
+    public void setImages(BufferedImage[] images) {
+        this.images = images;
+    }
+
+    @Override
+    public void onClick() {
+
+    }
 }

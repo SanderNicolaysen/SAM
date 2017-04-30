@@ -3,6 +3,7 @@ package ui;
 import game.Handler;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class UIManager
@@ -33,6 +34,20 @@ public class UIManager
             o.render(g);
         }
 
+    }
+
+    public void onMouseMove(MouseEvent e){
+
+        for(UIObject o: objects){
+            o.onMouseMove(e);
+        }
+    }
+
+    public void onMouseReleas(MouseEvent e) {
+
+        for (UIObject o : objects) {
+            o.onMouseRelease(e);
+        }
     }
 
     public void addObject(UIObject o)

@@ -1,13 +1,11 @@
 
 package states;
 
-import entities.creatures.Mario;
-import entities.creatures.SuperMario;
 import game.Handler;
 import graphics.Assets;
-import ui.UIImage;
+import ui.UIImageButtons;
 import ui.UIManager;
-import worlds.World;
+import ui.ClickListener;
 
 import java.awt.*;
 
@@ -16,18 +14,20 @@ import java.awt.*;
  * The class for our menuState
  */
 
-public class MenuState extends State
-{
+public class MenuState extends State{
+
+    private ClickListener clickListener;
     private UIManager uiManager;
 
-    // Constructor
-    public MenuState(Handler handler)
-    {
+    public MenuState(Handler handler) {
         super(handler);
-
         uiManager = new UIManager(handler);
-        uiManager.addObject(new UIImage(handler.getWidth() / 2 - (175 * 3)/2, handler.getHeight() / 2 - (87 * 3), 175 * 3, 87 * 3, Assets.menu));
 
+        uiManager.addObject(new UIImageButtons(940, 540, 305, 80, Assets.play, new ClickListener(){
+            @Override
+            public void onClick() {
+                State.setState(handler.getGame().gameState);
+            }}));
     }
 
     @Override
@@ -35,9 +35,13 @@ public class MenuState extends State
     {
         uiManager.tick();
     }
+
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.bg,0, 0, 1920, 1080, null);
         uiManager.render(g);
+
+        g.setColor(Color.BLACK);
+        g.fillRect(0,0,1920,1080);
+
     }
 }

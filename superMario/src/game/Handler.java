@@ -2,6 +2,7 @@ package game;
 
 import graphics.GameCamera;
 import input.KeyManager;
+import input.MouseManager;
 import worlds.World;
 
 //This class will make it easier to pass along objects.
@@ -34,6 +35,8 @@ public class Handler
     {
         return game.getKeyManager();
     }
+
+    public MouseManager getMouseManager(){ return game.getMouseManager();}
 
     public Game getGame()
     {
