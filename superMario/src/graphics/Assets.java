@@ -73,6 +73,10 @@ public class Assets
     public static BufferedImage ground, bg;
     public static BufferedImage[] menu;
 
+
+    //All menu images
+    public static BufferedImage[] play, quit;
+
     /**
      * This method will load in all the assets we need in our game.
      * It will only run once, so we don't have to crop out images several times.
@@ -441,6 +445,10 @@ public class Assets
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/smb1_misc_sprites.gif"));
         ground = worldSheet.crop(373, 124, 16, 16);
         bg = worldSheet.crop(274, 341, 306 - 274, 360 - 341);
+
+        SpriteSheet playButton = new SpriteSheet(ImageLoader.loadImage("res/textures/PlayQuit.png"));
+        play[0] = playButton.crop(0,0,305,80);
+        play[1]= playButton.crop(305,0,305,80);
 
         SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Super_Mario_Bros._-_NES_-_Title.png"));
         menu = new BufferedImage[3];
