@@ -14,18 +14,30 @@ public class Tile
     public static Tile groundTile = new GroundTile(0);
     public static Tile Background = new Background(1);
     public static Tile brickTile = new BrickTile(2);
-    public static Tile singleCloudTile = new CloudTile(Assets.singleCloud1,3);
-    public static Tile doubleCloudTile = new CloudTile(Assets.doubleCloud1, 4);
-    public static Tile tripleCloudTile = new CloudTile(Assets.tripleCloud1, 5);
+
+    // Clouds
+    public static Tile singleCloudTile1 = new CloudTile(Assets.singleCloud1,3);
+    public static Tile singleCloudTile2 = new CloudTile(Assets.singleCloud2,4);
+    public static Tile singleCloudTile3 = new CloudTile(Assets.singleCloud3,5);
+    public static Tile singleCloudTile4 = new CloudTile(Assets.singleCloud4,6);
+
+    public static Tile doubleCloudTile1 = new CloudTile(Assets.doubleCloud1, 7);
+    public static Tile doubleCloudTile2 = new CloudTile(Assets.doubleCloud1, 8);
+    public static Tile doubleCloudTile3 = new CloudTile(Assets.doubleCloud1, 9);
+    public static Tile doubleCloudTile4 = new CloudTile(Assets.doubleCloud1, 10);
+    public static Tile doubleCloudTile5 = new CloudTile(Assets.doubleCloud1, 11);
+    public static Tile doubleCloudTile6 = new CloudTile(Assets.doubleCloud1, 12);
+
+    public static Tile tripleCloudTile = new CloudTile(Assets.tripleCloud1, 8);
 
     // TubeUp
-    public static Tile tubeUpLeftTile = new TubeUp(Assets.tubeUp1,6);
-    public static Tile tubeUpLeftDownTile = new TubeUp(Assets.tubeUp3,7);
-    public static Tile tubeUpRightTile = new TubeUp(Assets.tubeUp2,8);
-    public static Tile tubeUpRightDownTile = new TubeUp(Assets.tubeUp4,9);
+    public static Tile tubeUpLeftTile = new TubeUp(Assets.tubeUp1,9);
+    public static Tile tubeUpLeftDownTile = new TubeUp(Assets.tubeUp3,10);
+    public static Tile tubeUpRightTile = new TubeUp(Assets.tubeUp2,11);
+    public static Tile tubeUpRightDownTile = new TubeUp(Assets.tubeUp4,12);
 
-    public static Tile grassTile1 = new GrassTile(Assets.smallHill1, 10);
-    public static Tile grassTile2 = new GrassTile(Assets.smallHill2, 11);
+    public static Tile grassTile1 = new GrassTile(Assets.smallHill1, 13);
+    public static Tile grassTile2 = new GrassTile(Assets.smallHill2, 14);
 
 
     public static final int TILEWIDTH = 64 , TILEHEIGHT = 64;
