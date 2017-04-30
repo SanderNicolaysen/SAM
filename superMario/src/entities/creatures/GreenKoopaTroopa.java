@@ -3,6 +3,7 @@ package entities.creatures;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
+import tiles.Tile;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,6 +12,7 @@ import java.util.DoubleSummaryStatistics;
 public class GreenKoopaTroopa extends Creature {
 
     private Animation animKoopaRight, animKoopaLeft;
+    private boolean spawned = false;
 
     public GreenKoopaTroopa(Handler handler, float x, float y)
     {
@@ -28,25 +30,47 @@ public class GreenKoopaTroopa extends Creature {
     @Override
     public void tick()
     {
+        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
+                //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
+
+        // If mario is at middle of screen tick enemy
+        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        {
+        }
         animKoopaRight.tick();
         animKoopaLeft.tick();
-
         getInput();
         move();
+
+        spawned = true;
     }
 
     @Override
     public void render(Graphics g)
     {
-        //g.setColor(Color.RED);
-        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
+        // If mario is at middle of screen render enemy
+        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        {
+            //g.setColor(Color.RED);
+            //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        }
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentAnimationFrame()
     {
         //return animKoopaRight.getCurrentFrame();
-        return animKoopaLeft.getCurrentFrame();
+        //System.out.println(bounds.x);
+
+        if (checkEntityCollisions(0f, yMove))
+        {
+            return animKoopaRight.getCurrentFrame();
+        }
+        else
+        {
+            return animKoopaLeft.getCurrentFrame();
+        }
     }
 
     //private float temp = 0;
@@ -54,10 +78,9 @@ public class GreenKoopaTroopa extends Creature {
     private void getInput()
     {
         xMove = 0;
-        yMove = 0;
+        enemyGravity();
 
         xMove = -speed + 2;
-        yMove = speed;
 
         //temp -= increment;
         //xMove = (float) Math.sin(temp) * 4;

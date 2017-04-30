@@ -26,33 +26,105 @@ public class Mario extends Creature {
     }
 
     @Override
-    public void tick() {
+    public void tick()
+    {
         //Animations
         animMarioRight.tick();
         animMarioLeft.tick();
 
         //Movements
         getInput();
-        move();
         handler.getGameCamera().centerOnEntity(this);
+
+       /*
+        if(checkEntityCollisions(xMove, 0f))
+            moveX();
+
+        if (checkEntityCollisions(0f, yMove))
+        {
+            // Collision with top of entity
+            if (yMove > 0)
+            {
+                jumping = true;
+                falling = false;
+                gravity = 15.0f;
+            }
+        }
+        else
+        {
+            moveY();
+        }
+        */
+        if(!checkEntityCollisionPlayer(xMove, 0f))
+            moveX();
+        if(!checkEntityCollisionPlayer(0f, yMove)){
+            moveY();
+        }
     }
+
+    /*
+    public boolean checkEntityCollision()
+    {
+        for (Entity e : handler.getWorld().getEntityManager().getEntities())
+        {
+            if (e.equals(this))
+            {
+                continue;
+            }
+
+            // Collision with top
+            if (getBoundsTop().intersects(e.getBounds()))
+            {
+                yMove = 0;
+                // y verdi til den vi kolliderer med + høyden slik at y verdi til mario blir rett ved siden av og ikke er stuck.
+                if (jumping)
+                {
+                    jumping = false;
+                    falling = true;
+                    gravity = 0.0f;
+                }
+                else
+                {
+                    if (!falling && !jumping)
+                    {
+                        gravity = 0.0f;
+                        falling = true;
+                    }
+                }
+                return true;
+            }
+            // Bottom
+            if (getBoundsBottom().intersects(e.getBounds()))
+            {
+                yMove = 0;
+                if (falling)
+                {
+                    falling = false;
+                }
+                return true;
+            }
+            // Left
+            if (getBoundsLeft().intersects(e.getBounds()))
+            {
+                xMove = 0;
+                x = e.getBounds().x + e.getBounds().width;
+                return true;
+            }
+            // Right
+            if (getBoundsRight().intersects(e.getBounds()))
+            {
+                xMove = 0;
+                x = e.getBounds().x - e.getBounds().width;
+                return true;
+            }
+        }
+        return false;
+    }
+    */
 
     private void getInput() {
         xMove = 0;
-        yMove = 0;
-
-        if(jumping){
-            gravity -= 1.0;
-            yMove = (-gravity);
-            if(gravity<=0.0){
-                jumping = false;
-                falling = true;
-            }
-        }
-        if(falling){
-            gravity += 0.9;
-            yMove = gravity;
-        }
+        playerGravity();
 
         if(handler.getKeyManager().jump && !falling && !jumping) {
                 jumping = true;
@@ -80,7 +152,6 @@ public class Mario extends Creature {
         //g.setColor(Color.yellow);
         //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), width, height, null);
-
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {
@@ -102,13 +173,6 @@ public class Mario extends Creature {
         {
             return animMarioLeft.getCurrentFrame();
         }
-
-        /*else if (xMove > 0 && yMove == 0){
-            return animMarioRight.getCurrentFrame();
-        }
-        else if (xMove < 0 && yMove == 0) {
-            return animMarioLeft.getCurrentFrame();
-        }*/
         else
         {
             return Assets.marioRightNormal;

@@ -8,7 +8,7 @@ public abstract class Creature extends Entity
 {
 
     public static final int DEFAULT_HEALTH = 1;
-    public static final float DEFAULT_SPEED = 4.0f;
+    public static final float DEFAULT_SPEED = 5.0f;
     public static final int DEFAULT_16x16_WIDTH = 64, DEFAULT_16x16_HEIGHT = 64, DEFAULT_32x32_WIDTH = 128, DEFAULT_32x32_HEIGHT = 128;
 
     protected int health;
@@ -41,7 +41,7 @@ public abstract class Creature extends Entity
         // RIGHT
         if (xMove > 0)
         {
-            // Collision detection with right side of bounding box
+            // Collision detection with right side of bounding box (upper left and right corner)
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
             // If tile entity collides with is solid do not increment x position.
             if (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) && !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))
@@ -132,6 +132,39 @@ public abstract class Creature extends Entity
         return handler.getWorld().getTile(x, y).isSolid();
     }
 
+    public void playerGravity()
+    {
+        yMove = 0;
+
+        if(jumping){
+            gravity -= 1.0;
+            yMove = (-gravity);
+            if(gravity<=0.0){
+                jumping = false;
+                falling = true;
+            }
+        }
+        if(falling){
+            gravity += 1.0;
+            yMove = gravity;
+        }
+
+        if(handler.getKeyManager().jump && !falling && !jumping) {
+            jumping = true;
+            falling = false;
+            gravity = 25.0f;
+        }
+    }
+
+    public void enemyGravity()
+    {
+        yMove = 0;
+
+        if(falling){
+            gravity += 1.0;
+            yMove = gravity;
+        }
+    }
 
     //GETTERS AND SETTERS
 
