@@ -23,6 +23,7 @@ public class Mario extends Creature {
         bounds.y = 4;
         bounds.width = 60;
         bounds.height = 60;
+        health = 1;
     }
 
     @Override
@@ -124,12 +125,6 @@ public class Mario extends Creature {
     private void getInput() {
         xMove = 0;
         playerGravity();
-
-        if(handler.getKeyManager().jump && !falling && !jumping) {
-                jumping = true;
-                falling = false;
-                gravity = 25.0f;
-        }
 
         if(handler.getKeyManager().right){
             xMove = speed;

@@ -36,11 +36,11 @@ public class GreenKoopaTroopa extends Creature {
         // If mario is at middle of screen tick enemy
         if (handler.getGameCamera().getxOffset() > 0 || spawned)
         {
+            animKoopaRight.tick();
+            animKoopaLeft.tick();
+            getInput();
+            move();
         }
-        animKoopaRight.tick();
-        animKoopaLeft.tick();
-        getInput();
-        move();
 
         spawned = true;
     }
@@ -54,8 +54,8 @@ public class GreenKoopaTroopa extends Creature {
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentAnimationFrame()
@@ -63,14 +63,10 @@ public class GreenKoopaTroopa extends Creature {
         //return animKoopaRight.getCurrentFrame();
         //System.out.println(bounds.x);
 
-        if (checkEntityCollisions(0f, yMove))
-        {
-            return animKoopaRight.getCurrentFrame();
-        }
-        else
-        {
-            return animKoopaLeft.getCurrentFrame();
-        }
+        //if(checkEntityCollisions(xMove, 0f))
+          //  return animKoopaRight.getCurrentFrame();
+
+        return animKoopaLeft.getCurrentFrame();
     }
 
     //private float temp = 0;

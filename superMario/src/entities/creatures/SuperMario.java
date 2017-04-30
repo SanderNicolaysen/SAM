@@ -31,34 +31,30 @@ public class SuperMario extends Creature {
 
         //Movements
         getInput();
-        move();
         handler.getGameCamera().centerOnEntity(this);
+
+        if(!checkEntityCollisionPlayer(xMove, 0f))
+            moveX();
+        if(!checkEntityCollisionPlayer(0f, yMove)){
+            moveY();
+        }
     }
 
     private void getInput() {
         xMove = 0;
-        yMove = 0;
+        playerGravity();
 
-        if(handler.getKeyManager().jump) {
-            yMove = -speed * 3;
-        }
-        else {
-            yMove += 8;
-        }
         if(handler.getKeyManager().right){
             xMove = speed;
         }
-        if(handler.getKeyManager().left){
+        if(handler.getKeyManager().left && x > 0){
             xMove = -speed;
         }
         if(handler.getKeyManager().run && handler.getKeyManager().right){
             xMove = speed*2;
         }
-        if(handler.getKeyManager().run && handler.getKeyManager().left){
+        if(handler.getKeyManager().run && handler.getKeyManager().left && x > -2){
             xMove = -speed*2;
-        }
-        if(handler.getKeyManager().crouch){
-            yMove = speed;
         }
     }
 

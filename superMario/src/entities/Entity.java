@@ -34,21 +34,6 @@ public abstract class Entity {
             // Check if entities collision bounds intersect with where mario's future collision bounds.
             if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
             {
-                /*
-                // Bottom collision
-                if (handler.getWorld().getEntityManager().getMario().getyMove() > 0 && handler.getWorld().getEntityManager().getMario().isFalling())
-                {
-                    handler.getWorld().getEntityManager().getMario().setFalling(false);
-                }
-
-                // Top collision
-                if (handler.getWorld().getEntityManager().getMario().getyMove() < 0 && !handler.getWorld().getEntityManager().getMario().isFalling())
-                {
-                    handler.getWorld().getEntityManager().getMario().setJumping(false);
-                    handler.getWorld().getEntityManager().getMario().setFalling(true);
-                    handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
-                }*/
-
                 return true;
             }
         }
@@ -70,6 +55,7 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(15.0f);
                     handler.getWorld().getEntityManager().getEntities().remove(e);
+                    System.out.println("Y - collision bottom");
                 }
 
                 // Top collision
@@ -78,7 +64,22 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(false);
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
+                    handler.getWorld().getEntityManager().getMario().setHealth(0);
+                    //System.out.println("Y - collision top");
                 }
+                if (handler.getWorld().getEntityManager().getMario().getHealth() == 0)
+                {
+                    handler.getWorld().getEntityManager().getEntities().remove(0);
+                }
+
+                // Right
+               // if (handler.getWorld().getEntityManager().getMario().getxMove() > 0)
+               // {
+               //     handler.getWorld().getEntityManager().getMario().setHealth(0);
+
+                    //System.out.println("X - collision right");
+                //    System.out.println("Health " + handler.getWorld().getEntityManager().getMario().getHealth());
+               // }
 
                 return true;
             }
