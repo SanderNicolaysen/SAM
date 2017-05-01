@@ -63,7 +63,7 @@ public class Goomba extends Creature{
             return Assets.goombaJumpDeath;
         }
         else{
-            return Assets.goombaDeath;
+            return animGoombaMovement.getCurrentFrame();
         }
     }
 

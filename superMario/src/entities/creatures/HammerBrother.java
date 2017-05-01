@@ -11,6 +11,7 @@ public class HammerBrother extends Creature {
 
     //Animations
     private Animation animHammerBrotherRight, animHammerBrotherLeft;
+    private boolean spawned = false;
 
     public HammerBrother(Handler handler, float x, float y, int health){
         super(handler, x, y, Creature.DEFAULT_32x32_WIDTH, Creature.DEFAULT_32x32_HEIGHT, health);
@@ -31,13 +32,17 @@ public class HammerBrother extends Creature {
         //Movements
         getInput();
         move();
+
+        spawned = true;
     }
 
     @Override
     public void render(Graphics g) {
-        //g.setColor(Color.yellow);
-        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
-        g.drawImage(getCurrentHammerBrotherAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
+        if (spawned) {
+            //g.setColor(Color.yellow);
+            //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentHammerBrotherAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
+        }
     }
 
     private BufferedImage getCurrentHammerBrotherAnimationFrame(){

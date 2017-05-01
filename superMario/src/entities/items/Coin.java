@@ -1,46 +1,44 @@
-package entities.creatures;
+package entities.items;
+
+import entities.creatures.Creature;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
-import tiles.Tile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.DoubleSummaryStatistics;
 
-public class PiranhaPlant extends Creature {
+public class Coin extends Creature {
 
-    private Animation animPiranhaPlantMovement;
+    private Animation animCoin;
     private boolean spawned = false;
 
-    public PiranhaPlant(Handler handler, float x, float y, int health)
-    {
+    public Coin(Handler handler, float x, float y, int health){
         super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
-
-        animPiranhaPlantMovement = new Animation(200, Assets.piranhaPlant);
-        bounds.x = 40;
-        bounds.y = 80;
-        bounds.width = 48;
+        //Animations
+        animCoin = new Animation(200, Assets.coin);
+        bounds.x = 8;
+        bounds.y = 16;
+        bounds.width = 56;
         bounds.height = 48;
     }
 
     @Override
-    public void tick()
-    {
+    public void tick() {
+
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
         //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
         // If mario is at middle of screen tick enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
+            //Animations
+            animCoin.tick();
+            //Movements
+            getInput();
+            move();
+            spawned = true;
         }
-
-        //Animations
-        animPiranhaPlantMovement.tick();
-        //Movements
-        getInput();
-        move();
-
-        spawned = true;
     }
 
     @Override
@@ -48,30 +46,27 @@ public class PiranhaPlant extends Creature {
     {
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
         // If mario is at middle of screen render enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (spawned)
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentAnimationFrame()
     {
         if (checkEntityCollisions(0f, yMove))
         {
-            return animPiranhaPlantMovement.getCurrentFrame();
+            return animCoin.getCurrentFrame();
         }
-        else
-        {
-            return animPiranhaPlantMovement.getCurrentFrame();
+        else{
+            return animCoin.getCurrentFrame();
         }
-
     }
 
     private void getInput()
     {
         xMove = 0;
-        enemyGravity();
     }
 }

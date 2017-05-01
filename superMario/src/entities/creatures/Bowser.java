@@ -49,8 +49,8 @@ public class Bowser extends Creature{
         // If mario is at middle of screen render enemy
         if (handler.getGameCamera().getxOffset() > 0 || spawned)
         {
-            g.setColor(Color.RED);
-            g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            //g.setColor(Color.RED);
+            //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
         }
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }

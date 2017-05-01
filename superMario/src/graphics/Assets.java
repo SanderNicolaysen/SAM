@@ -335,9 +335,9 @@ public class Assets
         toad1 = levelSheet.crop(width16*14, height32, width16, height16);
         peach1 = levelSheet.crop(width16*15, height32, width16, height16);
         skyBackground = levelSheet.crop(width32*8, height32, width32, height32);
-        waterBackground = levelSheet.crop(width32*9, height32, width32, height32);
-        lavaBackground = levelSheet.crop(width32*10, height32, width32, height32);
-        blackBackground = levelSheet.crop(width32*11, height32, width32, height32);
+        waterBackground = levelSheet.crop(width32*9, height32, width16, height16);
+        lavaBackground = levelSheet.crop(width32*10, height32, width16, height16);
+        blackBackground = levelSheet.crop(width32*11, height32, width16, height16);
         castleGateOpen1 = levelSheet.crop(width16*24, height32, width16, height16);
         castleGateOpen2 = levelSheet.crop(width16*25, height32, width16, height16);
         doubleCloud1 = levelSheet.crop(width16*26, height32, width16, height16);

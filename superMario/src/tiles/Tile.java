@@ -50,8 +50,8 @@ public class Tile
 
     // Tube
     public static Tile tubeUp1 = new Tube(Assets.tubeUp1,25);
-    public static Tile tubeUp2 = new Tube(Assets.tubeUp3,26);
-    public static Tile tubeUp3 = new Tube(Assets.tubeUp2,27);
+    public static Tile tubeUp2 = new Tube(Assets.tubeUp2,26);
+    public static Tile tubeUp3 = new Tube(Assets.tubeUp3,27);
     public static Tile tubeUp4 = new Tube(Assets.tubeUp4,28);
     public static Tile tubeMiddle1 = new Tube(Assets.tubeMiddle1, 29);
     public static Tile tubeMiddle2 = new Tube(Assets.tubeMiddle2, 30);
@@ -136,9 +136,11 @@ public class Tile
     public static Tile castle25 = new CastleTile(Assets.smallCastle25, 93);
 
     // Lava
-    public static Tile lava = new GroundTile(Assets.lava, 92);
+    public static Tile lava = new Background(Assets.lava, 94);
     // Water
-    public static Tile water = new GroundTile(Assets.water, 93);
+    public static Tile water = new Background(Assets.water, 95);
+
+    public static Tile levelPlatform1 = new BrickTile(Assets.levelPlatform1, 96);
 
     public static final int TILEWIDTH = 64 , TILEHEIGHT = 64;
 
