@@ -8,6 +8,7 @@ import states.State;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 public class KeyManager implements KeyListener {
 
@@ -15,6 +16,7 @@ public class KeyManager implements KeyListener {
     //public boolean enter = false;
     public boolean jump, run, right, left, crouch, throwFireBall;
     public boolean direction = true;
+    public boolean pause = false;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -40,6 +42,12 @@ public class KeyManager implements KeyListener {
         {
             direction = false;
         }
+
+        /*if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+        {
+            pause = true;
+        }
+        */
     }
 
     @Override

@@ -20,17 +20,21 @@ public class PauseState extends State{
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUIManager(uiManager);
 
+        // Continue
         uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 200, 305, 80, Assets.resume, new ClickListener(){
             @Override
             public void onClick() {
+                handler.getKeyManager().pause = false;
                 State.setState(handler.getGame().gameState);
             }}));
+        // Exit to menu
         uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 300, 305, 80, Assets.exittomenu, new ClickListener(){
             @Override
             public void onClick() {
                 State.setState(handler.getGame().menuState);
             }}));
-        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 300, 305, 80, Assets.exittodesktop, new ClickListener(){
+        // Desktop
+        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 400, 305, 80, Assets.exittodesktop, new ClickListener(){
             @Override
             public void onClick() {
                 System.exit(0);
@@ -49,7 +53,7 @@ public class PauseState extends State{
         //g.drawImage(Assets.bg,0, 0, handler.getWidth(), handler.getHeight(), null);
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, 1920, 1080);
-        //g.drawImage(Assets.menu[0], handler.getWidth() / 2 - (175 * 4) / 2, handler.getHeight() / 2 - (95*4), 175 * 4, 95 * 4, null);
+        g.drawImage(Assets.menu[0], handler.getWidth() / 2 - (175 * 4) / 2, handler.getHeight() / 2 - (95*4), 175 * 4, 95 * 4, null);
         uiManager.render(g);
     }
 }

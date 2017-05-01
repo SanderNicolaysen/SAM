@@ -2,8 +2,14 @@ package entities.creatures;
 
 import entities.Entity;
 import game.Handler;
-import sounds.SoundAssests;
 import tiles.Tile;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class Creature extends Entity
 {
@@ -22,6 +28,7 @@ public abstract class Creature extends Entity
     protected boolean jumping;
     protected boolean falling;
     protected float gravity;
+    protected int score;
 
 
     public Creature(Handler handler, float x, float y, int width, int height, int health){
@@ -35,6 +42,7 @@ public abstract class Creature extends Entity
         jumping = false;
         falling = true;
         gravity = 0.0f;
+        score = 0;
     }
 
     public void move(){
@@ -140,6 +148,36 @@ public abstract class Creature extends Entity
         return handler.getWorld().getTile(x, y).isSolid();
     }
 
+    File marioJumpSound = new File("res/sounds & music/smb_jump-small.wav");
+
+    public static void playSound(File sound)
+    {
+        try
+        {
+            try
+            {
+
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(sound));
+                clip.start();
+
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            catch (UnsupportedAudioFileException e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+        catch (LineUnavailableException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
     public void playerGravity()
     {
@@ -159,10 +197,10 @@ public abstract class Creature extends Entity
         }
 
         if(handler.getKeyManager().jump && !falling && !jumping) {
-//            SoundAssests.marioJumpSound.play();
             jumping = true;
             falling = false;
             gravity = 25.0f;
+            playSound(marioJumpSound);
         }
     }
 
@@ -258,5 +296,15 @@ public abstract class Creature extends Entity
     public void setMaxHealth(int maxHealth)
     {
         this.maxHealth = maxHealth;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public void setScore(int score)
+    {
+        this.score = score;
     }
 }

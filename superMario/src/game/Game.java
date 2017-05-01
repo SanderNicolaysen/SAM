@@ -5,11 +5,16 @@ import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import input.MouseManager;
-import sounds.Sound;
-import sounds.SoundAssests;
 import states.*;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -35,6 +40,7 @@ public class Game implements Runnable
     public State menuState;
     public State settingsState;
     public State gameOver;
+    //public State pauseState;
 
 
     // Input
@@ -48,10 +54,6 @@ public class Game implements Runnable
     private Handler handler;
 
     // Sounds
-    private SoundAssests soundAssests;
-
-
-
 
     /**
      * Constructor that sets width, height and title of game.
@@ -84,13 +86,13 @@ public class Game implements Runnable
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
-//        SoundAssests.init();
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);
 
         // Initialization of states
         gameState = new GameState(handler);
+        //pauseState = new PauseState(handler);
         menuState = new MenuState(handler);
         settingsState = new SettingsState(handler);
         gameOver = new GameOver(handler);

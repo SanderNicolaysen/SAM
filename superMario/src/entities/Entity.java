@@ -5,6 +5,7 @@ import entities.creatures.Goomba;
 import entities.creatures.GreenKoopaTroopa;
 import entities.creatures.Mario;
 import game.Handler;
+import states.State;
 
 import java.awt.*;
 
@@ -42,7 +43,8 @@ public abstract class Entity {
                 //handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth() - 1);
                 //handler.getWorld().getEntityManager().getEntities().add(0, handler.getWorld().getEntityManager().getEntities().size());
 
-                handler.getWorld().getEntityManager().getEntities().remove(e);
+                //handler.getWorld().getEntityManager().getEntities().remove(e);
+                State.setState(handler.getGame().gameOver);
                 //handler.getWorld().getEntityManager().addEntity
                 //       (new Mario(handler, e.getX() + 70, e.getY(), 1));
                 //handler.getWorld().getEntityManager().getEntities().
@@ -73,6 +75,8 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(15.0f);
                     handler.getWorld().getEntityManager().getEntities().remove(e);
+
+                    handler.getWorld().getEntityManager().getMario().setScore(handler.getWorld().getEntityManager().getMario().getScore() + 100);
 
                     System.out.println("Collision bottom");
                 }
@@ -118,34 +122,6 @@ public abstract class Entity {
     public Rectangle getCollisionBounds(float xOffset, float yOffset){
         return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height);
    }
-
-    public Rectangle getBounds()
-    {
-        return new Rectangle((int) (x + bounds.x), (int) (y + bounds.y), bounds.width, bounds.height);
-    }
-
-    public Rectangle getBoundsTop()
-    {
-        return new Rectangle((int) (x + bounds.x + 10), (int) (y + bounds.y), bounds.width - 20, 5);
-    }
-
-    public Rectangle getBoundsBottom()
-    {
-        return new Rectangle((int) (x + bounds.x + 10), (int) (y + bounds.y + bounds.height - 5), bounds.width - 20, 5);
-    }
-
-    public Rectangle getBoundsLeft()
-    {
-        return new Rectangle((int) (x + bounds.x), (int) (y + bounds.y + 10), 5, bounds.height - 20);
-    }
-
-    public Rectangle getBoundsRight()
-    {
-        return new Rectangle((int) (x + bounds.x + bounds.width - 5), (int) (y + bounds.y + 10), 5, bounds.height - 20);
-    }
-
-
-
 
 
     // Getters and Setters

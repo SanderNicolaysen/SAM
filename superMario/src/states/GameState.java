@@ -28,12 +28,14 @@ public class GameState extends State {
     public void tick()
     {
         world.tick();
+
         /*
-        if (handler.getWorld().getEntityManager().getMario().getHealth() == 1)
+        if (handler.getKeyManager().pause)
         {
-            mario.tick();
+            State.setState(handler.getGame().pauseState);
         }
         */
+
 
     }
 
@@ -42,6 +44,10 @@ public class GameState extends State {
     {
         g.drawImage(Assets.bg,0, 0, handler.getWidth(), handler.getHeight(), null);
         world.render(g);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("score", Font.BOLD, 60));
+
+        g.drawString("Score: " + handler.getWorld().getEntityManager().getMario().getScore(), 100, 100);
         /*
         if (handler.getWorld().getEntityManager().getMario().getHealth() == 1)
         {
