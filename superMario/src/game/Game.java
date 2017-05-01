@@ -5,6 +5,8 @@ import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import input.MouseManager;
+import sounds.Sound;
+import sounds.SoundAssests;
 import states.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -45,6 +47,12 @@ public class Game implements Runnable
     // Handler
     private Handler handler;
 
+    // Sounds
+    private SoundAssests soundAssests;
+
+
+
+
     /**
      * Constructor that sets width, height and title of game.
      * @param title the title of the frame
@@ -76,6 +84,7 @@ public class Game implements Runnable
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
+        SoundAssests.init();
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);
@@ -203,6 +212,7 @@ public class Game implements Runnable
     {
         return gameCamera;
     }
+
 
     public int getWidth()
     {

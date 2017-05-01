@@ -35,9 +35,9 @@ public class HammerBrother extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
-        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
-        g.drawImage(getCurrentHammerBrotherAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_16x16_HEIGHT, null);
+        //g.setColor(Color.yellow);
+        //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+        g.drawImage(getCurrentHammerBrotherAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     private BufferedImage getCurrentHammerBrotherAnimationFrame(){
@@ -52,6 +52,9 @@ public class HammerBrother extends Creature {
     }
     private void getInput(){
         xMove = 0;
+        enemyGravity();
+
+        xMove = -speed + 2;
     }
 
 }

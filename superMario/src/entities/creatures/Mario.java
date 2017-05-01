@@ -109,7 +109,6 @@ public class Mario extends Creature {
             }
             yMove += 10;
         }
-
     }
 
     @Override

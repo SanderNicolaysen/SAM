@@ -2,6 +2,7 @@ package entities.creatures;
 
 import entities.Entity;
 import game.Handler;
+import sounds.SoundAssests;
 import tiles.Tile;
 
 public abstract class Creature extends Entity
@@ -158,6 +159,7 @@ public abstract class Creature extends Entity
         }
 
         if(handler.getKeyManager().jump && !falling && !jumping) {
+            SoundAssests.marioJumpSound.play();
             jumping = true;
             falling = false;
             gravity = 25.0f;
