@@ -22,7 +22,6 @@ public class MenuState extends State {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().gameState);
-                if ()
                 handler.getGame().init();
             }}));
 
