@@ -105,9 +105,18 @@ public class Mario extends Creature {
         {
             if (yMove == 0)
             {
+                //health = 1;
+                //x = 150;
+                //y = 888;
+                //handler.getWorld().getEntityManager().getEntities().clear();
                 State.setState(handler.getGame().gameOver);
             }
             yMove += 10;
+        }
+
+        if (y > handler.getHeight())
+        {
+            State.setState(handler.getGame().gameOver);
         }
     }
 

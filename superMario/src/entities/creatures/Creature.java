@@ -159,7 +159,7 @@ public abstract class Creature extends Entity
         }
 
         if(handler.getKeyManager().jump && !falling && !jumping) {
-            SoundAssests.marioJumpSound.play();
+//            SoundAssests.marioJumpSound.play();
             jumping = true;
             falling = false;
             gravity = 25.0f;

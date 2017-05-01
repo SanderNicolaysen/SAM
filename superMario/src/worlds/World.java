@@ -87,8 +87,9 @@ public class World
             //entityManager.getMario().setX(150);
             //entityManager.getMario().setY(888);
             //State.setState(handler.getGame().gameOver);
-            handler.getWorld().getEntityManager().getMario().setHealth(0);
-            return Tile.groundTile;
+
+            //handler.getWorld().getEntityManager().getMario().setHealth(0);
+            return Tile.background;
         }
 
 

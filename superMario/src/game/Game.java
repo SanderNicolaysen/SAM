@@ -84,7 +84,7 @@ public class Game implements Runnable
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
-        SoundAssests.init();
+//        SoundAssests.init();
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);
