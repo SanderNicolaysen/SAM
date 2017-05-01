@@ -74,7 +74,7 @@ public class Game implements Runnable
      * Initialize Assets.
      *
      */
-    private void init()
+    public void init()
     {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
