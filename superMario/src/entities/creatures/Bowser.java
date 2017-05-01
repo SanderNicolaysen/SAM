@@ -11,8 +11,8 @@ public class Bowser extends Creature{
     private Animation animBowserRight, animBowserLeft;
     private boolean spawned = false;
 
-    public Bowser(Handler handler, float x, float y){
-        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
+    public Bowser(Handler handler, float x, float y, int health){
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
         //Animations
         animBowserLeft = new Animation(100, Assets.bowserLeft);
         animBowserRight = new Animation(100, Assets.bowserRight);

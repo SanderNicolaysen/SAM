@@ -9,8 +9,8 @@ public class BulletBill extends Creature{
 
     private boolean spawned = false;
 
-    public BulletBill(Handler handler, float x, float y){
-        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
+    public BulletBill(Handler handler, float x, float y, int health){
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
         //Animations
         bounds.x = 8;
         bounds.y = 16;

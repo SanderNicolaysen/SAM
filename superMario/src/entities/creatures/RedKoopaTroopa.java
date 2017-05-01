@@ -12,9 +12,9 @@ public class RedKoopaTroopa extends Creature {
     private Animation animRedKoopaRight, animRedKoopaLeft;
     private boolean spawned = false;
 
-    public RedKoopaTroopa(Handler handler, float x, float y)
+    public RedKoopaTroopa(Handler handler, float x, float y, int health)
     {
-        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
 
         animRedKoopaRight = new Animation(200, Assets.redKoopaTroopaRight);
         animRedKoopaLeft = new Animation(200, Assets.redKoopaTroopaLeft);

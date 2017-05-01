@@ -14,6 +14,7 @@ public class KeyManager implements KeyListener {
     private boolean[] keys;
     //public boolean enter = false;
     public boolean jump, run, right, left, crouch, throwFireBall;
+    public boolean direction = true;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -32,9 +33,13 @@ public class KeyManager implements KeyListener {
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
 
-       // if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-        //    enter = !enter;
-       // }
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            direction = true;
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT)
+        {
+            direction = false;
+        }
     }
 
     @Override

@@ -1,5 +1,9 @@
 package entities;
 
+import entities.creatures.Bowser;
+import entities.creatures.Goomba;
+import entities.creatures.GreenKoopaTroopa;
+import entities.creatures.Mario;
 import game.Handler;
 
 import java.awt.*;
@@ -31,9 +35,17 @@ public abstract class Entity {
         {
             if(e.equals(this))
                 continue;
+
             // Check if entities collision bounds intersect with where mario's future collision bounds.
             if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
             {
+                //handler.getWorld().getEntityManager().getEntities().remove(e);
+                //handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth() - 1);
+                handler.getWorld().getEntityManager().getEntities().remove(e);
+                handler.getWorld().getEntityManager().addEntity
+                       (new Mario(handler, e.getX() + 70, e.getY(), 1));
+
+
                 return true;
             }
         }
@@ -55,6 +67,9 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setJumping(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(15.0f);
                     handler.getWorld().getEntityManager().getEntities().remove(e);
+                    //handler.getWorld().getEntityManager().addEntity(new Goomba(handler, e.getX() + 10, e.getY()));
+
+                    System.out.println("Collision bottom");
                 }
 
                 // Top collision
@@ -64,33 +79,29 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
                     handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
+                    System.out.println("collision top");
                 }
                 // Left collision
-                if (handler.getWorld().getEntityManager().getMario().getxMove() <= 0 && handler.getWorld().getEntityManager().getMario().isFalling())
+                else if (handler.getWorld().getEntityManager().getMario().getxMove() <= 0 && handler.getWorld().getEntityManager().getMario().isFalling())
                 {
                     handler.getWorld().getEntityManager().getMario().setJumping(false);
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
                     handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
+                    System.out.println("Collision left");
                 }
+
                 // Right collision
-                if (handler.getWorld().getEntityManager().getMario().getxMove() >= 0 && handler.getWorld().getEntityManager().getMario().isFalling())
+                else if (handler.getWorld().getEntityManager().getMario().getxMove() > 0 && handler.getWorld().getEntityManager().getMario().isFalling())
                 {
                     handler.getWorld().getEntityManager().getMario().setJumping(false);
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
                     handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
+
+                    System.out.println("Collision right");
+                    System.out.println(handler.getWorld().getEntityManager().getMario().getHealth());
                 }
-
-
-                // Right
-               // if (handler.getWorld().getEntityManager().getMario().getxMove() > 0)
-               // {
-               //     handler.getWorld().getEntityManager().getMario().setHealth(0);
-
-                    //System.out.println("X - collision right");
-                //    System.out.println("Health " + handler.getWorld().getEntityManager().getMario().getHealth());
-               // }
 
                 return true;
             }

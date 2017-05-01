@@ -21,7 +21,7 @@ public class Game implements Runnable
     // Game
     private int width, height;
     private String title;
-    private boolean running = false;
+    public boolean running = false;
     private Thread thread;
 
     // Graphics
@@ -87,7 +87,7 @@ public class Game implements Runnable
         gameOver = new GameOver(handler);
 
         // Set the current state of the game to gameState.
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     /**

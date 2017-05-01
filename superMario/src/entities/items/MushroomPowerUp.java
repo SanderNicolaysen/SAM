@@ -10,8 +10,8 @@ public class MushroomPowerUp extends Creature{
 
     private boolean spawned = false;
 
-    public MushroomPowerUp(Handler handler, float x, float y, int width, int height) {
-        super(handler, x, y, width, height);
+    public MushroomPowerUp(Handler handler, float x, float y, int width, int height, int health) {
+        super(handler, x, y, width, height, health);
         bounds.x = 8;
         bounds.y = 16;
         bounds.width = 56;

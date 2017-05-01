@@ -7,20 +7,27 @@ import tiles.Tile;
 public abstract class Creature extends Entity
 {
 
-    public static final int DEFAULT_HEALTH = 1;
+    public static final int DEFAULT_Mario_HEALTH = 1;
+    public static final int DEFAULT_SUPERMARIO_HEALTH = 2;
+    public static final int DEFAULT_FLOWER_MARIO = 3;
     public static final float DEFAULT_SPEED = 5.0f;
     public static final int DEFAULT_16x16_WIDTH = 64, DEFAULT_16x16_HEIGHT = 64, DEFAULT_32x32_WIDTH = 128, DEFAULT_32x32_HEIGHT = 128;
 
     protected int health;
+    protected int minHealth;
+    protected int maxHealth;
     protected float speed;
     protected float xMove, yMove;
     protected boolean jumping;
     protected boolean falling;
     protected float gravity;
 
-    public Creature(Handler handler, float x, float y, int width, int height){
+
+    public Creature(Handler handler, float x, float y, int width, int height, int health){
         super(handler, x, y, width, height);
-        health = DEFAULT_HEALTH;
+        this.health = health;
+        minHealth = 0;
+        maxHealth = 3;
         speed = DEFAULT_SPEED;
         xMove = 0;
         yMove = 0;
@@ -229,5 +236,25 @@ public abstract class Creature extends Entity
     public void setGravity(float gravity)
     {
         this.gravity = gravity;
+    }
+
+    public int getMinHealth()
+    {
+        return minHealth;
+    }
+
+    public void setMinHealth(int minHealth)
+    {
+        this.minHealth = minHealth;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth)
+    {
+        this.maxHealth = maxHealth;
     }
 }

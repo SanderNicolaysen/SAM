@@ -12,9 +12,9 @@ public class PiranhaPlant extends Creature {
     private Animation animPiranhaPlantMovement;
     private boolean spawned = false;
 
-    public PiranhaPlant(Handler handler, float x, float y)
+    public PiranhaPlant(Handler handler, float x, float y, int health)
     {
-        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
 
         animPiranhaPlantMovement = new Animation(200, Assets.piranhaPlant);
         bounds.x = 40;

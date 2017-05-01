@@ -12,8 +12,8 @@ public class HammerBrother extends Creature {
     //Animations
     private Animation animHammerBrotherRight, animHammerBrotherLeft;
 
-    public HammerBrother(Handler handler, float x, float y){
-        super(handler, x, y, Creature.DEFAULT_32x32_WIDTH, Creature.DEFAULT_32x32_HEIGHT);
+    public HammerBrother(Handler handler, float x, float y, int health){
+        super(handler, x, y, Creature.DEFAULT_32x32_WIDTH, Creature.DEFAULT_32x32_HEIGHT, health);
         animHammerBrotherRight = new Animation(200, Assets.hammerBrotherRight);
         animHammerBrotherLeft = new Animation(200, Assets.hammerBrotherLeft);
         bounds.x = 40;

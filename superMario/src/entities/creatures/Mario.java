@@ -5,6 +5,7 @@ import entities.Entity;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
+import states.State;
 import tiles.Tile;
 
 import java.awt.*;
@@ -15,8 +16,9 @@ public class Mario extends Creature {
     //Animations
     private Animation animMarioRight, animMarioLeft, animSuperMarioRight, animSuperMarioLeft, animFireMarioRight, animFireMarioLeft;
 
-    public Mario(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT);
+    public Mario(Handler handler, float x, float y, int health) {
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
+
         if (health >= 3){
             health = 3;
         }
@@ -53,15 +55,15 @@ public class Mario extends Creature {
     public void tick()
     {
         //Animations
-        if(health <= 1) {
+        if(health == 1) {
             animMarioRight.tick();
             animMarioLeft.tick();
         }
-        if(health == 2){
+        else if(health == 2){
             animSuperMarioRight.tick();
             animSuperMarioLeft.tick();
         }
-        if(health == 3){
+        else if(health == 3){
             animFireMarioRight.tick();
             animFireMarioLeft.tick();
         }
@@ -74,85 +76,40 @@ public class Mario extends Creature {
 
         handler.getGameCamera().centerOnEntity(this);
     }
-    /*
-    public boolean checkEntityCollision()
-    {
-        for (Entity e : handler.getWorld().getEntityManager().getEntities())
-        {
-            if (e.equals(this))
-            {
-                continue;
-            }
-
-            // Collision with top
-            if (getBoundsTop().intersects(e.getBounds()))
-            {
-                yMove = 0;
-                // y verdi til den vi kolliderer med + høyden slik at y verdi til mario blir rett ved siden av og ikke er stuck.
-                if (jumping)
-                {
-                    jumping = false;
-                    falling = true;
-                    gravity = 0.0f;
-                }
-                else
-                {
-                    if (!falling && !jumping)
-                    {
-                        gravity = 0.0f;
-                        falling = true;
-                    }
-                }
-                return true;
-            }
-            // Bottom
-            if (getBoundsBottom().intersects(e.getBounds()))
-            {
-                yMove = 0;
-                if (falling)
-                {
-                    falling = false;
-                }
-                return true;
-            }
-            // Left
-            if (getBoundsLeft().intersects(e.getBounds()))
-            {
-                xMove = 0;
-                x = e.getBounds().x + e.getBounds().width;
-                return true;
-            }
-            // Right
-            if (getBoundsRight().intersects(e.getBounds()))
-            {
-                xMove = 0;
-                x = e.getBounds().x - e.getBounds().width;
-                return true;
-            }
-        }
-        return false;
-    }
-    */
 
     private void getInput() {
         xMove = 0;
         playerGravity();
 
-        if(health == 0){
-            xMove = 0;
+        if(health != 0)
+        {
+
+            if (handler.getKeyManager().right)
+            {
+                xMove = speed;
+            }
+            if (handler.getKeyManager().left && x > 0)
+            {
+                xMove = -speed;
+            }
+            if (handler.getKeyManager().run && handler.getKeyManager().right)
+            {
+                xMove = speed * 2;
+            }
+            if (handler.getKeyManager().run && handler.getKeyManager().left && x > 0)
+            {
+                xMove = -speed * 2;
+            }
         }
-        if(handler.getKeyManager().right){
-            xMove = speed;
+        else
+        {
+            if (yMove == 0)
+            {
+                State.setState(handler.getGame().gameOver);
+            }
+            yMove += 10;
         }
-        if(handler.getKeyManager().left && x > 0){
-            xMove = -speed;
-        }
-        if(handler.getKeyManager().run && handler.getKeyManager().right){
-            xMove = speed*2;
-        }
-        if(handler.getKeyManager().run && handler.getKeyManager().left && x > 0){
-            xMove = -speed*2;
-        }
+
     }
 
     @Override
@@ -162,12 +119,12 @@ public class Mario extends Creature {
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
             g.drawImage(getCurrentMarioAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
         }
-        if(health == 2) {
+        else if(health == 2) {
             //g.setColor(Color.yellow);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
             g.drawImage(getCurrentSuperMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
         }
-        if(health == 3){
+        else if(health == 3){
             //g.setColor(Color.yellow);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
             g.drawImage(getCurrentFireMarioAnimationFrame(), (int) ((x-32) - handler.getGameCamera().getxOffset()), (int) (y-64), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
@@ -175,15 +132,15 @@ public class Mario extends Creature {
     }
 
     private BufferedImage getCurrentMarioAnimationFrame() {
-        // right jump movement
-        if (health == 0){
+        if (health <= 0){
             return Assets.marioDeath;
         }
-        if (jumping && xMove >= 0){
+        // right jump movement
+        if (jumping && xMove >= 0 && handler.getKeyManager().direction){
             return Assets.marioRightJump;
         }
         // left jump movement
-        else if (jumping && xMove <= 0){
+        else if (jumping && xMove <= 0 && !handler.getKeyManager().direction){
             return Assets.marioLeftJump;
         }
         // right movement
@@ -196,9 +153,15 @@ public class Mario extends Creature {
         {
             return animMarioLeft.getCurrentFrame();
         }
+        // default direction
         else
         {
-            return Assets.marioRightNormal;
+            if (handler.getKeyManager().direction) {
+                return Assets.marioRightNormal;
+            }
+            else {
+                return Assets.marioLeftNormal;
+            }
         }
     }
     private BufferedImage getCurrentSuperMarioAnimationFrame(){
