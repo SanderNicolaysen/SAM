@@ -17,6 +17,8 @@ public abstract class Entity {
     protected float x, y;
     protected int width, height;
     protected Rectangle bounds;
+    protected int health;
+    protected boolean active = true;
 
     public Entity(Handler handler, float x, float y, int width, int height){
         this.handler = handler;
@@ -30,6 +32,16 @@ public abstract class Entity {
 
     public abstract void tick();
     public abstract void render(Graphics g);
+
+    public abstract void die();
+
+    public void hurt(int amount){
+        health -= amount;
+        if(health <= 0){
+            active = false;
+        }
+        die();
+    }
 
 
     public boolean checkEntityCollisions(float xOffset, float yOffset){
@@ -130,6 +142,24 @@ public abstract class Entity {
 
 
     // Getters and Setters
+
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     public float getX() {
         return x;
     }

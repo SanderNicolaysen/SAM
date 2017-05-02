@@ -78,6 +78,11 @@ public class Mario extends Creature {
         handler.getGameCamera().centerOnEntity(this);
     }
 
+    @Override
+    public void die(){
+        System.out.println("You died!");
+    }
+
     private void getInput() {
         xMove = 0;
         playerGravity();

@@ -10,8 +10,8 @@ public class MushroomPowerUp extends Item{
 
     private boolean spawned = false;
 
-    public MushroomPowerUp(Handler handler, float x, float y, int width, int height, int health) {
-        super(handler, x, y, width, height, health);
+    public MushroomPowerUp(Handler handler, float x, float y, int health) {
+        super(handler, x, y, Creature.DEFAULT_16x16_WIDTH, Creature.DEFAULT_16x16_HEIGHT, health);
         bounds.x = 8;
         bounds.y = 16;
         bounds.width = 56;
@@ -39,6 +39,11 @@ public class MushroomPowerUp extends Item{
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
             g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
         }
+    }
+
+    @Override
+    public void die() {
+        
     }
 
     private BufferedImage getCurrentAnimationFrame()

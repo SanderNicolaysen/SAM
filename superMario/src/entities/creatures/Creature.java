@@ -23,7 +23,6 @@ public abstract class Creature extends Entity
     public static final float DEFAULT_SPEED = 5.0f;
     public static final int DEFAULT_16x16_WIDTH = 64, DEFAULT_16x16_HEIGHT = 64, DEFAULT_32x32_WIDTH = 128, DEFAULT_32x32_HEIGHT = 128;
 
-    protected int health;
     protected int minHealth;
     protected int maxHealth;
     protected float speed;
@@ -188,14 +187,6 @@ public abstract class Creature extends Entity
     }
 
     //GETTERS AND SETTERS
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
 
     public float getSpeed() {
         return speed;
