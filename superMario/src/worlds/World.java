@@ -3,6 +3,7 @@ package worlds;
 import entities.EntityManager;
 import entities.creatures.*;
 import entities.items.Coin;
+import entities.items.Item;
 import entities.items.ItemManager;
 import entities.staticEntities.Tube;
 import game.Handler;

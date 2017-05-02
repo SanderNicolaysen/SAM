@@ -32,7 +32,7 @@ public class Item {
         this.id = id;
         count = 1;
 
-        bounds = new Rectangle(x,y, ITEMWIDTH,ITEMHEIGHT);
+        bounds = new Rectangle(x,y, ITEMWIDTH, ITEMHEIGHT);
 
         items[id] = this;
 
@@ -47,12 +47,12 @@ public class Item {
         if (handler == null)
             return;
 
-        render(g,(int) (x - handler.getGameCamera().getxOffset()),(int)(y - handler.getGameCamera().getyOffset()));
+        render(g,(int) (x - handler.getGameCamera().getxOffset()),(y));
     }
 
     public void render(Graphics g, int x, int y){
 
-        g.drawImage(texture,x,y,ITEMWIDTH,ITEMHEIGHT,null);
+        g.drawImage(texture, x, y, ITEMWIDTH, ITEMHEIGHT,null);
     }
 
     public Item creatNew(int x, int y){
