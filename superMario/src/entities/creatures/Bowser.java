@@ -55,6 +55,11 @@ public class Bowser extends Creature{
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
+    @Override
+    public void die() {
+
+    }
+
     private BufferedImage getCurrentAnimationFrame()
     {
         if (checkEntityCollisions(0f, yMove))

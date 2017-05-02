@@ -55,6 +55,11 @@ public class Beetle extends Creature{
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
     }
 
+    @Override
+    public void die() {
+
+    }
+
     private BufferedImage getCurrentAnimationFrame()
     {
         if (checkEntityCollisions(0f, yMove))

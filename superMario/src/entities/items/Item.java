@@ -13,7 +13,7 @@ public class Item {
 
     public static Item[] items = new Item[3];
     public static Item Mushroom = new Item(Assets.mushroomPowerUp, "Mushroom", 0);
-    //public static Item Coin = new Item(Assets.mushroomPowerUp, "Coin", 1);
+    //public static Item Coin = new Item(Assets.coin, "Coin", 1);
     //public static Item FireFlower = new Item(Animation(), "FireFlower", 2);
 
     //Class

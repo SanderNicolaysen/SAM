@@ -6,9 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * Created by PålTømte on 02.05.2017.
- */
+
 public class ItemManager {
 
     private Handler handler;

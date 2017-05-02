@@ -58,6 +58,11 @@ public class FlyingGreenKoopaTroopa extends Creature {
         }
     }
 
+    @Override
+    public void die() {
+
+    }
+
     private BufferedImage getCurrentAnimationFrame()
     {
         //return animKoopaRight.getCurrentFrame();

@@ -45,6 +45,11 @@ public class FireFlowerPowerUp extends Creature{
         }
     }
 
+    @Override
+    public void die() {
+
+    }
+
     private BufferedImage getCurrentAnimationFrame()
     {
         if (checkEntityCollisions(0f, yMove))

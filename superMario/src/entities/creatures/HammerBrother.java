@@ -45,6 +45,11 @@ public class HammerBrother extends Creature {
         }
     }
 
+    @Override
+    public void die() {
+
+    }
+
     private BufferedImage getCurrentHammerBrotherAnimationFrame(){
         if (checkEntityCollisions(0f, yMove))
         {
