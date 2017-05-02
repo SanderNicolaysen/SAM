@@ -6,7 +6,7 @@ import graphics.Assets;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class MushroomPowerUp extends Creature{
+public class MushroomPowerUp extends Item{
 
     private boolean spawned = false;
 

@@ -3,6 +3,7 @@ package worlds;
 import entities.EntityManager;
 import entities.creatures.*;
 import entities.items.Coin;
+import entities.items.ItemManager;
 import entities.staticEntities.Tube;
 import game.Handler;
 import sounds.Sound;
@@ -23,11 +24,14 @@ public class World
 
     //Entities
     private EntityManager entityManager;
+    //ItemManager
+    private ItemManager itemManager;
 
     // Load world from a file.
     public World(Handler handler, String path)
     {
         this.handler = handler;
+        itemManager = new ItemManager(handler);
         loadWorld(path);
     }
 
@@ -56,6 +60,7 @@ public class World
 
     public void tick()
     {
+        itemManager.tick();
         entityManager.tick();
     }
 
@@ -82,6 +87,7 @@ public class World
 
         //Entities
         entityManager.render(g);
+        itemManager.render(g);
     }
 
     public Tile getTile(int x, int y)
@@ -134,6 +140,7 @@ public class World
         }
     }
 
+    //Getters and Setters
     public EntityManager getEntityManager() {
         return entityManager;
     }
@@ -148,4 +155,20 @@ public class World
         return height;
     }
 
+    public Handler getHandler() {
+        return handler;
+    }
+
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public ItemManager getItemManager() {
+
+        return itemManager;
+    }
+
+    public void setItemManager(ItemManager itemManager) {
+        this.itemManager = itemManager;
+    }
 }
