@@ -24,6 +24,13 @@ public class World
     //Entities
     private EntityManager entityManager;
 
+    // Load world from a file.
+    public World(Handler handler, String path)
+    {
+        this.handler = handler;
+        loadWorld(path);
+    }
+
     public void initEntities()
     {
         // player
@@ -45,13 +52,6 @@ public class World
 
         entityManager.getMario().setX(spawnx);
         entityManager.getMario().setY(spawny);
-    }
-
-    // Load world from a file.
-    public World(Handler handler, String path)
-    {
-        this.handler = handler;
-        loadWorld(path);
     }
 
     public void tick()

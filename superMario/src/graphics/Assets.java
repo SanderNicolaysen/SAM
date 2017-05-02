@@ -463,8 +463,8 @@ public class Assets
         exittodesktop[0] = playButton.crop(0,320,305,80);
         exittodesktop[1] = playButton.crop(305,320,305,80);
         newGame = new BufferedImage[2];
-       // newGame[0] = playButton.crop();
-       // newGame[0] = playButton.crop();
+        newGame[0] = playButton.crop(0, 405, 305, 80);
+        newGame[1] = playButton.crop(305, 405, 305, 80);
 
         SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Logo.png"));
         menu = new BufferedImage[3];

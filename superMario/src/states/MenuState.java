@@ -23,7 +23,7 @@ public class MenuState extends State {
         /*
 */
         // New Game
-        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 200, 305, 80, Assets.resume, new ClickListener(){
+        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 100, 305, 80, Assets.newGame, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getGame().resetGame();
@@ -31,15 +31,19 @@ public class MenuState extends State {
                 State.setState(handler.getGame().gameState);
             }}));
 
-        /*
+
         // Resume
-        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 300, 305, 80, Assets., new ClickListener(){
+        uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 200, 305, 80, Assets.resume, new ClickListener(){
             @Override
             public void onClick() {
-                State.setState(handler.getGame().gameState);
+                if (handler.getGame().gameState != null)
+                {
+                    handler.getKeyManager().pause = false;
+                    State.setState(handler.getGame().gameState);
+                }
 
             }}));
-            */
+
 
         // Quit
         uiManager.addObject(new UIImageButtons(handler.getWidth() / 2 - 305 / 2, handler.getHeight() / 2 - 80 / 2 + 300, 305, 80, Assets.quit, new ClickListener(){

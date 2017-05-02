@@ -103,6 +103,7 @@ public abstract class Creature extends Entity
             {
                 y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
 
+
                 if (jumping)
                 {
                     jumping = false;

@@ -41,6 +41,7 @@ public class Game implements Runnable
     // States
     public State gameState = null;
     public State menuState = null;
+    public State gameState2 = null;
     //public State settingsState = null;
     //public State gameOver = null;
     //public State pauseState = null;
@@ -116,6 +117,7 @@ public class Game implements Runnable
         // Initialization of states
         //gameState = new GameState(handler);
         menuState = new MenuState(handler);
+        gameState2 = new GameState2(handler);
         //settingsState = new SettingsState(handler);
         //gameOver = new GameOver(handler);
         //pauseState = new PauseState(handler);

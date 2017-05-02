@@ -112,6 +112,7 @@ public class Mario extends Creature {
                 //y = 888;
                 //handler.getWorld().getEntityManager().getEntities().clear();
                 handler.getSound().playSound(Sound.marioDieSound);
+                handler.getKeyManager().pause = true;
                 State.setState(handler.getGame().menuState);
             }
             yMove += 10;
@@ -122,6 +123,7 @@ public class Mario extends Creature {
         if (y > handler.getHeight())
         {
             handler.getSound().playSound(Sound.marioDieSound);
+            handler.getKeyManager().pause = true;
             State.setState(handler.getGame().menuState);
         }
         // End of map
@@ -133,7 +135,9 @@ public class Mario extends Creature {
                 Thread.currentThread().interrupt();
             }
             */
+            handler.getKeyManager().pause = true;
             State.setState(handler.getGame().menuState);
+            //State.setState(handler.getGame().gameState2);
         }
 
     }
