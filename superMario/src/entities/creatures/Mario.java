@@ -5,6 +5,7 @@ import entities.Entity;
 import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
+import sounds.Sound;
 import states.State;
 import tiles.Tile;
 
@@ -103,21 +104,38 @@ public class Mario extends Creature {
         }
         else
         {
+            // Mario hits bottom of enemy
             if (yMove == 0)
             {
                 //health = 1;
                 //x = 150;
                 //y = 888;
                 //handler.getWorld().getEntityManager().getEntities().clear();
-                State.setState(handler.getGame().gameOver);
+                handler.getSound().playSound(Sound.marioDieSound);
+                State.setState(handler.getGame().menuState);
             }
             yMove += 10;
+
         }
 
+        // Mario falls outside of map
         if (y > handler.getHeight())
         {
-            State.setState(handler.getGame().gameOver);
+            handler.getSound().playSound(Sound.marioDieSound);
+            State.setState(handler.getGame().menuState);
         }
+        // End of map
+        if (x > Tile.TILEWIDTH * 353)
+        {
+           /* try {
+                Thread.sleep(5000);
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+            */
+            State.setState(handler.getGame().menuState);
+        }
+
     }
 
     @Override

@@ -75,7 +75,7 @@ public class Assets
 
 
     //All menu images
-    public static BufferedImage[] play, quit, resume, exittomenu, exittodesktop;
+    public static BufferedImage[] play, quit, resume, exittomenu, exittodesktop, newGame;
 
     /**
      * This method will load in all the assets we need in our game.
@@ -462,6 +462,9 @@ public class Assets
         exittodesktop = new BufferedImage[2];
         exittodesktop[0] = playButton.crop(0,320,305,80);
         exittodesktop[1] = playButton.crop(305,320,305,80);
+        newGame = new BufferedImage[2];
+       // newGame[0] = playButton.crop();
+       // newGame[0] = playButton.crop();
 
         SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Logo.png"));
         menu = new BufferedImage[3];

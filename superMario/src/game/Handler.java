@@ -3,6 +3,7 @@ package game;
 import graphics.GameCamera;
 import input.KeyManager;
 import input.MouseManager;
+import sounds.Sound;
 import worlds.World;
 
 //This class will make it easier to pass along objects.
@@ -58,5 +59,10 @@ public class Handler
     public void setWorld(World world)
     {
         this.world = world;
+    }
+
+    public Sound getSound()
+    {
+        return game.getSound();
     }
 }

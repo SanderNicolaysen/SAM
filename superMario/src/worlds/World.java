@@ -5,6 +5,7 @@ import entities.creatures.*;
 import entities.items.Coin;
 import entities.staticEntities.Tube;
 import game.Handler;
+import sounds.Sound;
 import states.State;
 import tiles.Tile;
 import utils.Utils;
@@ -23,13 +24,12 @@ public class World
     //Entities
     private EntityManager entityManager;
 
-    // Load world from a file.
-    public World(Handler handler, String path)
+    public void initEntities()
     {
-        //74
-        this.handler = handler;
+        // player
+        entityManager = new EntityManager(handler, new Mario(handler, 150, 895,1));
 
-        entityManager = new EntityManager(handler, new Mario(handler, 150, handler.getHeight() - Tile.TILEHEIGHT * 3, 1));
+        // Enemies
         //entityManager.addEntity(new GreenKoopaTroopa(handler, 120 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new RedKoopaTroopa(handler, 100 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new FlyingGreenKoopaTroopa(handler, 45 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 3, 1));
@@ -38,14 +38,20 @@ public class World
         //entityManager.addEntity(new Bowser(handler, 140 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new PiranhaPlant(handler,22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new Beetle(handler, 90 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
-        //entityManager.addEntity(new HammerBrother(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+        entityManager.addEntity(new HammerBrother(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new Goomba(handler, 53 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 10, 1));
         //entityManager.addEntity(new BulletBill(handler, 78 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 8, 1));
         //entityManager.addEntity(new Coin(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
-        loadWorld(path);
 
         entityManager.getMario().setX(spawnx);
         entityManager.getMario().setY(spawny);
+    }
+
+    // Load world from a file.
+    public World(Handler handler, String path)
+    {
+        this.handler = handler;
+        loadWorld(path);
     }
 
     public void tick()
@@ -98,7 +104,7 @@ public class World
         // return a default tile.
         if (t == null)
         {
-            return Tile.groundTile;
+            return Tile.background;
         }
 
         return t;

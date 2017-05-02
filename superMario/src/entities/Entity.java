@@ -5,6 +5,7 @@ import entities.creatures.Goomba;
 import entities.creatures.GreenKoopaTroopa;
 import entities.creatures.Mario;
 import game.Handler;
+import sounds.Sound;
 import states.State;
 
 import java.awt.*;
@@ -44,7 +45,9 @@ public abstract class Entity {
                 //handler.getWorld().getEntityManager().getEntities().add(0, handler.getWorld().getEntityManager().getEntities().size());
 
                 //handler.getWorld().getEntityManager().getEntities().remove(e);
-                State.setState(handler.getGame().gameOver);
+
+                handler.getKeyManager().pause = true;
+                State.setState(handler.getGame().menuState);
                 //handler.getWorld().getEntityManager().addEntity
                 //       (new Mario(handler, e.getX() + 70, e.getY(), 1));
                 //handler.getWorld().getEntityManager().getEntities().
@@ -77,6 +80,7 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getEntities().remove(e);
 
                     handler.getWorld().getEntityManager().getMario().setScore(handler.getWorld().getEntityManager().getMario().getScore() + 100);
+                    handler.getSound().playSound(Sound.jumpHitSound);
 
                     System.out.println("Collision bottom");
                 }

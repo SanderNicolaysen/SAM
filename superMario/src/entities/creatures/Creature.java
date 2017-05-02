@@ -2,6 +2,7 @@ package entities.creatures;
 
 import entities.Entity;
 import game.Handler;
+import sounds.Sound;
 import tiles.Tile;
 
 import javax.sound.sampled.AudioSystem;
@@ -148,36 +149,6 @@ public abstract class Creature extends Entity
         return handler.getWorld().getTile(x, y).isSolid();
     }
 
-    File marioJumpSound = new File("res/sounds & music/smb_jump-small.wav");
-
-    public static void playSound(File sound)
-    {
-        try
-        {
-            try
-            {
-
-                Clip clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(sound));
-                clip.start();
-
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-            catch (UnsupportedAudioFileException e)
-            {
-                e.printStackTrace();
-            }
-
-        }
-        catch (LineUnavailableException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
 
     public void playerGravity()
     {
@@ -200,7 +171,7 @@ public abstract class Creature extends Entity
             jumping = true;
             falling = false;
             gravity = 25.0f;
-            playSound(marioJumpSound);
+            handler.getSound().playSound(Sound.marioJumpSound);
         }
     }
 

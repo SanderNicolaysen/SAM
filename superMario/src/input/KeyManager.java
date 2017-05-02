@@ -17,9 +17,11 @@ public class KeyManager implements KeyListener {
     public boolean jump, run, right, left, crouch, throwFireBall;
     public boolean direction = true;
     public boolean pause = false;
+    public Handler handler;
 
-    public KeyManager(){
+    public KeyManager(Handler handler){
         keys = new boolean[256];
+        handler = this.handler;
     }
 
     public void tick(){
@@ -43,11 +45,12 @@ public class KeyManager implements KeyListener {
             direction = false;
         }
 
-        /*if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
         {
-            pause = true;
+            pause = !pause;
+            System.out.println("pause: " + pause);
         }
-        */
+
     }
 
     @Override

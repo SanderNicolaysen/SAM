@@ -1,10 +1,13 @@
 package game;
 
+import entities.EntityManager;
 import graphics.Assets;
 import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import input.MouseManager;
+import javafx.scene.transform.Scale;
+import sounds.Sound;
 import states.*;
 
 import javax.sound.sampled.AudioSystem;
@@ -36,11 +39,11 @@ public class Game implements Runnable
     private Graphics g;
 
     // States
-    public State gameState;
-    public State menuState;
-    public State settingsState;
-    public State gameOver;
-    //public State pauseState;
+    public State gameState = null;
+    public State menuState = null;
+    //public State settingsState = null;
+    //public State gameOver = null;
+    //public State pauseState = null;
 
 
     // Input
@@ -54,6 +57,22 @@ public class Game implements Runnable
     private Handler handler;
 
     // Sounds
+    private Sound sound;
+
+    public void resetGame()
+    {
+        if (gameState == null)
+        {
+            gameState = new GameState(handler);
+            handler.getWorld().initEntities();
+            System.out.println("New game");
+        }
+
+        // Clear and init all entities
+        handler.getWorld().getEntityManager().getEntities().clear();
+        handler.getWorld().initEntities();
+
+    }
 
     /**
      * Constructor that sets width, height and title of game.
@@ -66,8 +85,9 @@ public class Game implements Runnable
         this.width = width;
         this.height = height;
         this.title = title;
-        keyManager = new KeyManager();
+        keyManager = new KeyManager(handler);
         mouseManager = new MouseManager();
+        sound = new Sound(handler);
     }
 
     /**
@@ -86,16 +106,19 @@ public class Game implements Runnable
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
+        Sound.init();
+        //sound.playSound(Sound.overWorldTheme);
+        //sound.close();
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);
 
         // Initialization of states
-        gameState = new GameState(handler);
-        //pauseState = new PauseState(handler);
+        //gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        settingsState = new SettingsState(handler);
-        gameOver = new GameOver(handler);
+        //settingsState = new SettingsState(handler);
+        //gameOver = new GameOver(handler);
+        //pauseState = new PauseState(handler);
 
         // Set the current state of the game to gameState.
         State.setState(menuState);
@@ -215,6 +238,10 @@ public class Game implements Runnable
         return gameCamera;
     }
 
+    public Sound getSound()
+    {
+        return sound;
+    }
 
     public int getWidth()
     {
