@@ -47,6 +47,7 @@ public abstract class Entity {
                 //handler.getWorld().getEntityManager().getEntities().remove(e);
 
                 handler.getKeyManager().pause = true;
+                handler.getSound().playSound(Sound.marioDieSound);
                 State.setState(handler.getGame().menuState);
                 //handler.getWorld().getEntityManager().addEntity
                 //       (new Mario(handler, e.getX() + 70, e.getY(), 1));

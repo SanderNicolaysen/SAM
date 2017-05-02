@@ -25,6 +25,7 @@ public class Sound
         jumpHitSound = new File("res/sounds & music/smb_stomp.wav");
         stageClearSound = new File("res/sounds & music/smb_stage_clear.wav");
         overWorldTheme = new File("res/sounds & music/01-main-theme-overworld.wav");
+        pauseSound = new File("res/sounds & music/smb_pause.wav");
 
     }
     /*
@@ -57,6 +58,7 @@ public class Sound
                 clip.open(AudioSystem.getAudioInputStream(sound));
                 //clip.stop();
                 clip.start();
+                //Thread.sleep(clip.getMicrosecondLength() / 1000);
 
             }
             catch (IOException e)

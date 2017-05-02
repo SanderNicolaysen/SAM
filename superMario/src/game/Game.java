@@ -69,6 +69,8 @@ public class Game implements Runnable
             System.out.println("New game");
         }
 
+        //sound.close();
+        //sound.playSound(Sound.overWorldTheme);
         // Clear and init all entities
         handler.getWorld().getEntityManager().getEntities().clear();
         handler.getWorld().initEntities();

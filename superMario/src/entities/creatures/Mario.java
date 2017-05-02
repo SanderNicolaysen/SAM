@@ -135,6 +135,7 @@ public class Mario extends Creature {
                 Thread.currentThread().interrupt();
             }
             */
+            handler.getGame().getSound().playSound(Sound.stageClearSound);
             handler.getKeyManager().pause = true;
             State.setState(handler.getGame().menuState);
             //State.setState(handler.getGame().gameState2);
@@ -144,6 +145,7 @@ public class Mario extends Creature {
 
     @Override
     public void render(Graphics g) {
+
         if(health <= 1) {
             //g.setColor(Color.yellow);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);

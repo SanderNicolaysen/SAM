@@ -4,6 +4,7 @@ import entities.creatures.Mario;
 import game.Handler;
 import graphics.Assets;
 import input.KeyManager;
+import sounds.Sound;
 import worlds.World;
 
 
@@ -32,6 +33,8 @@ public class GameState extends State {
 
         if (handler.getKeyManager().pause)
         {
+            handler.getSound().playSound(Sound.pauseSound);
+            handler.getSound().close();
             State.setState(handler.getGame().menuState);
         }
 
