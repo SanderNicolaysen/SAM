@@ -17,9 +17,9 @@ public class Bowser extends Creature{
         animBowserLeft = new Animation(100, Assets.bowserLeft);
         animBowserRight = new Animation(100, Assets.bowserRight);
         bounds.x = 8;
-        bounds.y = 40;
+        bounds.y = 40 - 20;
         bounds.width = 120;
-        bounds.height = 88;
+        bounds.height = 88 + 20;
     }
 
     @Override
@@ -29,17 +29,17 @@ public class Bowser extends Creature{
         //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
         // If mario is at middle of screen tick enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
-        }
-        //Animations
-        animBowserRight.tick();
-        animBowserLeft.tick();
-        //Movements
-        getInput();
-        move();
+            //Animations
+            animBowserRight.tick();
+            animBowserLeft.tick();
+            //Movements
+            getInput();
+            move();
 
-        spawned = true;
+            spawned = true;
+        }
     }
 
     @Override
@@ -47,12 +47,12 @@ public class Bowser extends Creature{
     {
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
         // If mario is at middle of screen render enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (spawned)
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH * 2, DEFAULT_32x32_HEIGHT * 2, null);
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     @Override

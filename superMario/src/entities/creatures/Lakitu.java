@@ -41,6 +41,7 @@ public class Lakitu extends Creature {
 
             spawned = true;
         }
+        //System.out.println(x - handler.getWorld().getEntityManager().getMario().getX() + "   " + handler.getWidth() / 2);
 
     }
 
@@ -53,8 +54,8 @@ public class Lakitu extends Creature {
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     @Override
@@ -75,9 +76,21 @@ public class Lakitu extends Creature {
 
     }
 
+    private float temp = 0;
+    Double increment = 3.14 / (60 * 2);
+    private boolean goombaspawn = false;
     private void getInput()
     {
         xMove = 0;
-        xMove = -speed + 2;
+        yMove = 0;
+
+        if (temp == 3.14)
+        {
+            temp = 0;
+        }
+
+        temp += increment;
+        xMove = (float) Math.sin(temp) * 10;
+        yMove = (float) Math.cos(temp) * 6;
     }
 }

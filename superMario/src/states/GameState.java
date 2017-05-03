@@ -5,6 +5,7 @@ import game.Handler;
 import graphics.Assets;
 import input.KeyManager;
 import sounds.Sound;
+import utils.Utils;
 import worlds.World;
 
 
@@ -36,6 +37,13 @@ public class GameState extends State {
             handler.getSound().playSound(Sound.pauseSound);
             handler.getSound().close();
             State.setState(handler.getGame().menuState);
+        }
+
+
+        // Score
+        if (handler.getKeyManager().pause)
+        {
+            handler.getGame().highScore = Utils.loadFileAssString("res/worlds/savefile.txt");
         }
 
     }

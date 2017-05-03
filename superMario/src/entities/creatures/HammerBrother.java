@@ -25,15 +25,19 @@ public class HammerBrother extends Creature {
 
     @Override
     public void tick() {
-        //Animations
-        animHammerBrotherRight.tick();
-        animHammerBrotherLeft.tick();
 
-        //Movements
-        getInput();
-        move();
+        if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
+        {
+            //Animations
+            animHammerBrotherRight.tick();
+            animHammerBrotherLeft.tick();
 
-        spawned = true;
+            //Movements
+            getInput();
+            move();
+
+            spawned = true;
+        }
     }
 
     @Override

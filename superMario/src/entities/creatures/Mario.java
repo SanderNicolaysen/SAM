@@ -6,8 +6,10 @@ import game.Handler;
 import graphics.Animation;
 import graphics.Assets;
 import sounds.Sound;
+import states.MenuState;
 import states.State;
 import tiles.Tile;
+import utils.Utils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -112,11 +114,15 @@ public class Mario extends Creature {
             // Mario hits bottom of enemy
             if (yMove == 0)
             {
-                //health = 1;
-                //x = 150;
-                //y = 888;
-                //handler.getWorld().getEntityManager().getEntities().clear();
+                // Save Score
+                Utils.writeFile("res/worlds/savefile.txt", Integer.toString(score));
                 handler.getSound().playSound(Sound.marioDieSound);
+                try {
+                    Thread.sleep(3000);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+
                 handler.getKeyManager().pause = true;
                 State.setState(handler.getGame().menuState);
             }
@@ -128,19 +134,29 @@ public class Mario extends Creature {
         if (y > handler.getHeight())
         {
             handler.getSound().playSound(Sound.marioDieSound);
+
+            try {
+                Thread.sleep(3000);
+            } catch(InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+
+            // Save Score
+            Utils.writeFile("res/worlds/savefile.txt", Integer.toString(score));
             handler.getKeyManager().pause = true;
             State.setState(handler.getGame().menuState);
         }
         // End of map
         if (x > Tile.TILEWIDTH * 353)
         {
-           /* try {
-                Thread.sleep(5000);
+            handler.getGame().getSound().playSound(Sound.stageClearSound);
+            Utils.writeFile("res/worlds/savefile.txt", Integer.toString(score));
+            try {
+                Thread.sleep(5500);
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            */
-            handler.getGame().getSound().playSound(Sound.stageClearSound);
+
             handler.getKeyManager().pause = true;
             State.setState(handler.getGame().menuState);
             //State.setState(handler.getGame().gameState2);

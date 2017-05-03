@@ -29,30 +29,30 @@ public class Beetle extends Creature{
         //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
         // If mario is at middle of screen tick enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
-        }
-        //Animations
-        animBeetleRight.tick();
-        animBeetleLeft.tick();
-        //Movements
-        getInput();
-        move();
+            //Animations
+            animBeetleRight.tick();
+            animBeetleLeft.tick();
+            //Movements
+            getInput();
+            move();
 
-        spawned = true;
+            spawned = true;
+        }
+        //System.out.println(x - handler.getWorld().getEntityManager().getMario().getX() + "   " + handler.getWidth() / 2);
     }
 
     @Override
     public void render(Graphics g)
     {
-        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
-        // If mario is at middle of screen render enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (spawned)
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
+            spawned = true;
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_16x16_WIDTH, DEFAULT_16x16_HEIGHT, null);
     }
 
     @Override
@@ -71,10 +71,19 @@ public class Beetle extends Creature{
         }
     }
 
+    private float temp = 0;
+    Double increment = 3.14 / (60 * 2);
     private void getInput()
     {
         xMove = 0;
         enemyGravity();
-        xMove = -speed + 2;
+
+        if (temp == 3.14)
+        {
+            temp = 0;
+        }
+
+        temp += increment;
+        xMove = (float) Math.sin(temp) * 4;
     }
 }

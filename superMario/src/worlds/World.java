@@ -38,21 +38,32 @@ public class World
 
     public void initEntities()
     {
+        // 41 til første rør
+
         // player
         entityManager = new EntityManager(handler, new Mario(handler, 150, 895,1));
 
         // Enemies
+        entityManager.addEntity(new HammerBrother(handler, 30 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+        entityManager.addEntity(new Beetle(handler, 41 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
+        entityManager.addEntity(new Lakitu(handler, 105 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
+        entityManager.addEntity(new Lakitu(handler, 95 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
+        entityManager.addEntity(new Lakitu(handler, 85 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
+        entityManager.addEntity(new Goomba(handler, 105 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
+        entityManager.addEntity(new Goomba(handler, 95 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
+        entityManager.addEntity(new Bowser(handler, 350 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+
+        //entityManager.addEntity(new BulletBill(handler, 105 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 8, 1));
+
+
+        //entityManager.addEntity(new PiranhaPlant(handler,40 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+        //entityManager.addEntity(new PiranhaPlant(handler,41 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+        //entityManager.addEntity(new PiranhaPlant(handler,42 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
+
         //entityManager.addEntity(new GreenKoopaTroopa(handler, 120 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new RedKoopaTroopa(handler, 100 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         //entityManager.addEntity(new FlyingGreenKoopaTroopa(handler, 45 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 3, 1));
         //entityManager.addEntity(new FlyingRedKoopaTroopa(handler, 50 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
-        //entityManager.addEntity(new Lakitu(handler, 70 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
-        //entityManager.addEntity(new Bowser(handler, 140 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
-        //entityManager.addEntity(new PiranhaPlant(handler,22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
-        //entityManager.addEntity(new Beetle(handler, 90 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
-        entityManager.addEntity(new HammerBrother(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
-        //entityManager.addEntity(new Goomba(handler, 53 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 10, 1));
-        //entityManager.addEntity(new BulletBill(handler, 78 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 8, 1));
         //entityManager.addEntity(new Coin(handler, 22 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
 
         entityManager.getMario().setX(spawnx);

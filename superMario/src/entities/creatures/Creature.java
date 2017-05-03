@@ -103,6 +103,7 @@ public abstract class Creature extends Entity
             else
             {
                 y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+                handler.getSound().playSound(Sound.boxHitSound);
 
                 if (jumping)
                 {

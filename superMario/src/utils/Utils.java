@@ -1,8 +1,7 @@
 package utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.swing.*;
+import java.io.*;
 
 /**
  * Utilities
@@ -53,6 +52,30 @@ public class Utils
         {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    /**
+     * Method that will save file
+     */
+    public static void writeFile(String path, String score)
+    {
+        if (path != null)
+        {
+            try
+            {
+                FileWriter f = new FileWriter(path);
+                BufferedWriter bw = new BufferedWriter(f);
+
+                bw.write(String.valueOf(score));
+
+                bw.close();
+                f.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

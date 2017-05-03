@@ -7,6 +7,7 @@ import entities.creatures.Mario;
 import game.Handler;
 import sounds.Sound;
 import states.State;
+import utils.Utils;
 
 import java.awt.*;
 
@@ -58,8 +59,15 @@ public abstract class Entity {
 
                 //handler.getWorld().getEntityManager().getEntities().remove(e);
 
-                handler.getKeyManager().pause = true;
+                // Save score
+                Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
                 handler.getSound().playSound(Sound.marioDieSound);
+                try {
+                    Thread.sleep(3000);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+                handler.getKeyManager().pause = true;
                 State.setState(handler.getGame().menuState);
                 //handler.getWorld().getEntityManager().addEntity
                 //       (new Mario(handler, e.getX() + 70, e.getY(), 1));
@@ -92,8 +100,13 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setGravity(15.0f);
                     handler.getWorld().getEntityManager().getEntities().remove(e);
 
-                    handler.getWorld().getEntityManager().getMario().setScore(handler.getWorld().getEntityManager().getMario().getScore() + 100);
                     handler.getSound().playSound(Sound.jumpHitSound);
+
+                    handler.getWorld().getEntityManager().getMario().setScore(handler.getWorld().getEntityManager().getMario().getScore() + 100);
+
+                    // TODO SCORE
+                    // SCORE
+                    Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
 
                     System.out.println("Collision bottom");
                 }
@@ -105,6 +118,12 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setFalling(true);
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
                     handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
+
+
+                    // TODO SCORE
+                    // Save score
+                    Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
+
                     System.out.println("collision top");
                 }
                 // Left collision

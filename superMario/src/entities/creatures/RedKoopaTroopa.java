@@ -32,18 +32,18 @@ public class RedKoopaTroopa extends Creature {
         //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
         // If mario is at middle of screen tick enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
+            //Animations
+            animRedKoopaRight.tick();
+            animRedKoopaLeft.tick();
+            //Movements
+            getInput();
+            move();
+
+            spawned = true;
         }
 
-        //Animations
-        animRedKoopaRight.tick();
-        animRedKoopaLeft.tick();
-        //Movements
-        getInput();
-        move();
-
-        spawned = true;
     }
 
     @Override
@@ -51,12 +51,12 @@ public class RedKoopaTroopa extends Creature {
     {
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
         // If mario is at middle of screen render enemy
-        if (handler.getGameCamera().getxOffset() > 0 || spawned)
+        if (spawned)
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
         }
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
     }
 
     @Override

@@ -27,7 +27,6 @@ public class Goomba extends Creature{
         //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
         //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
-        // If mario is at middle of screen tick enemy
         if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
             //Animations
@@ -38,6 +37,7 @@ public class Goomba extends Creature{
 
             spawned = true;
         }
+        //System.out.println(x - handler.getWorld().getEntityManager().getMario().getX() + "   " + handler.getWidth() / 2);
     }
 
     @Override
@@ -72,11 +72,19 @@ public class Goomba extends Creature{
         }
     }
 
+    private float temp = 0;
+    Double increment = 3.14 / (60 * 2);
     private void getInput()
     {
         xMove = 0;
-        xMove = -speed + 2;
-
         enemyGravity();
+
+        if (temp == 3.14)
+        {
+            temp = 0;
+        }
+
+        temp += increment;
+        xMove = (float) Math.sin(temp) * 8;
     }
 }

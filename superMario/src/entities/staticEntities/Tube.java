@@ -21,4 +21,10 @@ public class Tube extends StaticEntity{
     public void render(Graphics g) {
         g.drawImage(Assets.tubeUp1, (int) (x - handler.getGameCamera().getxOffset()), (int) y, width, height, null);
     }
+
+    @Override
+    public void die()
+    {
+
+    }
 }

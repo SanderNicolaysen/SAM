@@ -32,12 +32,13 @@ public class EntityManager {
     }
 
     public void tick(){
-        Iterator<Entity> it = entities.iterator();
-        while(it.hasNext()){
-            Entity e = it.next();
+        for (int i = 0; i < entities.size(); i++)
+        {
+            Entity e = entities.get(i);
             e.tick();
-            if(!e.isActive()){
-                it.remove();
+            if (!e.isActive())
+            {
+                entities.remove(e);
             }
         }
     }

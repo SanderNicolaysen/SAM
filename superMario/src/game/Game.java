@@ -60,6 +60,9 @@ public class Game implements Runnable
     // Sounds
     private Sound sound;
 
+    // HighScore
+    public String highScore;
+
     public void resetGame()
     {
         if (gameState == null)
@@ -111,7 +114,6 @@ public class Game implements Runnable
         Assets.init();
         Sound.init();
         //sound.playSound(Sound.overWorldTheme);
-        //sound.close();
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);
