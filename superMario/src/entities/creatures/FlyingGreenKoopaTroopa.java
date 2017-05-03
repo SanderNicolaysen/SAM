@@ -28,9 +28,6 @@ public class FlyingGreenKoopaTroopa extends Creature {
     @Override
     public void tick()
     {
-        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
-        //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
-
         // If mario is at middle of screen tick enemy
         if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
         {
@@ -48,7 +45,6 @@ public class FlyingGreenKoopaTroopa extends Creature {
     @Override
     public void render(Graphics g)
     {
-        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
         // If mario is at middle of screen render enemy
         if (spawned)
         {
@@ -65,9 +61,6 @@ public class FlyingGreenKoopaTroopa extends Creature {
 
     private BufferedImage getCurrentAnimationFrame()
     {
-        //return animKoopaRight.getCurrentFrame();
-        //System.out.println(bounds.x);
-
         if (checkEntityCollisions(0f, yMove))
         {
             return animFlyingGreenKoopaRight.getCurrentFrame();

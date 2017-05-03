@@ -66,7 +66,7 @@ public class HammerBrother extends Creature {
     }
     private void getInput(){
         xMove = 0;
-        enemyGravity();
+        bowserGravity();
 
         xMove = -speed + 2;
     }

@@ -50,7 +50,6 @@ public class Sound
             {
                 clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(sound));
-                //clip.stop();
                 clip.start();
                 //Thread.sleep(clip.getMicrosecondLength() / 1000);
 

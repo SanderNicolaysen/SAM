@@ -92,8 +92,7 @@ public abstract class Entity {
 
                     handler.getWorld().getEntityManager().getMario().setScore(handler.getWorld().getEntityManager().getMario().getScore() + 100);
 
-                    // TODO SCORE
-                    // SCORE
+                    // save score
                     Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
 
                     System.out.println("Collision bottom");
@@ -107,8 +106,6 @@ public abstract class Entity {
                     handler.getWorld().getEntityManager().getMario().setGravity(0.0f);
                     handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth()-1);
 
-
-                    // TODO SCORE
                     // Save score
                     Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
 

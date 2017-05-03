@@ -6,14 +6,6 @@ import graphics.Assets;
 import sounds.Sound;
 import tiles.Tile;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-
 public abstract class Creature extends Entity
 {
 
@@ -174,6 +166,31 @@ public abstract class Creature extends Entity
             falling = false;
             gravity = 25.0f;
             handler.getSound().playSound(Sound.marioJumpSound);
+        }
+    }
+
+    public void bowserGravity()
+    {
+        yMove = 0;
+
+        if(jumping){
+            gravity -= 0.3;
+            yMove = (-gravity);
+            if(gravity<=0.0){
+                jumping = false;
+                falling = true;
+            }
+        }
+        if(falling){
+            gravity += 0.15;
+            yMove = gravity;
+        }
+
+        if(!falling && !jumping) {
+            jumping = true;
+            falling = false;
+            gravity = 9.0f;
+            //handler.getSound().playSound(Sound.marioJumpSound);
         }
     }
 

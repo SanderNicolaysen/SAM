@@ -451,10 +451,10 @@ public class Assets
         play[0] = playButton.crop(0,0,305,80);
         play[1]= playButton.crop(305,0,305,80);
         quit = new BufferedImage[2];
-        quit[0] = playButton.crop(0,80,305,80);
+        quit[0] = playButton.crop(0,80,303,80);
         quit[1] = playButton.crop(305,80,305,80);
         resume = new BufferedImage[2];
-        resume[0] = playButton.crop(0,160,305,80);
+        resume[0] = playButton.crop(0,160,303,80);
         resume[1] = playButton.crop(305,160,305,80);
         exittomenu = new BufferedImage[2];
         exittomenu[0] = playButton.crop(0,240,305,80);
@@ -463,7 +463,7 @@ public class Assets
         exittodesktop[0] = playButton.crop(0,320,305,80);
         exittodesktop[1] = playButton.crop(305,320,305,80);
         newGame = new BufferedImage[2];
-        newGame[0] = playButton.crop(0, 405, 305, 80);
+        newGame[0] = playButton.crop(0, 405, 303, 80);
         newGame[1] = playButton.crop(305, 405, 305, 80);
 
         SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("res/textures/Logo.png"));

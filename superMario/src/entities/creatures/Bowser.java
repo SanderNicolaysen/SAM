@@ -16,17 +16,14 @@ public class Bowser extends Creature{
         //Animations
         animBowserLeft = new Animation(100, Assets.bowserLeft);
         animBowserRight = new Animation(100, Assets.bowserRight);
-        bounds.x = 8;
-        bounds.y = 40;
-        bounds.width = 120;
-        bounds.height = 88;
+        bounds.x = 156;
+        bounds.y = 64;
+        bounds.width = 190;
+        bounds.height = 320;
     }
 
     @Override
     public void tick() {
-
-        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset()
-        //== handler.getWidth() / 2 - Tile.TILEWIDTH / 2 || spawned)
 
         // If mario is at middle of screen tick enemy
         if (x - handler.getWorld().getEntityManager().getMario().getX() < handler.getWidth() / 2 || spawned)
@@ -45,13 +42,11 @@ public class Bowser extends Creature{
     @Override
     public void render(Graphics g)
     {
-        //if (handler.getWorld().getEntityManager().getMario().getX() - handler.getGameCamera().getxOffset() == 928 || spawned)
-        // If mario is at middle of screen render enemy
         if (spawned)
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
-            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH * 3, DEFAULT_32x32_HEIGHT * 3, null);
         }
     }
 
@@ -71,10 +66,21 @@ public class Bowser extends Creature{
         }
     }
 
+    private float temp = 0;
+    Double increment = 3.14 / (60 * 2);
     private void getInput()
     {
         xMove = 0;
-        enemyGravity();
-        xMove = -speed + 2;
+
+        bowserGravity();
+
+        if (temp == 3.14)
+        {
+            temp = 0;
+        }
+
+        temp += increment;
+        xMove = (float) Math.sin(temp) * 12;
+
     }
 }

@@ -1,24 +1,14 @@
 package game;
 
-import entities.EntityManager;
 import graphics.Assets;
 import graphics.GameCamera;
 import gui.Display;
 import input.KeyManager;
 import input.MouseManager;
-import javafx.scene.transform.Scale;
 import sounds.Sound;
 import states.*;
-
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.io.File;
-import java.io.IOException;
-
 
 /**
  * The main class for the game. Holds all the base code.
@@ -72,12 +62,10 @@ public class Game implements Runnable
             System.out.println("New game");
         }
 
-        //sound.close();
         //sound.playSound(Sound.overWorldTheme);
         // Clear and init all entities
         handler.getWorld().getEntityManager().getEntities().clear();
         handler.getWorld().initEntities();
-
     }
 
     /**
@@ -118,12 +106,7 @@ public class Game implements Runnable
         gameCamera = new GameCamera(handler, 0);
 
         // Initialization of states
-        //gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        gameState2 = new GameState2(handler);
-        //settingsState = new SettingsState(handler);
-        //gameOver = new GameOver(handler);
-        //pauseState = new PauseState(handler);
 
         // Set the current state of the game to gameState.
         State.setState(menuState);
