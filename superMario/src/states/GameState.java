@@ -32,10 +32,9 @@ public class GameState extends State {
         world.tick();
 
 
-        if (handler.getKeyManager().pause)
+        if (handler.getKeyManager().pauseSound)
         {
             handler.getSound().playSound(Sound.pauseSound);
-            handler.getSound().close();
             State.setState(handler.getGame().menuState);
         }
 

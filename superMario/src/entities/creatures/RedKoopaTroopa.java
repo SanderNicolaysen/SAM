@@ -77,11 +77,20 @@ public class RedKoopaTroopa extends Creature {
 
     }
 
+    private float temp = 0;
+    Double increment = 3.14 / (60 * 2);
     private void getInput()
     {
         xMove = 0;
-        enemyGravity();
+        yMove = 0;
 
-        xMove = -speed + 2;
+        if (temp == 3.14)
+        {
+            temp = 0;
+        }
+
+        temp += increment;
+        xMove = (float) Math.sin(temp) * 10;
+        yMove = (float) Math.cos(temp) * 6;
     }
 }

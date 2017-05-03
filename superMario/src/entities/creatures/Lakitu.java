@@ -78,7 +78,6 @@ public class Lakitu extends Creature {
 
     private float temp = 0;
     Double increment = 3.14 / (60 * 2);
-    private boolean goombaspawn = false;
     private void getInput()
     {
         xMove = 0;

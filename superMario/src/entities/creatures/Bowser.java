@@ -17,9 +17,9 @@ public class Bowser extends Creature{
         animBowserLeft = new Animation(100, Assets.bowserLeft);
         animBowserRight = new Animation(100, Assets.bowserRight);
         bounds.x = 8;
-        bounds.y = 40 - 20;
+        bounds.y = 40;
         bounds.width = 120;
-        bounds.height = 88 + 20;
+        bounds.height = 88;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Bowser extends Creature{
         {
             //g.setColor(Color.RED);
             //g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()), (int) (y + bounds.y), bounds.width, bounds.height);
-            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH * 2, DEFAULT_32x32_HEIGHT * 2, null);
+            g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y), DEFAULT_32x32_WIDTH, DEFAULT_32x32_HEIGHT, null);
         }
     }
 

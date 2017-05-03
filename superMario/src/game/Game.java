@@ -113,7 +113,6 @@ public class Game implements Runnable
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
         Sound.init();
-        //sound.playSound(Sound.overWorldTheme);
 
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0);

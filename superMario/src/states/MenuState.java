@@ -35,6 +35,8 @@ public class MenuState extends State {
 
                 handler.getGame().resetGame();
                 handler.getKeyManager().pause = false;
+                handler.getKeyManager().pauseSound = false;
+                //handler.getGame().getSound().playSound(Sound.overWorldTheme);
 
                 State.setState(handler.getGame().gameState);
             }}));

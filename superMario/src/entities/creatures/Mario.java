@@ -78,6 +78,8 @@ public class Mario extends Creature {
             moveY();
 
         handler.getGameCamera().centerOnEntity(this);
+
+        System.out.println(x + "  " + y);
     }
 
     @Override

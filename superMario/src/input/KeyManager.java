@@ -4,6 +4,7 @@ import entities.Entity;
 import entities.creatures.Creature;
 import game.Game;
 import game.Handler;
+import sounds.Sound;
 import states.State;
 
 import java.awt.event.KeyEvent;
@@ -17,6 +18,7 @@ public class KeyManager implements KeyListener {
     public boolean jump, run, right, left, crouch, throwFireBall;
     public boolean direction = true;
     public boolean pause = false;
+    public boolean pauseSound = false;
     public Handler handler;
 
     public KeyManager(Handler handler){
@@ -48,6 +50,7 @@ public class KeyManager implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
         {
             pause = !pause;
+            pauseSound = !pauseSound;
             System.out.println("pause: " + pause);
         }
 

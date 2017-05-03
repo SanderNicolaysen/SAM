@@ -54,11 +54,6 @@ public abstract class Entity {
             // Check if entities collision bounds intersect with where mario's future collision bounds.
             if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
             {
-                //handler.getWorld().getEntityManager().getMario().setHealth(handler.getWorld().getEntityManager().getMario().getHealth() - 1);
-                //handler.getWorld().getEntityManager().getEntities().add(0, handler.getWorld().getEntityManager().getEntities().size());
-
-                //handler.getWorld().getEntityManager().getEntities().remove(e);
-
                 // Save score
                 Utils.writeFile("res/worlds/savefile.txt", Integer.toString(handler.getWorld().getEntityManager().getMario().getScore()));
                 handler.getSound().playSound(Sound.marioDieSound);
@@ -69,13 +64,6 @@ public abstract class Entity {
                 }
                 handler.getKeyManager().pause = true;
                 State.setState(handler.getGame().menuState);
-                //handler.getWorld().getEntityManager().addEntity
-                //       (new Mario(handler, e.getX() + 70, e.getY(), 1));
-                //handler.getWorld().getEntityManager().getEntities().
-                //      set(0, handler.getWorld().getEntityManager().getEntities().get(handler.getWorld().getEntityManager().getEntities().size() - 1));
-
-                //System.out.println(handler.getWorld().getEntityManager().getEntities().size());
-
 
                 return true;
 
