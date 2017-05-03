@@ -46,10 +46,10 @@ public class World
         entityManager.addEntity(new GreenKoopaTroopa(handler, 30 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 2, 1));
         entityManager.addEntity(new Beetle(handler, 43 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
         entityManager.addEntity(new Lakitu(handler, 105 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4 - 50, 1));
-        entityManager.addEntity(new Lakitu(handler, 95 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4 - 50, 1));
+        //entityManager.addEntity(new Lakitu(handler, 95 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4 - 50, 1));
         entityManager.addEntity(new Lakitu(handler, 85 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4 - 50, 1));
         entityManager.addEntity(new Goomba(handler, 105 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
-        entityManager.addEntity(new Goomba(handler, 95 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
+        entityManager.addEntity(new Goomba(handler, 90 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
         entityManager.addEntity(new Bowser(handler, 320 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_32x32_HEIGHT * 4, 1));
         entityManager.addEntity(new Goomba(handler, 273 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
         entityManager.addEntity(new Goomba(handler, 238 * Tile.TILEWIDTH, handler.getHeight() - Creature.DEFAULT_16x16_HEIGHT * 2, 1));
